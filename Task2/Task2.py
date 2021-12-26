@@ -1,7 +1,9 @@
 import os
-file1_root = os.path.abspath(r'C:\Tests\Task2\file1.txt')
+file1_path = input('File1 path = ')
+file1_root = os.path.abspath(file1_path)
 file1_read = str(open('file1.txt', 'r').read())
-file2_root = os.path.abspath(r'C:\Tests\Task2\file2.txt')
+file2_path = input('File2 path = ')
+file2_root = os.path.abspath(file1_path)
 file2_read = str(open('file2.txt', 'r').read())
 def file1_coor(file1_read):
     i=0
