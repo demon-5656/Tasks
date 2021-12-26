@@ -1,6 +1,6 @@
 import os
-file_path = 'C:\\Users\\kotho\\Documents\\GitHub\\Tasks\\Task4\\file.txt'
-#   file_path = input('File path = ') # C:\Users\kotho\Documents\GitHub\Tasks\Task4\file.txt
+#file_path = 'C:\\Users\\kotho\\Documents\\GitHub\\Tasks\\Task4\\file.txt'
+file_path = input('File path = ')
 file_root = os.path.abspath(file_path)
 file_read = str(open('file.txt', 'r').read())
 def mass(f):
