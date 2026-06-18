@@ -68,15 +68,15 @@ packer init mydebian.json.pkr.hcl
 packer validate mydebian.json.pkr.hcl
 ```
 
-Также проверена работа YC CLI с безопасной заглушкой профиля.
+Также проверена установка YC CLI и вывод текущей конфигурации профиля.
 
 ![Packer and YC](screenshots/05_packer_yc.png)
 
-## Файлы
+## Итог
 
 - `src/Vagrantfile` - конфигурация Vagrant VM с установкой Docker.
 - `src/mydebian.json.pkr.hcl` - Packer-конфигурация для образа Debian в Yandex Cloud.
 - `evidence/*.txt` - полные текстовые выводы команд.
 - `screenshots/*.png` - скриншоты выводов команд для отчета.
 
-Исходный `README.md` с текстом задания добавлен в `.gitignore` и не предназначен для публикации как решение.
+В результате подготовлена отдельная учебная VM, проверен запуск вложенной VM через Vagrant и подтверждена установка Docker внутри нее. Packer-конфигурация валидна, чувствительные значения в файле заменены на `ххххх`.
