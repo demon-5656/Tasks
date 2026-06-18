@@ -1,0 +1,30 @@
+$ virsh --connect qemu:///system list --all
+ Id   Name               State
+-----------------------------------
+ 2    netology-lesson2   running
+ -    archlinux          shut off
+ -    win11              shut off
+
+
+$ virsh --connect qemu:///system dominfo netology-lesson2
+Id:             2
+Name:           netology-lesson2
+UUID:           afbd924e-31a0-4904-b895-4f7f306c4f3e
+OS Type:        hvm
+State:          running
+CPU(s):         4
+CPU time:       447.7s
+Max memory:     4194304 KiB
+Used memory:    4194304 KiB
+Persistent:     yes
+Autostart:      disable
+Autostart Once: disable
+Managed save:   no
+Security model: none
+Security DOI:   0
+
+
+$ ssh netology@192.168.122.129 "hostname; uname -a; hostname -I"
+netology-lesson2
+Linux netology-lesson2 5.4.0-216-generic #236-Ubuntu SMP Fri Apr 11 19:53:21 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+192.168.122.129 172.17.0.1 

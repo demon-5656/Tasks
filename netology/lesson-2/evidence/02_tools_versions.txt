@@ -1,0 +1,16 @@
+$ docker --version && docker compose version
+Docker version 28.1.1, build 4eba377
+Docker Compose version v2.35.1
+
+$ vagrant --version && packer --version && yc version && VBoxManage --version
+Vagrant 2.3.4
+1.9.5
+Yandex Cloud CLI 1.13.0 linux/amd64
+6.1.50_Ubuntur161033
+
+$ egrep -c "(vmx|svm)" /proc/cpuinfo; lsmod | grep -E "vboxdrv|kvm"
+4
+vboxdrv               499712  3 vboxnetadp,vboxnetflt
+kvm_amd                98304  0
+ccp                    90112  1 kvm_amd
+kvm                   667648  1 kvm_amd

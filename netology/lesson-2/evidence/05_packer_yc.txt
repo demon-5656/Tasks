@@ -1,0 +1,8 @@
+$ cd ~/lesson-2/src && packer init mydebian.json.pkr.hcl && packer validate mydebian.json.pkr.hcl
+The configuration is valid.
+
+$ yc version && yc config list
+Yandex Cloud CLI 1.13.0 linux/amd64
+token: ххххх
+cloud-id: ххххх
+folder-id: ххххх

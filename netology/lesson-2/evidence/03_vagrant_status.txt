@@ -1,0 +1,13 @@
+$ cd ~/lesson-2/src && vagrant validate && vagrant status
+Vagrantfile validated successfully.
+Current machine states:
+
+default                   running (virtualbox)
+
+The VM is running. To stop this VM, you can run `vagrant halt` to
+shut it down forcefully, or you can run `vagrant suspend` to simply
+suspend the virtual machine. In either case, to restart it again,
+simply run `vagrant up`.
+
+$ VBoxManage list vms
+"server1.netology" {804269da-2f95-467b-8cf6-619f8da4ea8c}
