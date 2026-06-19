@@ -1,0 +1,9 @@
+Public check:
+
+curl -i http://89.169.179.78:8090/
+
+HTTP/1.1 200 OK
+Server: nginx/1.31.2
+Content-Type: application/json
+
+"TIME: 2026-06-19 14:03:57, IP: 95.214.62.150"

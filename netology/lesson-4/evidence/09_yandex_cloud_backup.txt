@@ -1,0 +1,12 @@
+Backup on Yandex Cloud VM:
+
+cd /opt/shvirtd-example-python
+sudo ./deploy.sh backup
+
+/opt/backup:
+
+virtd-20260619-140407.sql 2091 bytes
+
+Cron:
+
+* * * * * /opt/shvirtd-example-python/deploy.sh backup >/var/log/shvirtd-backup.log 2>&1

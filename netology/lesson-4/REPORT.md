@@ -60,7 +60,15 @@ SELECT * from requests LIMIT 10;
 - клонирует fork в `/opt/shvirtd-example-python`;
 - запускает проект командой `docker compose up -d --build`.
 
-Скрипт проверен в учебной Linux VM. Для запуска на Yandex Cloud VM достаточно выполнить:
+Скрипт запущен на VM в Yandex Cloud:
+
+- VM id: `epdojdmq2stn1e2np12r`;
+- внешний IP: `89.169.179.78`;
+- ОС: `Ubuntu 24.04.4 LTS`;
+- Docker: `29.6.0`;
+- Docker Compose: `v5.1.4`.
+
+Команды запуска:
 
 ```bash
 sudo apt-get update
@@ -69,9 +77,24 @@ sudo git clone https://github.com/demon-5656/shvirtd-example-python.git /opt/shv
 sudo /opt/shvirtd-example-python/deploy.sh
 ```
 
-После запуска внешний URL должен проверяться по порту `8090`.
+После запуска контейнеры находятся в состоянии `Up`, база `db` прошла healthcheck. Приложение открывается по внешнему адресу:
+
+```bash
+curl -i http://89.169.179.78:8090/
+```
+
+Ответ:
+
+```text
+HTTP/1.1 200 OK
+"TIME: 2026-06-19 14:03:57, IP: 95.214.62.150"
+```
+
+Запрос записан в таблицу `virtd.requests`.
 
 ![Deploy script](screenshots/06_deploy_script.png)
+![Yandex Cloud run](screenshots/07_yandex_cloud_run.png)
+![Yandex Cloud public URL](screenshots/08_yandex_cloud_public.png)
 
 ## Задача 5
 
@@ -92,6 +115,7 @@ Cron настроен на запуск backup раз в минуту:
 В `/opt/backup` создано несколько SQL-дампов.
 
 ![Backup cron](screenshots/03_backup_cron.png)
+![Yandex Cloud backup](screenshots/09_yandex_cloud_backup.png)
 
 ## Задача 6
 

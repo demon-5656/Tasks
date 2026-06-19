@@ -1,0 +1,37 @@
+Yandex Cloud VM:
+
+id: epdojdmq2stn1e2np12r
+public ip: 89.169.179.78
+os: Ubuntu 24.04.4 LTS
+
+Docker version 29.6.0, build fb59821
+Docker Compose version v5.1.4
+
+docker compose ps:
+
+NAME                                     IMAGE                        SERVICE         STATUS
+shvirtd-example-python-db-1              mysql:8.0                    db              Up (healthy)
+shvirtd-example-python-ingress-proxy-1   nginx:latest                 ingress-proxy   Up
+shvirtd-example-python-reverse-proxy-1   haproxy:2.4                  reverse-proxy   Up
+shvirtd-example-python-web-1             shvirtd-example-python-web   web             Up
+
+Local request from VM:
+
+curl -sL http://127.0.0.1:8090
+"TIME: 2026-06-19 14:04:01, IP: 127.0.0.1"
+
+SQL check:
+
+Database
+information_schema
+mysql
+performance_schema
+sys
+virtd
+
+Tables_in_virtd
+requests
+
+id  request_date          request_ip
+1   2026-06-19 14:03:57   95.214.62.150
+2   2026-06-19 14:04:01   127.0.0.1
