@@ -1,0 +1,5 @@
+$ docker-compose --version
+bash: docker-compose: command not found
+
+$ docker compose version
+Docker Compose version v2.35.1

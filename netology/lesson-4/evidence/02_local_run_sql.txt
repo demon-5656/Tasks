@@ -1,0 +1,22 @@
+$ docker compose ps
+NAME                                     IMAGE                        COMMAND                  SERVICE         CREATED         STATUS                   PORTS
+shvirtd-example-python-db-1              mysql:8.0                    "docker-entrypoint.s…"   db              3 minutes ago   Up 3 minutes (healthy)   3306/tcp, 33060/tcp
+shvirtd-example-python-ingress-proxy-1   nginx:latest                 "/docker-entrypoint.…"   ingress-proxy   3 minutes ago   Up 3 minutes             
+shvirtd-example-python-reverse-proxy-1   haproxy:2.4                  "docker-entrypoint.s…"   reverse-proxy   3 minutes ago   Up 3 minutes             127.0.0.1:8080->8080/tcp
+shvirtd-example-python-web-1             shvirtd-example-python-web   "uvicorn main:app --…"   web             3 minutes ago   Up 2 minutes             5000/tcp
+
+$ curl -L http://127.0.0.1:8090
+"TIME: 2026-06-19 13:37:26, IP: 127.0.0.1"
+
+$ mysql: show databases; use virtd; show tables; SELECT * from requests LIMIT 10;
+Database
+information_schema
+mysql
+performance_schema
+sys
+virtd
+Tables_in_virtd
+requests
+id	request_date	request_ip
+1	2026-06-19 13:34:58	127.0.0.1
+2	2026-06-19 13:37:26	127.0.0.1

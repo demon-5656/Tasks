@@ -1,0 +1,11 @@
+$ crontab -l
+* * * * * /opt/shvirtd-example-python/deploy.sh backup >/var/log/shvirtd-backup.log 2>&1
+
+$ ls -la /opt/backup
+total 24
+drwxr-xr-x 2 root root 4096 Jun 19 13:37 .
+drwxr-xr-x 6 root root 4096 Jun 19 13:34 ..
+-rw-r--r-- 1 root root 2005 Jun 19 13:34 virtd-20260619-133458.sql
+-rw-r--r-- 1 root root 2005 Jun 19 13:35 virtd-20260619-133500.sql
+-rw-r--r-- 1 root root 2005 Jun 19 13:36 virtd-20260619-133601.sql
+-rw-r--r-- 1 root root 2005 Jun 19 13:37 virtd-20260619-133701.sql

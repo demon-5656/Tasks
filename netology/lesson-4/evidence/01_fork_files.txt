@@ -1,0 +1,16 @@
+$ gh repo view demon-5656/shvirtd-example-python --json url
+{"url":"https://github.com/demon-5656/shvirtd-example-python"}
+
+$ git log --oneline -5
+baf951a Pin MySQL 8.0 for dump compatibility
+071e49a Use native MySQL auth for backup compatibility
+9d36228 Run mysqldump entrypoint for backups
+b119bb9 Make backup script detect compose network
+eb30bea Fix compose include network conflict
+
+$ ls added files
+Dockerfile.python
+compose.yaml
+.dockerignore
+.gitignore
+deploy.sh

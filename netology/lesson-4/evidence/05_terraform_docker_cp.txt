@@ -1,0 +1,4 @@
+$ docker create; docker cp <container>:/bin/terraform ./terraform; ./terraform version
+Terraform v1.15.6
+on linux_amd64
+-rwxr-xr-x 1 netology netology 112M Jun 10 10:16 /home/netology/lesson-4/terraform-cp/terraform

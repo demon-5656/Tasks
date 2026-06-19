@@ -1,0 +1,26 @@
+$ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest hashicorp/terraform:latest --ci
+  Using default CI config
+Image Source: docker://hashicorp/terraform:latest
+Extracting image from docker-engine... (this can take a while for large images)
+Analyzing image...
+  efficiency: 99.8124 %
+  wastedBytes: 507631 bytes (508 kB)
+  userWastedPercent: 0.3710 %
+Inefficient Files:
+Count  Wasted Space  File Path
+    2        436 kB  /etc/ssl/certs/ca-certificates.crt
+    2         67 kB  /lib/apk/db/installed
+    2        4.7 kB  /lib/apk/db/scripts.tar.gz
+    2         326 B  /lib/apk/db/triggers
+    2         176 B  /etc/apk/world
+Results:
+  PASS: highestUserWastedPercent
+  SKIP: highestWastedBytes: rule disabled
+  PASS: lowestEfficiency
+Result:PASS [Total:3] [Passed:2] [Failed:0] [Warn:0] [Skipped:1]
+
+
+$ docker save hashicorp/terraform:latest ...; extracted /bin/terraform version
+Terraform v1.15.6
+on linux_amd64
+-rwxr-xr-x 1 netology netology 112M Jun 10 10:16 /home/netology/lesson-4/terraform-save/rootfs/bin/terraform
