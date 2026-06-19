@@ -1,0 +1,32 @@
+== Compose task5: two default files ==
+NAME                IMAGE                           COMMAND        SERVICE     CREATED         STATUS                  PORTS
+task5-portainer-1   portainer/portainer-ce:latest   "/portainer"   portainer   8 seconds ago   Up Less than a second   
+
+Started compose.yaml. When compose.yaml and docker-compose.yaml exist together, Docker Compose uses compose.yaml by default.
+
+== Compose include ==
+NAME                IMAGE                           COMMAND                  SERVICE     CREATED          STATUS                  PORTS
+task5-portainer-1   portainer/portainer-ce:latest   "/portainer"             portainer   16 seconds ago   Up 8 seconds            
+task5-registry-1    registry:2                      "/entrypoint.sh /etc…"   registry    1 second ago     Up Less than a second   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp
+
+== Push local image to registry ==
+The push refers to repository [127.0.0.1:5000/custom-nginx]
+fd58baa066f5: Waiting
+e530969b3e91: Waiting
+fea7cebc499c: Waiting
+856c000ad0ec: Waiting
+b1badc6e5066: Waiting
+dea1652b095a: Waiting
+9dbfe0b105c9: Waiting
+85003794a6a5: Waiting
+dea1652b095a: Pushed
+9dbfe0b105c9: Pushed
+85003794a6a5: Pushed
+fd58baa066f5: Pushed
+e530969b3e91: Pushed
+fea7cebc499c: Pushed
+856c000ad0ec: Pushed
+b1badc6e5066: Pushed
+c5ada5e7d698: Pushed
+latest: digest: sha256:a234b9e517eb3d30609033f77d733691e1f92a08dd1126171ea90e9aa5860956 size: 856
+{"repositories":["custom-nginx"]}

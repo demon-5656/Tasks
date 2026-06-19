@@ -1,0 +1,11 @@
+== Run custom nginx ==
+f5560cb6518f45947ace35b9d1353a39456f37bb2b7e80c735e195b1af755a5a
+19-06-2026 14:23:34.516586228 UTC
+CONTAINER ID   IMAGE                COMMAND                  CREATED        STATUS                  PORTS                    NAMES
+f5560cb6518f   custom-nginx:1.0.0   "/docker-entrypoint.…"   1 second ago   Up Less than a second   127.0.0.1:8080->80/tcp   custom-nginx-t2
+LISTEN 0      4096       127.0.0.1:8080      0.0.0.0:*    users:(("docker-proxy",pid=2963,fd=8))                
+SGV5LCBOZXRvbG9neQojIEkgd2lsbCBiZSBEZXZPcHMgRW5naW5lZXIhCg==
+
+== Curl ==
+Hey, Netology
+# I will be DevOps Engineer!

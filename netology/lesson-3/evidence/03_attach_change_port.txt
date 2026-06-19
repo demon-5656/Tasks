@@ -1,0 +1,24 @@
+== Attach with Ctrl-C simulation ==
+attach exit code: 124
+CONTAINER ID   IMAGE                COMMAND                  CREATED         STATUS                    PORTS     NAMES
+f5560cb6518f   custom-nginx:1.0.0   "/docker-entrypoint.…"   6 seconds ago   Exited (0) 1 second ago             custom-nginx-t2
+
+Container stopped because docker attach connects to the main nginx process streams. Ctrl-C sends SIGINT to that foreground process, so PID 1 exits and Docker marks the container as stopped.
+
+== Restart and change nginx port inside container ==
+custom-nginx-t2
+curl 80:
+
+curl 81:
+Hey, Netology
+# I will be DevOps Engineer!
+
+== Host checks ==
+LISTEN 0      4096       127.0.0.1:8080      0.0.0.0:*    users:(("docker-proxy",pid=3202,fd=8))                
+80/tcp -> 127.0.0.1:8080
+
+Problem: host port 8080 is still mapped to container port 80, but nginx now listens on 81 inside the container.
+
+== Remove running container ==
+custom-nginx-t2
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES

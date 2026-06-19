@@ -1,0 +1,6 @@
+== Compose missing include file warning ==
+exit code: 1
+
+Docker Compose warns/fails because compose.yaml includes docker-compose.yaml, but that file was removed. Need restore the include target or remove include from compose.yaml.
+
+== Down by one command ==

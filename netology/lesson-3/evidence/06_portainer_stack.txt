@@ -1,0 +1,11 @@
+== Portainer initial setup through API ==
+Admin user initialized.
+JWT received: yes
+[]
+
+endpoint_id=1
+{"Id":1,"Name":"custom-nginx-stack","Type":2,"EndpointId":1,"SwarmId":"","EntryPoint":"docker-compose.yml","Env":[],"ResourceControl":{"Id":1,"ResourceId":"1_custom-nginx-stack","SubResourceIds":[],"Type":6,"UserAccesses":[],"TeamAccesses":[],"Public":false,"AdministratorsOnly":true,"System":false},"Status":1,"ProjectPath":"/data/compose/1","CreationDate":1781879099,"CreatedBy":"admin","UpdateDate":0,"UpdatedBy":"","AdditionalFiles":null,"AutoUpdate":null,"Option":null,"GitConfig":null,"FromAppTemplate":false,"Namespace":""}custom-nginx-stack-nginx-1   127.0.0.1:5000/custom-nginx     0.0.0.0:9090->80/tcp, [::]:9090->80/tcp
+task5-registry-1             registry:2                      0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp
+task5-portainer-1            portainer/portainer-ce:latest   
+Hey, Netology
+# I will be DevOps Engineer!

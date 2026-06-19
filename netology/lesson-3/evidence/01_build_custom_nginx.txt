@@ -1,0 +1,14 @@
+== Environment ==
+Ubuntu 24.04.4 LTS
+Docker version 29.6.0, build fb59821
+Docker Compose version v5.1.4
+
+== Build custom nginx ==
+1.29.0: Pulling from library/nginx
+Digest: sha256:3ab4ed065a1437cbbd45e65617b1285bdf6523c6bf56a121e00df41720e09a89
+Status: Image is up to date for nginx:1.29.0
+docker.io/library/nginx:1.29.0
+IMAGE                ID             DISK USAGE   CONTENT SIZE   EXTRA
+custom-nginx:1.0.0   a234b9e517eb        279MB         72.2MB        
+
+DockerHub push was skipped: credentials were not used on this training VM.
