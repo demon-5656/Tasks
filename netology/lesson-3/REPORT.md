@@ -138,6 +138,10 @@ services:
 
 ![Portainer stack](screenshots/06_portainer_stack.png)
 
+Для контейнера с nginx проверил inspect. В выводе видны поля `AppArmorProfile`, `Config` и `Driver`.
+
+![Portainer inspect](screenshots/08_portainer_inspect.png)
+
 После удаления `docker-compose.yaml` команда `docker compose up -d` завершилась ошибкой:
 
 ```text
