@@ -1,0 +1,17 @@
+== VM list before cleanup ==
++----------------------+-------------------------------------+---------------+---------+----------------+-------------+
+|          ID          |                NAME                 |    ZONE ID    | STATUS  |  EXTERNAL IP   | INTERNAL IP |
++----------------------+-------------------------------------+---------------+---------+----------------+-------------+
+| epd1f8h76vqrdku4jpcn | netology-swarm-manager              | ru-central1-b | RUNNING | 89.169.163.183 | 10.129.0.7  |
+| epdm0qp5be97mguchup7 | netology-swarm-worker2              | ru-central1-b | RUNNING | 89.169.173.228 | 10.129.0.30 |
+| epdojdmq2stn1e2np12r | compute-vm-2-2-10-hdd-1781591729252 | ru-central1-b | STOPPED |                | 10.129.0.21 |
+| epdr7jq88h2cb64t4df8 | netology-swarm-worker1              | ru-central1-b | RUNNING | 111.88.154.133 | 10.129.0.34 |
++----------------------+-------------------------------------+---------------+---------+----------------+-------------+
+
+== Lesson VMs ==
+manager  public=89.169.163.183 private=10.129.0.7
+worker1  public=111.88.154.133 private=10.129.0.34
+worker2  public=89.169.173.228 private=10.129.0.30
+
+Network: default
+Subnet: default-ru-central1-b

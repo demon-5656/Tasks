@@ -1,0 +1,21 @@
+== docker service ls ==
+ID             NAME          MODE         REPLICAS   IMAGE               PORTS
+v4qxhj74cgr7   shvirtd-db    replicated   1/1        mysql:8.0
+ybc9xgt4uyz0   shvirtd-web   replicated   1/1        shvirtd-web:swarm   *:8090->5000/tcp
+
+== docker service ps shvirtd-db ==
+ID                          NAME           IMAGE                                                                               NODE                   DESIRED STATE   CURRENT STATE            ERROR     PORTS
+cza057zwfxw9u8wdeufb5jhad   shvirtd-db.1   mysql:8.0@sha256:7dcddc01f13bab2f15cde676d44d01f61fc9f99fe7785e86196dfc07d358ae2b   epd1f8h76vqrdku4jpcn   Running         Running 40 seconds ago
+
+== docker service ps shvirtd-web ==
+ID                          NAME            IMAGE               NODE                   DESIRED STATE   CURRENT STATE            ERROR     PORTS
+odyafgri4k07aelcbn449dr5c   shvirtd-web.1   shvirtd-web:swarm   epd1f8h76vqrdku4jpcn   Running         Running 31 seconds ago
+
+== curl http://89.169.163.183:8090/ ==
+HTTP/1.1 200 OK
+date: Mon, 22 Jun 2026 08:25:31 GMT
+server: uvicorn
+content-length: 278
+content-type: application/json
+
+"TIME: 2026-06-22 08:25:31, IP: похоже, что вы направляете запрос в неверный порт(например curl http://127.0.0.1:5000). Правильное выполнение задания - отправить запрос в порт 8090."

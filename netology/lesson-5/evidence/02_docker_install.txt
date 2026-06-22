@@ -1,0 +1,8 @@
+manager: Ubuntu 24.04.4 LTS
+manager docker: Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2
+
+worker1: Ubuntu 24.04.4 LTS
+worker1 docker: Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2
+
+worker2: Ubuntu 24.04.4 LTS
+worker2 docker: Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2

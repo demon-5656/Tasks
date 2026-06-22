@@ -1,0 +1,8 @@
+== Swarm init command ==
+sudo docker swarm init --advertise-addr 10.129.0.7
+
+== docker node ls ==
+ID                            HOSTNAME               STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
+pq5ft5tzpykgq5wrtjhn8f4dj *   epd1f8h76vqrdku4jpcn   Ready     Active         Leader           29.1.3
+a08vv72fb89z1lsg5bqu4krli     epdm0qp5be97mguchup7   Ready     Active                          29.1.3
+qnqdsk9xtcx721eggnzrkluob     epdr7jq88h2cb64t4df8   Ready     Active                          29.1.3
