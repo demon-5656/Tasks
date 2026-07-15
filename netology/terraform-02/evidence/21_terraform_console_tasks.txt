@@ -1,0 +1,15 @@
+> local.test_list[1]
+"staging"
+
+> length(local.test_list)
+3
+
+> local.test_map.admin
+"John"
+
+> format("%s is %s for %s server based on OS %s with %s vcpu, %s ram and %s virtual disks", local.test_map.admin, keys(local.test_map)[0], local.test_list[2], local.servers.production.image, local.servers.production.cpu, local.servers.production.ram, length(local.servers.production.disks))
+"John is admin for production server based on OS ubuntu-20-04 with 10 vcpu, 40 ram and 4 virtual disks"
+
+> var.test[0]["dev1"][0]
+"ssh -o 'StrictHostKeyChecking=no' ubuntu@62.84.124.117"
+

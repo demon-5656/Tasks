@@ -1,0 +1,8 @@
+[0m[1myandex_vpc_network.develop: Creating...[0m[0m
+[0m[1myandex_vpc_network.develop: Creation complete after 2s [id=enppne3t0uis3c91rlk5][0m
+[0m[1myandex_vpc_subnet.develop_b: Creating...[0m[0m
+[0m[1myandex_vpc_subnet.develop_a: Creating...[0m[0m
+[0m[1myandex_vpc_subnet.develop_a: Creation complete after 1s [id=e9b5jirfc2v0vub2k4mu][0m
+[0m[1myandex_compute_instance.platform_web: Creating...[0m[0m
+[0m[1myandex_vpc_subnet.develop_b: Creation complete after 1s [id=e2lp4m54mjfs4e7sa74m][0m
+[0m[1myandex_compute_instance.platform_db: Creating...[0m[0m

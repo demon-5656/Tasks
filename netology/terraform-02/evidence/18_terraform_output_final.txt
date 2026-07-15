@@ -1,0 +1,12 @@
+vm_info = {
+  "db" = {
+    "external_ip" = "89.169.190.4"
+    "fqdn" = "epd4dpm3fp2825u3d4e7.auto.internal"
+    "instance_name" = "netology-develop-platform-db"
+  }
+  "web" = {
+    "external_ip" = "111.88.249.199"
+    "fqdn" = "fhmvf6sghqt24ep4fr30.auto.internal"
+    "instance_name" = "netology-develop-platform-web"
+  }
+}

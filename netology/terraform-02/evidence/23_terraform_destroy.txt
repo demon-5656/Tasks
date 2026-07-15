@@ -1,0 +1,265 @@
+[0m[1mdata.yandex_compute_image.ubuntu: Reading...[0m[0m
+[0m[1myandex_vpc_network.develop: Refreshing state... [id=enppne3t0uis3c91rlk5][0m
+[0m[1mdata.yandex_compute_image.ubuntu: Read complete after 0s [id=fd8ioru6shrp7380rikc][0m
+[0m[1myandex_vpc_subnet.develop_b: Refreshing state... [id=e2lp4m54mjfs4e7sa74m][0m
+[0m[1myandex_vpc_subnet.develop_a: Refreshing state... [id=e9b5jirfc2v0vub2k4mu][0m
+[0m[1myandex_compute_instance.platform_db: Refreshing state... [id=epd4dpm3fp2825u3d4e7][0m
+[0m[1myandex_compute_instance.platform_web: Refreshing state... [id=fhmvf6sghqt24ep4fr30][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy[0m
+
+Terraform will perform the following actions:
+
+[1m  # yandex_compute_instance.platform_db[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "yandex_compute_instance" "platform_db" {
+      [31m-[0m[0m created_at                = "2026-07-15T09:02:05Z" [90m-> null[0m[0m
+      [31m-[0m[0m folder_id                 = "b1glhd6ohrcmkvkg7v7q" [90m-> null[0m[0m
+      [31m-[0m[0m fqdn                      = "epd4dpm3fp2825u3d4e7.auto.internal" [90m-> null[0m[0m
+      [31m-[0m[0m hardware_generation       = [
+          [31m-[0m[0m {
+              [31m-[0m[0m generation2_features = []
+              [31m-[0m[0m legacy_features      = [
+                  [31m-[0m[0m {
+                      [31m-[0m[0m pci_topology = "PCI_TOPOLOGY_V2"
+                    },
+                ]
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m id                        = "epd4dpm3fp2825u3d4e7" [90m-> null[0m[0m
+      [31m-[0m[0m labels                    = {} [90m-> null[0m[0m
+      [31m-[0m[0m metadata                  = {
+          [31m-[0m[0m "serial-port-enable" = "1"
+          [31m-[0m[0m "ssh-keys"           = "ubuntu:ssh-ed25519 <public-key-hidden>"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m name                      = "netology-develop-platform-db" [90m-> null[0m[0m
+      [31m-[0m[0m network_acceleration_type = "standard" [90m-> null[0m[0m
+      [31m-[0m[0m platform_id               = "standard-v3" [90m-> null[0m[0m
+      [31m-[0m[0m status                    = "running" [90m-> null[0m[0m
+      [31m-[0m[0m zone                      = "ru-central1-b" [90m-> null[0m[0m
+        [90m# (5 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m boot_disk {
+          [31m-[0m[0m auto_delete = true [90m-> null[0m[0m
+          [31m-[0m[0m device_name = "epdhlu9ijq81gdodepj1" [90m-> null[0m[0m
+          [31m-[0m[0m disk_id     = "epdhlu9ijq81gdodepj1" [90m-> null[0m[0m
+          [31m-[0m[0m mode        = "READ_WRITE" [90m-> null[0m[0m
+
+          [31m-[0m[0m initialize_params {
+              [31m-[0m[0m block_size  = 4096 [90m-> null[0m[0m
+              [31m-[0m[0m image_id    = "fd8ioru6shrp7380rikc" [90m-> null[0m[0m
+                name        = [90mnull[0m[0m
+              [31m-[0m[0m size        = 10 [90m-> null[0m[0m
+              [31m-[0m[0m type        = "network-hdd" [90m-> null[0m[0m
+                [90m# (3 unchanged attributes hidden)[0m[0m
+            }
+        }
+
+      [31m-[0m[0m metadata_options {
+          [31m-[0m[0m aws_v1_http_endpoint = 1 [90m-> null[0m[0m
+          [31m-[0m[0m aws_v1_http_token    = 2 [90m-> null[0m[0m
+          [31m-[0m[0m aws_v2_http_endpoint = 1 [90m-> null[0m[0m
+          [31m-[0m[0m aws_v2_http_token    = 1 [90m-> null[0m[0m
+          [31m-[0m[0m gce_http_endpoint    = 1 [90m-> null[0m[0m
+          [31m-[0m[0m gce_http_token       = 1 [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m network_interface {
+          [31m-[0m[0m index              = 0 [90m-> null[0m[0m
+          [31m-[0m[0m ip_address         = "10.0.2.31" [90m-> null[0m[0m
+          [31m-[0m[0m ipv4               = true [90m-> null[0m[0m
+          [31m-[0m[0m ipv6               = false [90m-> null[0m[0m
+          [31m-[0m[0m mac_address        = "d0:0d:46:e6:c3:7e" [90m-> null[0m[0m
+          [31m-[0m[0m nat                = true [90m-> null[0m[0m
+          [31m-[0m[0m nat_ip_address     = "89.169.190.4" [90m-> null[0m[0m
+          [31m-[0m[0m nat_ip_version     = "IPV4" [90m-> null[0m[0m
+          [31m-[0m[0m security_group_ids = [] [90m-> null[0m[0m
+          [31m-[0m[0m subnet_id          = "e2lp4m54mjfs4e7sa74m" [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+
+      [31m-[0m[0m placement_policy {
+          [31m-[0m[0m host_affinity_rules       = [] [90m-> null[0m[0m
+          [31m-[0m[0m placement_group_partition = 0 [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+
+      [31m-[0m[0m resources {
+          [31m-[0m[0m core_fraction = 20 [90m-> null[0m[0m
+          [31m-[0m[0m cores         = 2 [90m-> null[0m[0m
+          [31m-[0m[0m gpus          = 0 [90m-> null[0m[0m
+          [31m-[0m[0m memory        = 2 [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m scheduling_policy {
+          [31m-[0m[0m preemptible = true [90m-> null[0m[0m
+        }
+    }
+
+[1m  # yandex_compute_instance.platform_web[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "yandex_compute_instance" "platform_web" {
+      [31m-[0m[0m created_at                = "2026-07-15T09:03:17Z" [90m-> null[0m[0m
+      [31m-[0m[0m folder_id                 = "b1glhd6ohrcmkvkg7v7q" [90m-> null[0m[0m
+      [31m-[0m[0m fqdn                      = "fhmvf6sghqt24ep4fr30.auto.internal" [90m-> null[0m[0m
+      [31m-[0m[0m hardware_generation       = [
+          [31m-[0m[0m {
+              [31m-[0m[0m generation2_features = []
+              [31m-[0m[0m legacy_features      = [
+                  [31m-[0m[0m {
+                      [31m-[0m[0m pci_topology = "PCI_TOPOLOGY_V2"
+                    },
+                ]
+            },
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m id                        = "fhmvf6sghqt24ep4fr30" [90m-> null[0m[0m
+      [31m-[0m[0m labels                    = {} [90m-> null[0m[0m
+      [31m-[0m[0m metadata                  = {
+          [31m-[0m[0m "serial-port-enable" = "1"
+          [31m-[0m[0m "ssh-keys"           = "ubuntu:ssh-ed25519 <public-key-hidden>"
+        } [90m-> null[0m[0m
+      [31m-[0m[0m name                      = "netology-develop-platform-web" [90m-> null[0m[0m
+      [31m-[0m[0m network_acceleration_type = "standard" [90m-> null[0m[0m
+      [31m-[0m[0m platform_id               = "standard-v1" [90m-> null[0m[0m
+      [31m-[0m[0m status                    = "running" [90m-> null[0m[0m
+      [31m-[0m[0m zone                      = "ru-central1-a" [90m-> null[0m[0m
+        [90m# (5 unchanged attributes hidden)[0m[0m
+
+      [31m-[0m[0m boot_disk {
+          [31m-[0m[0m auto_delete = true [90m-> null[0m[0m
+          [31m-[0m[0m device_name = "fhmqcrun8t6l5pi2vmju" [90m-> null[0m[0m
+          [31m-[0m[0m disk_id     = "fhmqcrun8t6l5pi2vmju" [90m-> null[0m[0m
+          [31m-[0m[0m mode        = "READ_WRITE" [90m-> null[0m[0m
+
+          [31m-[0m[0m initialize_params {
+              [31m-[0m[0m block_size  = 4096 [90m-> null[0m[0m
+              [31m-[0m[0m image_id    = "fd8ioru6shrp7380rikc" [90m-> null[0m[0m
+                name        = [90mnull[0m[0m
+              [31m-[0m[0m size        = 10 [90m-> null[0m[0m
+              [31m-[0m[0m type        = "network-hdd" [90m-> null[0m[0m
+                [90m# (3 unchanged attributes hidden)[0m[0m
+            }
+        }
+
+      [31m-[0m[0m metadata_options {
+          [31m-[0m[0m aws_v1_http_endpoint = 1 [90m-> null[0m[0m
+          [31m-[0m[0m aws_v1_http_token    = 2 [90m-> null[0m[0m
+          [31m-[0m[0m aws_v2_http_endpoint = 1 [90m-> null[0m[0m
+          [31m-[0m[0m aws_v2_http_token    = 1 [90m-> null[0m[0m
+          [31m-[0m[0m gce_http_endpoint    = 1 [90m-> null[0m[0m
+          [31m-[0m[0m gce_http_token       = 1 [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m network_interface {
+          [31m-[0m[0m index              = 0 [90m-> null[0m[0m
+          [31m-[0m[0m ip_address         = "10.0.1.29" [90m-> null[0m[0m
+          [31m-[0m[0m ipv4               = true [90m-> null[0m[0m
+          [31m-[0m[0m ipv6               = false [90m-> null[0m[0m
+          [31m-[0m[0m mac_address        = "d0:0d:1f:79:b9:08" [90m-> null[0m[0m
+          [31m-[0m[0m nat                = true [90m-> null[0m[0m
+          [31m-[0m[0m nat_ip_address     = "111.88.249.199" [90m-> null[0m[0m
+          [31m-[0m[0m nat_ip_version     = "IPV4" [90m-> null[0m[0m
+          [31m-[0m[0m security_group_ids = [] [90m-> null[0m[0m
+          [31m-[0m[0m subnet_id          = "e9b5jirfc2v0vub2k4mu" [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+
+      [31m-[0m[0m placement_policy {
+          [31m-[0m[0m host_affinity_rules       = [] [90m-> null[0m[0m
+          [31m-[0m[0m placement_group_partition = 0 [90m-> null[0m[0m
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+
+      [31m-[0m[0m resources {
+          [31m-[0m[0m core_fraction = 5 [90m-> null[0m[0m
+          [31m-[0m[0m cores         = 2 [90m-> null[0m[0m
+          [31m-[0m[0m gpus          = 0 [90m-> null[0m[0m
+          [31m-[0m[0m memory        = 1 [90m-> null[0m[0m
+        }
+
+      [31m-[0m[0m scheduling_policy {
+          [31m-[0m[0m preemptible = true [90m-> null[0m[0m
+        }
+    }
+
+[1m  # yandex_vpc_network.develop[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "yandex_vpc_network" "develop" {
+      [31m-[0m[0m created_at                = "2026-07-15T09:01:33Z" [90m-> null[0m[0m
+      [31m-[0m[0m default_security_group_id = "enp6t4ui080uua9cp67d" [90m-> null[0m[0m
+      [31m-[0m[0m folder_id                 = "b1glhd6ohrcmkvkg7v7q" [90m-> null[0m[0m
+      [31m-[0m[0m id                        = "enppne3t0uis3c91rlk5" [90m-> null[0m[0m
+      [31m-[0m[0m labels                    = {} [90m-> null[0m[0m
+      [31m-[0m[0m name                      = "develop" [90m-> null[0m[0m
+      [31m-[0m[0m subnet_ids                = [
+          [31m-[0m[0m "e2lp4m54mjfs4e7sa74m",
+          [31m-[0m[0m "e9b5jirfc2v0vub2k4mu",
+        ] [90m-> null[0m[0m
+        [90m# (1 unchanged attribute hidden)[0m[0m
+    }
+
+[1m  # yandex_vpc_subnet.develop_a[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "yandex_vpc_subnet" "develop_a" {
+      [31m-[0m[0m created_at     = "2026-07-15T09:01:35Z" [90m-> null[0m[0m
+      [31m-[0m[0m folder_id      = "b1glhd6ohrcmkvkg7v7q" [90m-> null[0m[0m
+      [31m-[0m[0m id             = "e9b5jirfc2v0vub2k4mu" [90m-> null[0m[0m
+      [31m-[0m[0m labels         = {} [90m-> null[0m[0m
+      [31m-[0m[0m name           = "develop-ru-central1-a" [90m-> null[0m[0m
+      [31m-[0m[0m network_id     = "enppne3t0uis3c91rlk5" [90m-> null[0m[0m
+      [31m-[0m[0m v4_cidr_blocks = [
+          [31m-[0m[0m "10.0.1.0/24",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m v6_cidr_blocks = [] [90m-> null[0m[0m
+      [31m-[0m[0m zone           = "ru-central1-a" [90m-> null[0m[0m
+        [90m# (2 unchanged attributes hidden)[0m[0m
+    }
+
+[1m  # yandex_vpc_subnet.develop_b[0m will be [1m[31mdestroyed[0m
+[0m  [31m-[0m[0m resource "yandex_vpc_subnet" "develop_b" {
+      [31m-[0m[0m created_at     = "2026-07-15T09:01:36Z" [90m-> null[0m[0m
+      [31m-[0m[0m folder_id      = "b1glhd6ohrcmkvkg7v7q" [90m-> null[0m[0m
+      [31m-[0m[0m id             = "e2lp4m54mjfs4e7sa74m" [90m-> null[0m[0m
+      [31m-[0m[0m labels         = {} [90m-> null[0m[0m
+      [31m-[0m[0m name           = "develop-ru-central1-b" [90m-> null[0m[0m
+      [31m-[0m[0m network_id     = "enppne3t0uis3c91rlk5" [90m-> null[0m[0m
+      [31m-[0m[0m v4_cidr_blocks = [
+          [31m-[0m[0m "10.0.2.0/24",
+        ] [90m-> null[0m[0m
+      [31m-[0m[0m v6_cidr_blocks = [] [90m-> null[0m[0m
+      [31m-[0m[0m zone           = "ru-central1-b" [90m-> null[0m[0m
+        [90m# (2 unchanged attributes hidden)[0m[0m
+    }
+
+[1mPlan:[0m 0 to add, 0 to change, 5 to destroy.
+[0m
+Changes to Outputs:
+  [31m-[0m[0m vm_info = {
+      [31m-[0m[0m db  = {
+          [31m-[0m[0m external_ip   = "89.169.190.4"
+          [31m-[0m[0m fqdn          = "epd4dpm3fp2825u3d4e7.auto.internal"
+          [31m-[0m[0m instance_name = "netology-develop-platform-db"
+        }
+      [31m-[0m[0m web = {
+          [31m-[0m[0m external_ip   = "111.88.249.199"
+          [31m-[0m[0m fqdn          = "fhmvf6sghqt24ep4fr30.auto.internal"
+          [31m-[0m[0m instance_name = "netology-develop-platform-web"
+        }
+    } [90m-> null[0m[0m
+[0m[1myandex_compute_instance.platform_web: Destroying... [id=fhmvf6sghqt24ep4fr30][0m[0m
+[0m[1myandex_compute_instance.platform_db: Destroying... [id=epd4dpm3fp2825u3d4e7][0m[0m
+[0m[1myandex_compute_instance.platform_db: Still destroying... [id=epd4dpm3fp2825u3d4e7, 00m10s elapsed][0m[0m
+[0m[1myandex_compute_instance.platform_web: Still destroying... [id=fhmvf6sghqt24ep4fr30, 00m10s elapsed][0m[0m
+[0m[1myandex_compute_instance.platform_web: Still destroying... [id=fhmvf6sghqt24ep4fr30, 00m20s elapsed][0m[0m
+[0m[1myandex_compute_instance.platform_db: Still destroying... [id=epd4dpm3fp2825u3d4e7, 00m20s elapsed][0m[0m
+[0m[1myandex_compute_instance.platform_web: Still destroying... [id=fhmvf6sghqt24ep4fr30, 00m30s elapsed][0m[0m
+[0m[1myandex_compute_instance.platform_db: Still destroying... [id=epd4dpm3fp2825u3d4e7, 00m30s elapsed][0m[0m
+[0m[1myandex_compute_instance.platform_web: Destruction complete after 32s[0m
+[0m[1myandex_vpc_subnet.develop_a: Destroying... [id=e9b5jirfc2v0vub2k4mu][0m[0m
+[0m[1myandex_compute_instance.platform_db: Destruction complete after 36s[0m
+[0m[1myandex_vpc_subnet.develop_b: Destroying... [id=e2lp4m54mjfs4e7sa74m][0m[0m
+[0m[1myandex_vpc_subnet.develop_a: Destruction complete after 5s[0m
+[0m[1myandex_vpc_subnet.develop_b: Destruction complete after 6s[0m
+[0m[1myandex_vpc_network.develop: Destroying... [id=enppne3t0uis3c91rlk5][0m[0m
+[0m[1myandex_vpc_network.develop: Destruction complete after 0s[0m
+[0m[1m[32m
+Destroy complete! Resources: 5 destroyed.
+[0m

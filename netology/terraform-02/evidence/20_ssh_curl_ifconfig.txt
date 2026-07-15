@@ -1,0 +1,20 @@
+web ssh curl ifconfig.me
+Connection timed out during banner exchange
+Connection to 111.88.249.199 port 22 timed out
+Connection timed out during banner exchange
+Connection to 111.88.249.199 port 22 timed out
+Connection closed by 111.88.249.199 port 22
+Connection closed by 111.88.249.199 port 22
+Warning: Permanently added '111.88.249.199' (ED25519) to the list of known hosts.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+fhmvf6sghqt24ep4fr30
+111.88.249.199
+db ssh curl ifconfig.me
+Warning: Permanently added '89.169.190.4' (ED25519) to the list of known hosts.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+epd4dpm3fp2825u3d4e7
+89.169.190.4

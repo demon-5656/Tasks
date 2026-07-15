@@ -1,0 +1,166 @@
+[0m[1mdata.yandex_compute_image.ubuntu: Reading...[0m[0m
+[0m[1myandex_vpc_network.develop: Refreshing state... [id=enppne3t0uis3c91rlk5][0m
+[0m[1mdata.yandex_compute_image.ubuntu: Read complete after 1s [id=fd8ioru6shrp7380rikc][0m
+[0m[1myandex_vpc_subnet.develop_b: Refreshing state... [id=e2lp4m54mjfs4e7sa74m][0m
+[0m[1myandex_vpc_subnet.develop_a: Refreshing state... [id=e9b5jirfc2v0vub2k4mu][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # yandex_compute_instance.platform_db[0m will be created
+[0m  [32m+[0m[0m resource "yandex_compute_instance" "platform_db" {
+      [32m+[0m[0m created_at                = (known after apply)
+      [32m+[0m[0m folder_id                 = (known after apply)
+      [32m+[0m[0m fqdn                      = (known after apply)
+      [32m+[0m[0m gpu_cluster_id            = (known after apply)
+      [32m+[0m[0m hardware_generation       = (known after apply)
+      [32m+[0m[0m hostname                  = (known after apply)
+      [32m+[0m[0m id                        = (known after apply)
+      [32m+[0m[0m maintenance_grace_period  = (known after apply)
+      [32m+[0m[0m maintenance_policy        = (known after apply)
+      [32m+[0m[0m metadata                  = {
+          [32m+[0m[0m "serial-port-enable" = "1"
+          [32m+[0m[0m "ssh-keys"           = "ubuntu:ssh-ed25519 <public-key-hidden>"
+        }
+      [32m+[0m[0m name                      = "netology-develop-platform-db"
+      [32m+[0m[0m network_acceleration_type = "standard"
+      [32m+[0m[0m platform_id               = "standard-v3"
+      [32m+[0m[0m status                    = (known after apply)
+      [32m+[0m[0m zone                      = "ru-central1-b"
+
+      [32m+[0m[0m boot_disk {
+          [32m+[0m[0m auto_delete = true
+          [32m+[0m[0m device_name = (known after apply)
+          [32m+[0m[0m disk_id     = (known after apply)
+          [32m+[0m[0m mode        = (known after apply)
+
+          [32m+[0m[0m initialize_params {
+              [32m+[0m[0m block_size  = (known after apply)
+              [32m+[0m[0m description = (known after apply)
+              [32m+[0m[0m image_id    = "fd8ioru6shrp7380rikc"
+              [32m+[0m[0m name        = (known after apply)
+              [32m+[0m[0m size        = 10
+              [32m+[0m[0m snapshot_id = (known after apply)
+              [32m+[0m[0m type        = "network-hdd"
+            }
+        }
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface {
+          [32m+[0m[0m index          = (known after apply)
+          [32m+[0m[0m ip_address     = (known after apply)
+          [32m+[0m[0m ipv4           = true
+          [32m+[0m[0m ipv6           = (known after apply)
+          [32m+[0m[0m ipv6_address   = (known after apply)
+          [32m+[0m[0m mac_address    = (known after apply)
+          [32m+[0m[0m nat            = true
+          [32m+[0m[0m nat_ip_address = (known after apply)
+          [32m+[0m[0m nat_ip_version = (known after apply)
+          [32m+[0m[0m subnet_id      = "e2lp4m54mjfs4e7sa74m"
+        }
+
+      [32m+[0m[0m placement_policy (known after apply)
+
+      [32m+[0m[0m resources {
+          [32m+[0m[0m core_fraction = 20
+          [32m+[0m[0m cores         = 2
+          [32m+[0m[0m memory        = 2
+        }
+
+      [32m+[0m[0m scheduling_policy {
+          [32m+[0m[0m preemptible = true
+        }
+    }
+
+[1m  # yandex_compute_instance.platform_web[0m will be created
+[0m  [32m+[0m[0m resource "yandex_compute_instance" "platform_web" {
+      [32m+[0m[0m created_at                = (known after apply)
+      [32m+[0m[0m folder_id                 = (known after apply)
+      [32m+[0m[0m fqdn                      = (known after apply)
+      [32m+[0m[0m gpu_cluster_id            = (known after apply)
+      [32m+[0m[0m hardware_generation       = (known after apply)
+      [32m+[0m[0m hostname                  = (known after apply)
+      [32m+[0m[0m id                        = (known after apply)
+      [32m+[0m[0m maintenance_grace_period  = (known after apply)
+      [32m+[0m[0m maintenance_policy        = (known after apply)
+      [32m+[0m[0m metadata                  = {
+          [32m+[0m[0m "serial-port-enable" = "1"
+          [32m+[0m[0m "ssh-keys"           = "ubuntu:ssh-ed25519 <public-key-hidden>"
+        }
+      [32m+[0m[0m name                      = "netology-develop-platform-web"
+      [32m+[0m[0m network_acceleration_type = "standard"
+      [32m+[0m[0m platform_id               = "standard-v3"
+      [32m+[0m[0m status                    = (known after apply)
+      [32m+[0m[0m zone                      = "ru-central1-a"
+
+      [32m+[0m[0m boot_disk {
+          [32m+[0m[0m auto_delete = true
+          [32m+[0m[0m device_name = (known after apply)
+          [32m+[0m[0m disk_id     = (known after apply)
+          [32m+[0m[0m mode        = (known after apply)
+
+          [32m+[0m[0m initialize_params {
+              [32m+[0m[0m block_size  = (known after apply)
+              [32m+[0m[0m description = (known after apply)
+              [32m+[0m[0m image_id    = "fd8ioru6shrp7380rikc"
+              [32m+[0m[0m name        = (known after apply)
+              [32m+[0m[0m size        = 10
+              [32m+[0m[0m snapshot_id = (known after apply)
+              [32m+[0m[0m type        = "network-hdd"
+            }
+        }
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface {
+          [32m+[0m[0m index          = (known after apply)
+          [32m+[0m[0m ip_address     = (known after apply)
+          [32m+[0m[0m ipv4           = true
+          [32m+[0m[0m ipv6           = (known after apply)
+          [32m+[0m[0m ipv6_address   = (known after apply)
+          [32m+[0m[0m mac_address    = (known after apply)
+          [32m+[0m[0m nat            = true
+          [32m+[0m[0m nat_ip_address = (known after apply)
+          [32m+[0m[0m nat_ip_version = (known after apply)
+          [32m+[0m[0m subnet_id      = "e9b5jirfc2v0vub2k4mu"
+        }
+
+      [32m+[0m[0m placement_policy (known after apply)
+
+      [32m+[0m[0m resources {
+          [32m+[0m[0m core_fraction = 5
+          [32m+[0m[0m cores         = 2
+          [32m+[0m[0m memory        = 1
+        }
+
+      [32m+[0m[0m scheduling_policy {
+          [32m+[0m[0m preemptible = true
+        }
+    }
+
+[1mPlan:[0m 2 to add, 0 to change, 0 to destroy.
+[0m
+Changes to Outputs:
+  [32m+[0m[0m vm_info = {
+      [32m+[0m[0m db  = {
+          [32m+[0m[0m external_ip   = (known after apply)
+          [32m+[0m[0m fqdn          = (known after apply)
+          [32m+[0m[0m instance_name = "netology-develop-platform-db"
+        }
+      [32m+[0m[0m web = {
+          [32m+[0m[0m external_ip   = (known after apply)
+          [32m+[0m[0m fqdn          = (known after apply)
+          [32m+[0m[0m instance_name = "netology-develop-platform-web"
+        }
+    }
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Saved the plan to: tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan"

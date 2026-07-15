@@ -1,0 +1,7 @@
+[0m[1myandex_compute_instance.platform_web: Creating...[0m[0m
+[0m[1myandex_compute_instance.platform_db: Creating...[0m[0m
+[0m[1myandex_compute_instance.platform_db: Still creating... [00m10s elapsed][0m[0m
+[0m[1myandex_compute_instance.platform_db: Still creating... [00m20s elapsed][0m[0m
+[0m[1myandex_compute_instance.platform_db: Still creating... [00m30s elapsed][0m[0m
+[0m[1myandex_compute_instance.platform_db: Still creating... [00m40s elapsed][0m[0m
+[0m[1myandex_compute_instance.platform_db: Creation complete after 43s [id=epd4dpm3fp2825u3d4e7][0m

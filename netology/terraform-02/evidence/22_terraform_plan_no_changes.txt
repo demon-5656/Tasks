@@ -1,0 +1,12 @@
+[0m[1mdata.yandex_compute_image.ubuntu: Reading...[0m[0m
+[0m[1myandex_vpc_network.develop: Refreshing state... [id=enppne3t0uis3c91rlk5][0m
+[0m[1mdata.yandex_compute_image.ubuntu: Read complete after 0s [id=fd8ioru6shrp7380rikc][0m
+[0m[1myandex_vpc_subnet.develop_a: Refreshing state... [id=e9b5jirfc2v0vub2k4mu][0m
+[0m[1myandex_vpc_subnet.develop_b: Refreshing state... [id=e2lp4m54mjfs4e7sa74m][0m
+[0m[1myandex_compute_instance.platform_db: Refreshing state... [id=epd4dpm3fp2825u3d4e7][0m
+[0m[1myandex_compute_instance.platform_web: Refreshing state... [id=fhmvf6sghqt24ep4fr30][0m
+
+[0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+
+[0mTerraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
