@@ -1,0 +1,2 @@
+CONTAINER ID   IMAGE          NAMES                PORTS                                 STATUS
+dbac72fd643f   c831a0f11348   tf-mysql-wordpress   127.0.0.1:3306->3306/tcp, 33060/tcp   Up 10 seconds

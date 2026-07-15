@@ -1,0 +1,5 @@
+First mysql:8 container start failed with:
+
+Fatal glibc error: CPU does not support x86-64-v2
+
+Fix: set Proxmox VM 103 CPU type to host and rerun terraform apply.

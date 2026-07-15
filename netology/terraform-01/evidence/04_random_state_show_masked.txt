@@ -1,0 +1,16 @@
+# random_password.random_string:
+resource "random_password" "random_string" {
+    bcrypt_hash = (sensitive value)
+    id          = "none"
+    length      = 16
+    lower       = true
+    min_lower   = 1
+    min_numeric = 1
+    min_special = 0
+    min_upper   = 1
+    number      = true
+    numeric     = true
+    result      = (hidden in evidence)
+    special     = false
+    upper       = true
+}

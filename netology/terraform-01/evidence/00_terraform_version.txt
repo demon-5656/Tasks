@@ -1,0 +1,5 @@
+Terraform v1.12.2
+on linux_amd64
+
+Your version of Terraform is out of date! The latest version
+is 1.15.8. You can update by downloading from https://developer.hashicorp.com/terraform/install

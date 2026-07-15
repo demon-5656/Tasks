@@ -1,0 +1,3 @@
+# Реальный файл должен называться personal.auto.tfvars.
+# Он игнорируется git, чтобы случайно не выложить IP/логин/токены.
+docker_host = "ssh://ubuntu@VM_PUBLIC_IP:22"

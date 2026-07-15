@@ -1,0 +1,2 @@
+REPOSITORY   TAG       IMAGE ID       SIZE
+nginx        latest    8870c81b2834   161MB

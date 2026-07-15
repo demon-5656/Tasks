@@ -1,0 +1,8 @@
+MYSQL_DATABASE=<hidden>
+MYSQL_MAJOR=<hidden>
+MYSQL_PASSWORD=<hidden>
+MYSQL_ROOT_HOST=<hidden>
+MYSQL_ROOT_PASSWORD=<hidden>
+MYSQL_SHELL_VERSION=<hidden>
+MYSQL_USER=<hidden>
+MYSQL_VERSION=<hidden>

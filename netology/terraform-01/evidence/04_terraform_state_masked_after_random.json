@@ -1,0 +1,53 @@
+{
+  "version": 4,
+  "terraform_version": "1.12.2",
+  "serial": 1,
+  "lineage": "f3a59dc3-8800-1dd5-b75d-da25b1632c4e",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "random_password",
+      "name": "random_string",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "schema_version": 3,
+          "attributes": {
+            "bcrypt_hash": "hidden in public report",
+            "id": "none",
+            "keepers": null,
+            "length": 16,
+            "lower": true,
+            "min_lower": 1,
+            "min_numeric": 1,
+            "min_special": 0,
+            "min_upper": 1,
+            "number": true,
+            "numeric": true,
+            "override_special": null,
+            "result": "hidden in public report",
+            "special": false,
+            "upper": true
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "bcrypt_hash"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "result"
+              }
+            ]
+          ],
+          "identity_schema_version": 0
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

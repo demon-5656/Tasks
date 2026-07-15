@@ -1,0 +1,2 @@
+OpenTofu v1.12.4
+on linux_amd64

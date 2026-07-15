@@ -1,0 +1,17 @@
+[31m╷[0m[0m
+[31m│[0m [0m[1m[31mError: [0m[0m[1mMissing name for resource[0m
+[31m│[0m [0m
+[31m│[0m [0m[0m  on main.tf line 22, in resource "docker_image":
+[31m│[0m [0m  22: resource "docker_image" [4m{[0m[0m
+[31m│[0m [0m
+[31m│[0m [0mAll resource blocks must have 2 labels (type, name).
+[31m╵[0m[0m
+[31m╷[0m[0m
+[31m│[0m [0m[1m[31mError: [0m[0m[1mInvalid resource name[0m
+[31m│[0m [0m
+[31m│[0m [0m[0m  on main.tf line 27, in resource "docker_container" "1nginx":
+[31m│[0m [0m  27: resource "docker_container" [4m"1nginx"[0m {[0m
+[31m│[0m [0m
+[31m│[0m [0mA name must start with a letter or underscore and may contain only letters,
+[31m│[0m [0mdigits, underscores, and dashes.
+[31m╵[0m[0m

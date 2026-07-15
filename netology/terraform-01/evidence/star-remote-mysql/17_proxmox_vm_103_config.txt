@@ -1,0 +1,8 @@
+VMID: 103
+name: netology-terraform-docker
+status: running
+cpu: host
+memory: 1024
+bootdisk: 12G
+ipconfig0: ip=192.168.3.201/22,gw=192.168.1.1
+ciuser: ubuntu
