@@ -1,0 +1,20 @@
+[0m[1mdata.yandex_compute_image.ubuntu: Reading...[0m[0m
+[0m[1myandex_vpc_network.develop: Refreshing state... [id=enp1l5suf3d5vsps1ldk][0m
+[0m[1myandex_compute_disk.storage_extra[1]: Refreshing state... [id=fhmlirh4f5m3ks9itt3t][0m
+[0m[1myandex_compute_disk.storage_extra[2]: Refreshing state... [id=fhm78f3srifdmgue14bk][0m
+[0m[1myandex_compute_disk.storage_extra[0]: Refreshing state... [id=fhmcju10riq4rfn12ma1][0m
+[0m[1mdata.yandex_compute_image.ubuntu: Read complete after 1s [id=fd8ioru6shrp7380rikc][0m
+[0m[1myandex_vpc_subnet.main: Refreshing state... [id=e9befp05ra9o9p2fh46c][0m
+[0m[1myandex_vpc_subnet.db: Refreshing state... [id=e2lul8h45o8cal86jsh9][0m
+[0m[1myandex_vpc_security_group.homework: Refreshing state... [id=enps5tl2squ0v1s4f9fr][0m
+[0m[1myandex_compute_instance.database_nodes["replica"]: Refreshing state... [id=epd2tcni2f9rdndr4vt7][0m
+[0m[1myandex_compute_instance.database_nodes["main"]: Refreshing state... [id=epdlb9parn91highso0t][0m
+[0m[1myandex_compute_instance.storage_node: Refreshing state... [id=fhmvp6n5sb6nvtd2728t][0m
+[0m[1myandex_compute_instance.web_nodes[0]: Refreshing state... [id=fhm8jh2736e18te2vkrh][0m
+[0m[1myandex_compute_instance.web_nodes[1]: Refreshing state... [id=fhme0er16qoib2iv3ibn][0m
+[0m[1mlocal_file.ansible_inventory: Refreshing state... [id=66a4f0ce50ee8952bd716f572adbbef9dd119aeb][0m
+
+[0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+
+[0mTerraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.

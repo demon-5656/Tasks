@@ -1,0 +1,72 @@
+count_and_for_each_vms = [
+  {
+    "fqdn" = "web-1.ru-central1.internal"
+    "id" = "fhm8jh2736e18te2vkrh"
+    "name" = "web-1"
+  },
+  {
+    "fqdn" = "web-2.ru-central1.internal"
+    "id" = "fhme0er16qoib2iv3ibn"
+    "name" = "web-2"
+  },
+  {
+    "fqdn" = "main.ru-central1.internal"
+    "id" = "epdlb9parn91highso0t"
+    "name" = "main"
+  },
+  {
+    "fqdn" = "replica.ru-central1.internal"
+    "id" = "epd2tcni2f9rdndr4vt7"
+    "name" = "replica"
+  },
+]
+storage_disks = [
+  {
+    "id" = "fhmcju10riq4rfn12ma1"
+    "name" = "storage-extra-1"
+    "size" = 1
+  },
+  {
+    "id" = "fhmlirh4f5m3ks9itt3t"
+    "name" = "storage-extra-2"
+    "size" = 1
+  },
+  {
+    "id" = "fhm78f3srifdmgue14bk"
+    "name" = "storage-extra-3"
+    "size" = 1
+  },
+]
+vm_inventory = {
+  "databases" = [
+    {
+      "external_ip" = "111.88.153.23"
+      "fqdn" = "main.ru-central1.internal"
+      "name" = "main"
+    },
+    {
+      "external_ip" = "111.88.151.205"
+      "fqdn" = "replica.ru-central1.internal"
+      "name" = "replica"
+    },
+  ]
+  "storage" = [
+    {
+      "external_ip" = "51.250.76.7"
+      "fqdn" = "storage.ru-central1.internal"
+      "name" = "storage"
+    },
+  ]
+  "webservers" = [
+    {
+      "external_ip" = "111.88.253.236"
+      "fqdn" = "web-1.ru-central1.internal"
+      "name" = "web-1"
+    },
+    {
+      "external_ip" = "51.250.6.208"
+      "fqdn" = "web-2.ru-central1.internal"
+      "name" = "web-2"
+    },
+  ]
+}
