@@ -1,0 +1,17 @@
+data.template_file.cloudinit: Reading...
+data.template_file.cloudinit: Read complete after 0s [id=8c5aadb5c128e8924d1256eb02596c66b81afae7f171f58cbe3fa39987e17540]
+module.analytics_vm.data.yandex_compute_image.my_image: Reading...
+module.marketing_vm.data.yandex_compute_image.my_image: Reading...
+module.vpc_dev.yandex_vpc_network.this: Refreshing state... [id=enpr1bbu7d3c1ceiihds]
+module.analytics_vm.data.yandex_compute_image.my_image: Read complete after 0s [id=fd8ioru6shrp7380rikc]
+module.marketing_vm.data.yandex_compute_image.my_image: Read complete after 0s [id=fd8ioru6shrp7380rikc]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Refreshing state... [id=e9bh3fe9bei5kg8i22tv]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Refreshing state... [id=e2ljkcrbula4se8vlofl]
+module.marketing_vm.yandex_compute_instance.vm[0]: Refreshing state... [id=fhmon7h9bvavfinfm4qi]
+module.analytics_vm.yandex_compute_instance.vm[0]: Refreshing state... [id=epd1a93m7f01s52kms8f]
+
+No changes. Your infrastructure matches the configuration.
+
+Terraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+terraform plan detailed exit code: 0

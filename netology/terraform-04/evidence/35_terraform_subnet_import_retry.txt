@@ -1,0 +1,43 @@
+$ terraform import module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"] e9bh3fe9bei5kg8i22tv
+data.template_file.cloudinit: Reading...
+data.template_file.cloudinit: Read complete after 0s [id=8c5aadb5c128e8924d1256eb02596c66b81afae7f171f58cbe3fa39987e17540]
+module.analytics_vm.data.yandex_compute_image.my_image: Reading...
+module.marketing_vm.data.yandex_compute_image.my_image: Reading...
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Importing from ID "e9bh3fe9bei5kg8i22tv"...
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Import prepared!
+  Prepared yandex_vpc_subnet for import
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Refreshing state... [id=e9bh3fe9bei5kg8i22tv]
+module.marketing_vm.data.yandex_compute_image.my_image: Read complete after 0s [id=fd8ioru6shrp7380rikc]
+module.analytics_vm.data.yandex_compute_image.my_image: Read complete after 0s [id=fd8ioru6shrp7380rikc]
+
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+
+$ terraform import module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"] e2ljkcrbula4se8vlofl
+data.template_file.cloudinit: Reading...
+data.template_file.cloudinit: Read complete after 0s [id=8c5aadb5c128e8924d1256eb02596c66b81afae7f171f58cbe3fa39987e17540]
+module.analytics_vm.data.yandex_compute_image.my_image: Reading...
+module.marketing_vm.data.yandex_compute_image.my_image: Reading...
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Importing from ID "e2ljkcrbula4se8vlofl"...
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Import prepared!
+  Prepared yandex_vpc_subnet for import
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Refreshing state... [id=e2ljkcrbula4se8vlofl]
+module.analytics_vm.data.yandex_compute_image.my_image: Read complete after 1s [id=fd8ioru6shrp7380rikc]
+module.marketing_vm.data.yandex_compute_image.my_image: Read complete after 1s [id=fd8ioru6shrp7380rikc]
+
+Import successful!
+
+The resources that were imported are shown above. These resources are now in
+your Terraform state and will henceforth be managed by Terraform.
+
+$ terraform state list after subnet import retry
+data.template_file.cloudinit
+module.analytics_vm.data.yandex_compute_image.my_image
+module.analytics_vm.yandex_compute_instance.vm[0]
+module.marketing_vm.data.yandex_compute_image.my_image
+module.marketing_vm.yandex_compute_instance.vm[0]
+module.vpc_dev.yandex_vpc_network.this
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]

@@ -1,0 +1,398 @@
+data.template_file.cloudinit: Reading...
+data.template_file.cloudinit: Read complete after 0s [id=8c5aadb5c128e8924d1256eb02596c66b81afae7f171f58cbe3fa39987e17540]
+module.marketing_vm.data.yandex_compute_image.my_image: Reading...
+module.analytics_vm.data.yandex_compute_image.my_image: Reading...
+module.vpc_dev.yandex_vpc_network.this: Refreshing state... [id=enpr1bbu7d3c1ceiihds]
+module.marketing_vm.data.yandex_compute_image.my_image: Read complete after 1s [id=fd8ioru6shrp7380rikc]
+module.analytics_vm.data.yandex_compute_image.my_image: Read complete after 1s [id=fd8ioru6shrp7380rikc]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Refreshing state... [id=e2ljkcrbula4se8vlofl]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Refreshing state... [id=e9bh3fe9bei5kg8i22tv]
+module.analytics_vm.yandex_compute_instance.vm[0]: Refreshing state... [id=epd1a93m7f01s52kms8f]
+module.marketing_vm.yandex_compute_instance.vm[0]: Refreshing state... [id=fhmon7h9bvavfinfm4qi]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # module.analytics_vm.yandex_compute_instance.vm[0] will be destroyed
+  - resource "yandex_compute_instance" "vm" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2026-07-17T07:01:48Z" -> null
+      - description               = "TODO: description; {{terraform yyy managed}}" -> null
+      - folder_id                 = "b1glhd6ohrcmkvkg7v7q" -> null
+      - fqdn                      = "analytics-web-0.ru-central1.internal" -> null
+      - hardware_generation       = [
+          - {
+              - generation2_features = []
+              - legacy_features      = [
+                  - {
+                      - pci_topology = "PCI_TOPOLOGY_V2"
+                    },
+                ]
+            },
+        ] -> null
+      - hostname                  = "analytics-web-0" -> null
+      - id                        = "epd1a93m7f01s52kms8f" -> null
+      - labels                    = {
+          - "lesson"  = "terraform-04"
+          - "owner"   = "netology"
+          - "project" = "analytics"
+        } -> null
+      - metadata                  = {
+          - "serial-port-enable" = "1"
+          - "user-data"          = <<-EOT
+                #cloud-config
+                users:
+                  - name: ubuntu
+                    groups: sudo
+                    shell: /bin/bash
+                    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+                    ssh_authorized_keys:
+                      - ssh-ed25519 <public-key-hidden>
+                
+                package_update: true
+                package_upgrade: false
+                packages:
+                  - nginx
+                  - vim
+                
+                runcmd:
+                  - systemctl enable --now nginx
+            EOT
+        } -> null
+      - name                      = "analytics-web-0" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v3" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-b" -> null
+        # (4 unchanged attributes hidden)
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "epd8f96rje05icokk4lp" -> null
+          - disk_id     = "epd8f96rje05icokk4lp" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size  = 4096 -> null
+              - image_id    = "fd8ioru6shrp7380rikc" -> null
+                name        = null
+              - size        = 10 -> null
+              - type        = "network-hdd" -> null
+                # (3 unchanged attributes hidden)
+            }
+        }
+
+      - metadata_options {
+          - aws_v1_http_endpoint = 1 -> null
+          - aws_v1_http_token    = 2 -> null
+          - aws_v2_http_endpoint = 1 -> null
+          - aws_v2_http_token    = 1 -> null
+          - gce_http_endpoint    = 1 -> null
+          - gce_http_token       = 1 -> null
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "10.10.2.16" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:15:24:76:3b" -> null
+          - nat                = true -> null
+          - nat_ip_address     = "89.169.170.13" -> null
+          - nat_ip_version     = "IPV4" -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e2ljkcrbula4se8vlofl" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - placement_policy {
+          - host_affinity_rules       = [] -> null
+          - placement_group_partition = 0 -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - resources {
+          - core_fraction = 20 -> null
+          - cores         = 2 -> null
+          - gpus          = 0 -> null
+          - memory        = 1 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = true -> null
+        }
+    }
+
+  # module.marketing_vm.yandex_compute_instance.vm[0] will be destroyed
+  - resource "yandex_compute_instance" "vm" {
+      - allow_stopping_for_update = true -> null
+      - created_at                = "2026-07-17T07:01:48Z" -> null
+      - description               = "TODO: description; {{terraform yyy managed}}" -> null
+      - folder_id                 = "b1glhd6ohrcmkvkg7v7q" -> null
+      - fqdn                      = "marketing-web-0.ru-central1.internal" -> null
+      - hardware_generation       = [
+          - {
+              - generation2_features = []
+              - legacy_features      = [
+                  - {
+                      - pci_topology = "PCI_TOPOLOGY_V2"
+                    },
+                ]
+            },
+        ] -> null
+      - hostname                  = "marketing-web-0" -> null
+      - id                        = "fhmon7h9bvavfinfm4qi" -> null
+      - labels                    = {
+          - "lesson"  = "terraform-04"
+          - "owner"   = "netology"
+          - "project" = "marketing"
+        } -> null
+      - metadata                  = {
+          - "serial-port-enable" = "1"
+          - "user-data"          = <<-EOT
+                #cloud-config
+                users:
+                  - name: ubuntu
+                    groups: sudo
+                    shell: /bin/bash
+                    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+                    ssh_authorized_keys:
+                      - ssh-ed25519 <public-key-hidden>
+                
+                package_update: true
+                package_upgrade: false
+                packages:
+                  - nginx
+                  - vim
+                
+                runcmd:
+                  - systemctl enable --now nginx
+            EOT
+        } -> null
+      - name                      = "marketing-web-0" -> null
+      - network_acceleration_type = "standard" -> null
+      - platform_id               = "standard-v1" -> null
+      - status                    = "running" -> null
+      - zone                      = "ru-central1-a" -> null
+        # (4 unchanged attributes hidden)
+
+      - boot_disk {
+          - auto_delete = true -> null
+          - device_name = "fhmhijq3gq7d5q3kurse" -> null
+          - disk_id     = "fhmhijq3gq7d5q3kurse" -> null
+          - mode        = "READ_WRITE" -> null
+
+          - initialize_params {
+              - block_size  = 4096 -> null
+              - image_id    = "fd8ioru6shrp7380rikc" -> null
+                name        = null
+              - size        = 10 -> null
+              - type        = "network-hdd" -> null
+                # (3 unchanged attributes hidden)
+            }
+        }
+
+      - metadata_options {
+          - aws_v1_http_endpoint = 1 -> null
+          - aws_v1_http_token    = 2 -> null
+          - aws_v2_http_endpoint = 1 -> null
+          - aws_v2_http_token    = 1 -> null
+          - gce_http_endpoint    = 1 -> null
+          - gce_http_token       = 1 -> null
+        }
+
+      - network_interface {
+          - index              = 0 -> null
+          - ip_address         = "10.10.1.18" -> null
+          - ipv4               = true -> null
+          - ipv6               = false -> null
+          - mac_address        = "d0:0d:18:b9:e2:95" -> null
+          - nat                = true -> null
+          - nat_ip_address     = "111.88.254.219" -> null
+          - nat_ip_version     = "IPV4" -> null
+          - security_group_ids = [] -> null
+          - subnet_id          = "e9bh3fe9bei5kg8i22tv" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - placement_policy {
+          - host_affinity_rules       = [] -> null
+          - placement_group_partition = 0 -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - resources {
+          - core_fraction = 5 -> null
+          - cores         = 2 -> null
+          - gpus          = 0 -> null
+          - memory        = 1 -> null
+        }
+
+      - scheduling_policy {
+          - preemptible = true -> null
+        }
+    }
+
+  # module.vpc_dev.yandex_vpc_network.this will be destroyed
+  - resource "yandex_vpc_network" "this" {
+      - created_at                = "2026-07-17T07:01:44Z" -> null
+      - default_security_group_id = "enpdg7anlamtr2b5t8h8" -> null
+      - folder_id                 = "b1glhd6ohrcmkvkg7v7q" -> null
+      - id                        = "enpr1bbu7d3c1ceiihds" -> null
+      - labels                    = {} -> null
+      - name                      = "develop" -> null
+      - subnet_ids                = [
+          - "e2ljkcrbula4se8vlofl",
+          - "e9bh3fe9bei5kg8i22tv",
+        ] -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"] will be destroyed
+  - resource "yandex_vpc_subnet" "this" {
+      - created_at     = "2026-07-17T07:01:46Z" -> null
+      - folder_id      = "b1glhd6ohrcmkvkg7v7q" -> null
+      - id             = "e9bh3fe9bei5kg8i22tv" -> null
+      - labels         = {} -> null
+      - name           = "develop-ru-central1-a" -> null
+      - network_id     = "enpr1bbu7d3c1ceiihds" -> null
+      - v4_cidr_blocks = [
+          - "10.10.1.0/24",
+        ] -> null
+      - v6_cidr_blocks = [] -> null
+      - zone           = "ru-central1-a" -> null
+        # (2 unchanged attributes hidden)
+    }
+
+  # module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"] will be destroyed
+  - resource "yandex_vpc_subnet" "this" {
+      - created_at     = "2026-07-17T07:01:46Z" -> null
+      - folder_id      = "b1glhd6ohrcmkvkg7v7q" -> null
+      - id             = "e2ljkcrbula4se8vlofl" -> null
+      - labels         = {} -> null
+      - name           = "develop-ru-central1-b" -> null
+      - network_id     = "enpr1bbu7d3c1ceiihds" -> null
+      - v4_cidr_blocks = [
+          - "10.10.2.0/24",
+        ] -> null
+      - v6_cidr_blocks = [] -> null
+      - zone           = "ru-central1-b" -> null
+        # (2 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 0 to change, 5 to destroy.
+
+Changes to Outputs:
+  - analytics_vm = {
+      - external_ip = [
+          - "89.169.170.13",
+        ]
+      - fqdn        = [
+          - "analytics-web-0.ru-central1.internal",
+        ]
+      - labels      = [
+          - {
+              - lesson  = "terraform-04"
+              - owner   = "netology"
+              - project = "analytics"
+            },
+        ]
+    } -> null
+  - marketing_vm = {
+      - external_ip = [
+          - "111.88.254.219",
+        ]
+      - fqdn        = [
+          - "marketing-web-0.ru-central1.internal",
+        ]
+      - labels      = [
+          - {
+              - lesson  = "terraform-04"
+              - owner   = "netology"
+              - project = "marketing"
+            },
+        ]
+    } -> null
+  - vpc_dev      = {
+      - network_id   = "enpr1bbu7d3c1ceiihds"
+      - network_name = "develop"
+      - subnet_ids   = {
+          - ru-central1-a = "e9bh3fe9bei5kg8i22tv"
+          - ru-central1-b = "e2ljkcrbula4se8vlofl"
+        }
+      - subnet_info  = {
+          - ru-central1-a = {
+              - cidr = [
+                  - "10.10.1.0/24",
+                ]
+              - id   = "e9bh3fe9bei5kg8i22tv"
+              - name = "develop-ru-central1-a"
+              - zone = "ru-central1-a"
+            }
+          - ru-central1-b = {
+              - cidr = [
+                  - "10.10.2.0/24",
+                ]
+              - id   = "e2ljkcrbula4se8vlofl"
+              - name = "develop-ru-central1-b"
+              - zone = "ru-central1-b"
+            }
+        }
+      - subnets      = {
+          - ru-central1-a = {
+              - created_at     = "2026-07-17T07:01:46Z"
+              - description    = ""
+              - dhcp_options   = []
+              - folder_id      = "b1glhd6ohrcmkvkg7v7q"
+              - id             = "e9bh3fe9bei5kg8i22tv"
+              - labels         = {}
+              - name           = "develop-ru-central1-a"
+              - network_id     = "enpr1bbu7d3c1ceiihds"
+              - route_table_id = ""
+              - timeouts       = null
+              - v4_cidr_blocks = [
+                  - "10.10.1.0/24",
+                ]
+              - v6_cidr_blocks = []
+              - zone           = "ru-central1-a"
+            }
+          - ru-central1-b = {
+              - created_at     = "2026-07-17T07:01:46Z"
+              - description    = ""
+              - dhcp_options   = []
+              - folder_id      = "b1glhd6ohrcmkvkg7v7q"
+              - id             = "e2ljkcrbula4se8vlofl"
+              - labels         = {}
+              - name           = "develop-ru-central1-b"
+              - network_id     = "enpr1bbu7d3c1ceiihds"
+              - route_table_id = ""
+              - timeouts       = null
+              - v4_cidr_blocks = [
+                  - "10.10.2.0/24",
+                ]
+              - v6_cidr_blocks = []
+              - zone           = "ru-central1-b"
+            }
+        }
+    } -> null
+module.marketing_vm.yandex_compute_instance.vm[0]: Destroying... [id=fhmon7h9bvavfinfm4qi]
+module.analytics_vm.yandex_compute_instance.vm[0]: Destroying... [id=epd1a93m7f01s52kms8f]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still destroying... [id=epd1a93m7f01s52kms8f, 00m10s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still destroying... [id=fhmon7h9bvavfinfm4qi, 00m10s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still destroying... [id=epd1a93m7f01s52kms8f, 00m20s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still destroying... [id=fhmon7h9bvavfinfm4qi, 00m20s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still destroying... [id=fhmon7h9bvavfinfm4qi, 00m30s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still destroying... [id=epd1a93m7f01s52kms8f, 00m30s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Destruction complete after 34s
+module.marketing_vm.yandex_compute_instance.vm[0]: Destruction complete after 34s
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Destroying... [id=e9bh3fe9bei5kg8i22tv]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Destroying... [id=e2ljkcrbula4se8vlofl]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Destruction complete after 2s
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Destruction complete after 6s
+module.vpc_dev.yandex_vpc_network.this: Destroying... [id=enpr1bbu7d3c1ceiihds]
+module.vpc_dev.yandex_vpc_network.this: Destruction complete after 1s
+
+Destroy complete! Resources: 5 destroyed.

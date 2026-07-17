@@ -1,0 +1,405 @@
+> module.marketing_vm
+{
+  "all" = [
+    {
+      "allow_recreate" = tobool(null)
+      "allow_stopping_for_update" = true
+      "boot_disk" = tolist([
+        {
+          "auto_delete" = true
+          "device_name" = "fhmhijq3gq7d5q3kurse"
+          "disk_id" = "fhmhijq3gq7d5q3kurse"
+          "initialize_params" = tolist([
+            {
+              "block_size" = 4096
+              "description" = ""
+              "image_id" = "fd8ioru6shrp7380rikc"
+              "kms_key_id" = ""
+              "name" = ""
+              "size" = 10
+              "snapshot_id" = ""
+              "type" = "network-hdd"
+            },
+          ])
+          "mode" = "READ_WRITE"
+        },
+      ])
+      "created_at" = "2026-07-17T07:01:48Z"
+      "description" = "TODO: description; {{terraform yyy managed}}"
+      "filesystem" = toset([])
+      "folder_id" = "b1glhd6ohrcmkvkg7v7q"
+      "fqdn" = "marketing-web-0.ru-central1.internal"
+      "gpu_cluster_id" = ""
+      "hardware_generation" = tolist([
+        {
+          "generation2_features" = tolist([])
+          "legacy_features" = tolist([
+            {
+              "pci_topology" = "PCI_TOPOLOGY_V2"
+            },
+          ])
+        },
+      ])
+      "hostname" = "marketing-web-0"
+      "id" = "fhmon7h9bvavfinfm4qi"
+      "labels" = tomap({
+        "lesson" = "terraform-04"
+        "owner" = "netology"
+        "project" = "marketing"
+      })
+      "local_disk" = tolist([])
+      "maintenance_grace_period" = ""
+      "maintenance_policy" = tostring(null)
+      "metadata" = tomap({
+        "serial-port-enable" = "1"
+        "user-data" = <<-EOT
+        #cloud-config
+        users:
+          - name: ubuntu
+            groups: sudo
+            shell: /bin/bash
+            sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+            ssh_authorized_keys:
+              - ssh-ed25519 <public-key-hidden>
+        
+        package_update: true
+        package_upgrade: false
+        packages:
+          - nginx
+          - vim
+        
+        runcmd:
+          - systemctl enable --now nginx
+        
+        EOT
+      })
+      "metadata_options" = tolist([
+        {
+          "aws_v1_http_endpoint" = 1
+          "aws_v1_http_token" = 2
+          "aws_v2_http_endpoint" = 1
+          "aws_v2_http_token" = 1
+          "gce_http_endpoint" = 1
+          "gce_http_token" = 1
+        },
+      ])
+      "name" = "marketing-web-0"
+      "network_acceleration_type" = "standard"
+      "network_interface" = tolist([
+        {
+          "dns_record" = tolist([])
+          "index" = 0
+          "ip_address" = "10.10.1.18"
+          "ipv4" = true
+          "ipv6" = false
+          "ipv6_address" = ""
+          "ipv6_dns_record" = tolist([])
+          "mac_address" = "d0:0d:18:b9:e2:95"
+          "nat" = true
+          "nat_dns_record" = tolist([])
+          "nat_ip_address" = "111.88.254.219"
+          "nat_ip_version" = "IPV4"
+          "security_group_ids" = toset(null) /* of string */
+          "subnet_id" = "e9bh3fe9bei5kg8i22tv"
+        },
+      ])
+      "placement_policy" = tolist([
+        {
+          "host_affinity_rules" = tolist([])
+          "placement_group_id" = ""
+          "placement_group_partition" = 0
+        },
+      ])
+      "platform_id" = "standard-v1"
+      "reserved_instance_pool_id" = ""
+      "resources" = tolist([
+        {
+          "core_fraction" = 5
+          "cores" = 2
+          "gpus" = 0
+          "memory" = 1
+        },
+      ])
+      "scheduling_policy" = tolist([
+        {
+          "preemptible" = true
+        },
+      ])
+      "secondary_disk" = toset([])
+      "service_account_id" = ""
+      "status" = "running"
+      "timeouts" = null /* object */
+      "zone" = "ru-central1-a"
+    },
+  ]
+  "external_ip_address" = [
+    "111.88.254.219",
+  ]
+  "fqdn" = [
+    "marketing-web-0.ru-central1.internal",
+  ]
+  "internal_ip_address" = [
+    "10.10.1.18",
+  ]
+  "labels" = [
+    tomap({
+      "lesson" = "terraform-04"
+      "owner" = "netology"
+      "project" = "marketing"
+    }),
+  ]
+  "network_interface" = [
+    tolist([
+      {
+        "dns_record" = tolist([])
+        "index" = 0
+        "ip_address" = "10.10.1.18"
+        "ipv4" = true
+        "ipv6" = false
+        "ipv6_address" = ""
+        "ipv6_dns_record" = tolist([])
+        "mac_address" = "d0:0d:18:b9:e2:95"
+        "nat" = true
+        "nat_dns_record" = tolist([])
+        "nat_ip_address" = "111.88.254.219"
+        "nat_ip_version" = "IPV4"
+        "security_group_ids" = toset(null) /* of string */
+        "subnet_id" = "e9bh3fe9bei5kg8i22tv"
+      },
+    ]),
+  ]
+}
+> module.analytics_vm
+{
+  "all" = [
+    {
+      "allow_recreate" = tobool(null)
+      "allow_stopping_for_update" = true
+      "boot_disk" = tolist([
+        {
+          "auto_delete" = true
+          "device_name" = "epd8f96rje05icokk4lp"
+          "disk_id" = "epd8f96rje05icokk4lp"
+          "initialize_params" = tolist([
+            {
+              "block_size" = 4096
+              "description" = ""
+              "image_id" = "fd8ioru6shrp7380rikc"
+              "kms_key_id" = ""
+              "name" = ""
+              "size" = 10
+              "snapshot_id" = ""
+              "type" = "network-hdd"
+            },
+          ])
+          "mode" = "READ_WRITE"
+        },
+      ])
+      "created_at" = "2026-07-17T07:01:48Z"
+      "description" = "TODO: description; {{terraform yyy managed}}"
+      "filesystem" = toset([])
+      "folder_id" = "b1glhd6ohrcmkvkg7v7q"
+      "fqdn" = "analytics-web-0.ru-central1.internal"
+      "gpu_cluster_id" = ""
+      "hardware_generation" = tolist([
+        {
+          "generation2_features" = tolist([])
+          "legacy_features" = tolist([
+            {
+              "pci_topology" = "PCI_TOPOLOGY_V2"
+            },
+          ])
+        },
+      ])
+      "hostname" = "analytics-web-0"
+      "id" = "epd1a93m7f01s52kms8f"
+      "labels" = tomap({
+        "lesson" = "terraform-04"
+        "owner" = "netology"
+        "project" = "analytics"
+      })
+      "local_disk" = tolist([])
+      "maintenance_grace_period" = ""
+      "maintenance_policy" = tostring(null)
+      "metadata" = tomap({
+        "serial-port-enable" = "1"
+        "user-data" = <<-EOT
+        #cloud-config
+        users:
+          - name: ubuntu
+            groups: sudo
+            shell: /bin/bash
+            sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+            ssh_authorized_keys:
+              - ssh-ed25519 <public-key-hidden>
+        
+        package_update: true
+        package_upgrade: false
+        packages:
+          - nginx
+          - vim
+        
+        runcmd:
+          - systemctl enable --now nginx
+        
+        EOT
+      })
+      "metadata_options" = tolist([
+        {
+          "aws_v1_http_endpoint" = 1
+          "aws_v1_http_token" = 2
+          "aws_v2_http_endpoint" = 1
+          "aws_v2_http_token" = 1
+          "gce_http_endpoint" = 1
+          "gce_http_token" = 1
+        },
+      ])
+      "name" = "analytics-web-0"
+      "network_acceleration_type" = "standard"
+      "network_interface" = tolist([
+        {
+          "dns_record" = tolist([])
+          "index" = 0
+          "ip_address" = "10.10.2.16"
+          "ipv4" = true
+          "ipv6" = false
+          "ipv6_address" = ""
+          "ipv6_dns_record" = tolist([])
+          "mac_address" = "d0:0d:15:24:76:3b"
+          "nat" = true
+          "nat_dns_record" = tolist([])
+          "nat_ip_address" = "89.169.170.13"
+          "nat_ip_version" = "IPV4"
+          "security_group_ids" = toset(null) /* of string */
+          "subnet_id" = "e2ljkcrbula4se8vlofl"
+        },
+      ])
+      "placement_policy" = tolist([
+        {
+          "host_affinity_rules" = tolist([])
+          "placement_group_id" = ""
+          "placement_group_partition" = 0
+        },
+      ])
+      "platform_id" = "standard-v3"
+      "reserved_instance_pool_id" = ""
+      "resources" = tolist([
+        {
+          "core_fraction" = 20
+          "cores" = 2
+          "gpus" = 0
+          "memory" = 1
+        },
+      ])
+      "scheduling_policy" = tolist([
+        {
+          "preemptible" = true
+        },
+      ])
+      "secondary_disk" = toset([])
+      "service_account_id" = ""
+      "status" = "running"
+      "timeouts" = null /* object */
+      "zone" = "ru-central1-b"
+    },
+  ]
+  "external_ip_address" = [
+    "89.169.170.13",
+  ]
+  "fqdn" = [
+    "analytics-web-0.ru-central1.internal",
+  ]
+  "internal_ip_address" = [
+    "10.10.2.16",
+  ]
+  "labels" = [
+    tomap({
+      "lesson" = "terraform-04"
+      "owner" = "netology"
+      "project" = "analytics"
+    }),
+  ]
+  "network_interface" = [
+    tolist([
+      {
+        "dns_record" = tolist([])
+        "index" = 0
+        "ip_address" = "10.10.2.16"
+        "ipv4" = true
+        "ipv6" = false
+        "ipv6_address" = ""
+        "ipv6_dns_record" = tolist([])
+        "mac_address" = "d0:0d:15:24:76:3b"
+        "nat" = true
+        "nat_dns_record" = tolist([])
+        "nat_ip_address" = "89.169.170.13"
+        "nat_ip_version" = "IPV4"
+        "security_group_ids" = toset(null) /* of string */
+        "subnet_id" = "e2ljkcrbula4se8vlofl"
+      },
+    ]),
+  ]
+}
+> module.vpc_dev
+{
+  "network_id" = "enpr1bbu7d3c1ceiihds"
+  "network_name" = "develop"
+  "subnet_ids" = {
+    "ru-central1-a" = "e9bh3fe9bei5kg8i22tv"
+    "ru-central1-b" = "e2ljkcrbula4se8vlofl"
+  }
+  "subnet_info" = {
+    "ru-central1-a" = {
+      "cidr" = tolist([
+        "10.10.1.0/24",
+      ])
+      "id" = "e9bh3fe9bei5kg8i22tv"
+      "name" = "develop-ru-central1-a"
+      "zone" = "ru-central1-a"
+    }
+    "ru-central1-b" = {
+      "cidr" = tolist([
+        "10.10.2.0/24",
+      ])
+      "id" = "e2ljkcrbula4se8vlofl"
+      "name" = "develop-ru-central1-b"
+      "zone" = "ru-central1-b"
+    }
+  }
+  "subnets" = {
+    "ru-central1-a" = {
+      "created_at" = "2026-07-17T07:01:46Z"
+      "description" = ""
+      "dhcp_options" = tolist([])
+      "folder_id" = "b1glhd6ohrcmkvkg7v7q"
+      "id" = "e9bh3fe9bei5kg8i22tv"
+      "labels" = tomap({})
+      "name" = "develop-ru-central1-a"
+      "network_id" = "enpr1bbu7d3c1ceiihds"
+      "route_table_id" = ""
+      "timeouts" = null /* object */
+      "v4_cidr_blocks" = tolist([
+        "10.10.1.0/24",
+      ])
+      "v6_cidr_blocks" = tolist([])
+      "zone" = "ru-central1-a"
+    }
+    "ru-central1-b" = {
+      "created_at" = "2026-07-17T07:01:46Z"
+      "description" = ""
+      "dhcp_options" = tolist([])
+      "folder_id" = "b1glhd6ohrcmkvkg7v7q"
+      "id" = "e2ljkcrbula4se8vlofl"
+      "labels" = tomap({})
+      "name" = "develop-ru-central1-b"
+      "network_id" = "enpr1bbu7d3c1ceiihds"
+      "route_table_id" = ""
+      "timeouts" = null /* object */
+      "v4_cidr_blocks" = tolist([
+        "10.10.2.0/24",
+      ])
+      "v6_cidr_blocks" = tolist([])
+      "zone" = "ru-central1-b"
+    }
+  }
+}

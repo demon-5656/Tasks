@@ -1,0 +1,45 @@
+Initializing the backend...
+Initializing modules...
+Downloading git::https://github.com/udjin10/yandex_compute_instance.git?ref=main for analytics_vm...
+- analytics_vm in .terraform/modules/analytics_vm
+Downloading git::https://github.com/udjin10/yandex_compute_instance.git?ref=main for marketing_vm...
+- marketing_vm in .terraform/modules/marketing_vm
+- vpc_dev in modules/vpc
+- vpc_prod_example in modules/vpc
+Initializing provider plugins...
+- Finding latest version of hashicorp/template...
+- Finding latest version of yandex-cloud/yandex...
+- Installing hashicorp/template v2.2.0...
+- Installed hashicorp/template v2.2.0 (unauthenticated)
+- Installing yandex-cloud/yandex v0.217.0...
+- Installed yandex-cloud/yandex v0.217.0 (unauthenticated)
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+╷
+│ Warning: Incomplete lock file information for providers
+│ 
+│ Due to your customized provider installation methods, Terraform was forced
+│ to calculate lock file checksums locally for the following providers:
+│   - hashicorp/template
+│   - yandex-cloud/yandex
+│ 
+│ The current .terraform.lock.hcl file only includes checksums for
+│ linux_amd64, so Terraform running on another platform will fail to install
+│ these providers.
+│ 
+│ To calculate additional checksums for another platform, run:
+│   terraform providers lock -platform=linux_amd64
+│ (where linux_amd64 is the platform to generate)
+╵
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
