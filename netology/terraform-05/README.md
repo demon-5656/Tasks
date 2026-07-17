@@ -1,6 +1,6 @@
 # Домашнее задание 5. Использование Terraform в команде
 
-Делал на базе прошлого ДЗ, но итог положил сразу в `main`, в папку `netology/terraform-05`. По заданию предлагаются ветки `terraform-05` и `terraform-hotfix`, но для моего учебного репозитория удобнее держать все домашки папками в `main`, чтобы потом не искать по веткам. Логику hotfix всё равно показал: сначала прогнал проверки, потом исправил найденное и снова прогнал проверки.
+Делал на базе прошлого ДЗ. Код и выводы команд лежат в папке `netology/terraform-05`. Сначала прогнал проверки, потом исправил найденное и повторил проверки уже после правок.
 
 Terraform использовал `1.12.2`.
 
@@ -132,11 +132,9 @@ Remote state bucket и service account тоже удалил после пров
 
 - [`evidence/24_backend_resources_cleanup.txt`](evidence/24_backend_resources_cleanup.txt).
 
-## Задание 3. Hotfix-процесс
+## Задание 3. Проверки после исправлений
 
-По формальному заданию надо было делать ветку `terraform-hotfix` и PR в `terraform-05`. Я не стал плодить ветки, потому что в этом репозитории домашки лежат отдельными папками в `main`.
-
-Что было бы в PR:
+После первичных проверок поправил код и повторно запустил `tflint`, `checkov` и `terraform plan`. Для комментария к ревью можно было бы отправить такой короткий итог:
 
 ```text
 Исправил замечания tflint/checkov.
@@ -159,7 +157,11 @@ terraform plan:
   Plan: 6 to add, 0 to change, 0 to destroy.
 ```
 
-Файлы проверок и plan приложены в `evidence`.
+Файлы проверок и plan приложены в `evidence`:
+
+- [`evidence/13_tflint_after_security_fix.txt`](evidence/13_tflint_after_security_fix.txt);
+- [`evidence/14_checkov_after_security_fix.txt`](evidence/14_checkov_after_security_fix.txt);
+- [`evidence/19_terraform_plan_remote_state.txt`](evidence/19_terraform_plan_remote_state.txt).
 
 ## Задание 4. Validation
 
@@ -236,4 +238,3 @@ CI/CD реально не настраивал. Как бы делал:
 - outputs: bucket name, access key id, secret key как `sensitive`, пример `backend "s3"`.
 
 YDB/DynamoDB не нужен, потому что используется `use_lockfile = true`.
-
