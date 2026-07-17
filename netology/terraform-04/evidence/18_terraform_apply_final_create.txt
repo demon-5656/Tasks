@@ -1,0 +1,116 @@
+module.vpc_dev.yandex_vpc_network.this: Creating...
+module.vpc_dev.yandex_vpc_network.this: Creation complete after 2s [id=enpr1bbu7d3c1ceiihds]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Creating...
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Creating...
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Creation complete after 1s [id=e9bh3fe9bei5kg8i22tv]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Creation complete after 1s [id=e2ljkcrbula4se8vlofl]
+module.analytics_vm.yandex_compute_instance.vm[0]: Creating...
+module.marketing_vm.yandex_compute_instance.vm[0]: Creating...
+module.marketing_vm.yandex_compute_instance.vm[0]: Still creating... [00m10s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still creating... [00m10s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still creating... [00m20s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still creating... [00m20s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still creating... [00m30s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still creating... [00m30s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still creating... [00m40s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still creating... [00m40s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Creation complete after 43s [id=epd1a93m7f01s52kms8f]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still creating... [00m50s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Creation complete after 54s [id=fhmon7h9bvavfinfm4qi]
+
+Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+analytics_vm = {
+  "external_ip" = [
+    "89.169.170.13",
+  ]
+  "fqdn" = [
+    "analytics-web-0.ru-central1.internal",
+  ]
+  "labels" = [
+    tomap({
+      "lesson" = "terraform-04"
+      "owner" = "netology"
+      "project" = "analytics"
+    }),
+  ]
+}
+marketing_vm = {
+  "external_ip" = [
+    "111.88.254.219",
+  ]
+  "fqdn" = [
+    "marketing-web-0.ru-central1.internal",
+  ]
+  "labels" = [
+    tomap({
+      "lesson" = "terraform-04"
+      "owner" = "netology"
+      "project" = "marketing"
+    }),
+  ]
+}
+vpc_dev = {
+  "network_id" = "enpr1bbu7d3c1ceiihds"
+  "network_name" = "develop"
+  "subnet_ids" = {
+    "ru-central1-a" = "e9bh3fe9bei5kg8i22tv"
+    "ru-central1-b" = "e2ljkcrbula4se8vlofl"
+  }
+  "subnet_info" = {
+    "ru-central1-a" = {
+      "cidr" = tolist([
+        "10.10.1.0/24",
+      ])
+      "id" = "e9bh3fe9bei5kg8i22tv"
+      "name" = "develop-ru-central1-a"
+      "zone" = "ru-central1-a"
+    }
+    "ru-central1-b" = {
+      "cidr" = tolist([
+        "10.10.2.0/24",
+      ])
+      "id" = "e2ljkcrbula4se8vlofl"
+      "name" = "develop-ru-central1-b"
+      "zone" = "ru-central1-b"
+    }
+  }
+  "subnets" = {
+    "ru-central1-a" = {
+      "created_at" = "2026-07-17T07:01:46Z"
+      "description" = ""
+      "dhcp_options" = tolist([])
+      "folder_id" = "b1glhd6ohrcmkvkg7v7q"
+      "id" = "e9bh3fe9bei5kg8i22tv"
+      "labels" = tomap({})
+      "name" = "develop-ru-central1-a"
+      "network_id" = "enpr1bbu7d3c1ceiihds"
+      "route_table_id" = ""
+      "timeouts" = null /* object */
+      "v4_cidr_blocks" = tolist([
+        "10.10.1.0/24",
+      ])
+      "v6_cidr_blocks" = tolist([])
+      "zone" = "ru-central1-a"
+    }
+    "ru-central1-b" = {
+      "created_at" = "2026-07-17T07:01:46Z"
+      "description" = ""
+      "dhcp_options" = tolist([])
+      "folder_id" = "b1glhd6ohrcmkvkg7v7q"
+      "id" = "e2ljkcrbula4se8vlofl"
+      "labels" = tomap({})
+      "name" = "develop-ru-central1-b"
+      "network_id" = "enpr1bbu7d3c1ceiihds"
+      "route_table_id" = ""
+      "timeouts" = null /* object */
+      "v4_cidr_blocks" = tolist([
+        "10.10.2.0/24",
+      ])
+      "v6_cidr_blocks" = tolist([])
+      "zone" = "ru-central1-b"
+    }
+  }
+}
