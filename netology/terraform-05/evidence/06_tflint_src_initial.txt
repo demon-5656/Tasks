@@ -1,0 +1,14 @@
+11 issue(s) found:
+
+src/modules/vpc/providers.tf:3:14: Warning - Missing version constraint for provider "yandex" in `required_providers` (terraform_required_providers)
+src/modules/vpc/providers.tf:1:1: Warning - terraform "required_version" attribute is required (terraform_required_version)
+src/main.tf:25:12: Warning - Module source "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main" uses a default branch as ref (main) (terraform_module_pinned_source)
+src/main.tf:52:12: Warning - Module source "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main" uses a default branch as ref (main) (terraform_module_pinned_source)
+src/providers.tf:6:16: Warning - Missing version constraint for provider "template" in `required_providers` (terraform_required_providers)
+src/providers.tf:3:14: Warning - Missing version constraint for provider "yandex" in `required_providers` (terraform_required_providers)
+src/validation.tf:1:1: Warning - variable "single_ip" is declared but not used (terraform_unused_declarations)
+src/validation.tf:36:1: Warning - variable "in_the_end_there_can_be_only_one" is declared but not used (terraform_unused_declarations)
+src/validation.tf:12:1: Warning - variable "ip_list" is declared but not used (terraform_unused_declarations)
+src/validation.tf:25:1: Warning - variable "lowercase_text" is declared but not used (terraform_unused_declarations)
+src/variables.tf:71:1: Warning - variable "prod_example_subnets" is declared but not used (terraform_unused_declarations)
+tflint exit code: 2

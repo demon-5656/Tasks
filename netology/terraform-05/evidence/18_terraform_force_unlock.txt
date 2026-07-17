@@ -1,0 +1,4 @@
+Terraform state has been successfully unlocked!
+
+The state has been unlocked, and Terraform commands should now be able to
+obtain a new lock on the remote state.

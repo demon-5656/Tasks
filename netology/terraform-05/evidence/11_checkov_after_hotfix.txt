@@ -1,0 +1,22 @@
+terraform scan results:
+
+Passed checks: 6, Failed checks: 4, Skipped checks: 0
+
+Check: CKV_YC_2: "Ensure compute instance does not have public IP."
+	FAILED for resource: module.analytics_vm.yandex_compute_instance.vm[0]
+	File: /.external_modules/github.com/udjin10/yandex_compute_instance/de7090ae115ee5059cd81053a808af079c325e01/main.tf:27-76
+	Calling File: /main.tf:58-83
+Check: CKV_YC_11: "Ensure security group is assigned to network interface."
+	FAILED for resource: module.analytics_vm.yandex_compute_instance.vm[0]
+	File: /.external_modules/github.com/udjin10/yandex_compute_instance/de7090ae115ee5059cd81053a808af079c325e01/main.tf:27-76
+	Calling File: /main.tf:58-83
+Check: CKV_YC_2: "Ensure compute instance does not have public IP."
+	FAILED for resource: module.marketing_vm.yandex_compute_instance.vm[0]
+	File: /.external_modules/github.com/udjin10/yandex_compute_instance/de7090ae115ee5059cd81053a808af079c325e01/main.tf:27-76
+	Calling File: /main.tf:31-56
+Check: CKV_YC_11: "Ensure security group is assigned to network interface."
+	FAILED for resource: module.marketing_vm.yandex_compute_instance.vm[0]
+	File: /.external_modules/github.com/udjin10/yandex_compute_instance/de7090ae115ee5059cd81053a808af079c325e01/main.tf:27-76
+	Calling File: /main.tf:31-56
+
+checkov exit code: 1

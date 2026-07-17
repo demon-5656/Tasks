@@ -1,0 +1,31 @@
+folder: b1glhd6ohrcmkvkg7v7q
+$ yc iam service-account create --name netology-tfstate
+id: ajek81vptj52en4giqcr
+folder_id: b1glhd6ohrcmkvkg7v7q
+created_at: "2026-07-17T07:45:53Z"
+name: netology-tfstate
+status: ACTIVE
+
+service account id: ajek81vptj52en4giqcr
+$ yc resource-manager folder add-access-binding --role storage.editor --subject serviceAccount:ajek81vptj52en4giqcr
+effective_deltas:
+  - action: ADD
+    access_binding:
+      role_id: storage.editor
+      subject:
+        id: ajek81vptj52en4giqcr
+        type: serviceAccount
+
+$ yc storage bucket create --name netology-tfstate-20260717-b1glhd6ohrcmkvkg7v7q --max-size 1073741824
+name: netology-tfstate-20260717-b1glhd6ohrcmkvkg7v7q
+folder_id: b1glhd6ohrcmkvkg7v7q
+anonymous_access_flags: {}
+default_storage_class: STANDARD
+versioning: VERSIONING_DISABLED
+max_size: "1073741824"
+created_at: "2026-07-17T07:46:02.420521Z"
+resource_id: e3er0o6pr72eiu2dqsbg
+
+$ yc iam access-key create --service-account-name netology-tfstate
+access key id: <access-key-id-hidden>
+secret key: <hidden>

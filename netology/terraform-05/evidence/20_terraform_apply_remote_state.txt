@@ -1,0 +1,132 @@
+module.vpc_dev.yandex_vpc_network.this: Creating...
+module.vpc_dev.yandex_vpc_network.this: Creation complete after 2s [id=enpvm12fc7bqakaq4i68]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Creating...
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Creating...
+yandex_vpc_security_group.vm: Creating...
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-a"]: Creation complete after 1s [id=e9bj7j1ls5l13a0kcm5i]
+module.vpc_dev.yandex_vpc_subnet.this["ru-central1-b"]: Creation complete after 1s [id=e2ld5rjrm0h1mmu5ab8e]
+yandex_vpc_security_group.vm: Creation complete after 2s [id=enp4ctcvharpjihls0rh]
+module.marketing_vm.yandex_compute_instance.vm[0]: Creating...
+module.analytics_vm.yandex_compute_instance.vm[0]: Creating...
+module.marketing_vm.yandex_compute_instance.vm[0]: Still creating... [00m10s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still creating... [00m10s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still creating... [00m20s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still creating... [00m20s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still creating... [00m30s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still creating... [00m30s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still creating... [00m40s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still creating... [00m40s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Still creating... [00m50s elapsed]
+module.analytics_vm.yandex_compute_instance.vm[0]: Still creating... [00m50s elapsed]
+module.marketing_vm.yandex_compute_instance.vm[0]: Creation complete after 51s [id=fhmbfnfsun8kd7toehs6]
+module.analytics_vm.yandex_compute_instance.vm[0]: Creation complete after 55s [id=epdtv205uuopdgl2n1md]
+
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+analytics_vm = {
+  "external_ip" = [
+    "",
+  ]
+  "fqdn" = [
+    "analytics-web-0.ru-central1.internal",
+  ]
+  "labels" = [
+    tomap({
+      "lesson" = "terraform-05"
+      "owner" = "netology"
+      "project" = "analytics"
+    }),
+  ]
+}
+marketing_vm = {
+  "external_ip" = [
+    "",
+  ]
+  "fqdn" = [
+    "marketing-web-0.ru-central1.internal",
+  ]
+  "labels" = [
+    tomap({
+      "lesson" = "terraform-05"
+      "owner" = "netology"
+      "project" = "marketing"
+    }),
+  ]
+}
+validation_check = {
+  "ip_list" = tolist([
+    "192.168.0.1",
+    "1.1.1.1",
+    "127.0.0.1",
+  ])
+  "lowercase_text" = "terraform team work"
+  "mac_leod" = {
+    "Connor" = false
+    "Dunkan" = true
+  }
+  "single_ip" = "192.168.0.1"
+}
+vpc_dev = {
+  "network_id" = "enpvm12fc7bqakaq4i68"
+  "network_name" = "develop"
+  "subnet_ids" = {
+    "ru-central1-a" = "e9bj7j1ls5l13a0kcm5i"
+    "ru-central1-b" = "e2ld5rjrm0h1mmu5ab8e"
+  }
+  "subnet_info" = {
+    "ru-central1-a" = {
+      "cidr" = tolist([
+        "10.10.1.0/24",
+      ])
+      "id" = "e9bj7j1ls5l13a0kcm5i"
+      "name" = "develop-ru-central1-a"
+      "zone" = "ru-central1-a"
+    }
+    "ru-central1-b" = {
+      "cidr" = tolist([
+        "10.10.2.0/24",
+      ])
+      "id" = "e2ld5rjrm0h1mmu5ab8e"
+      "name" = "develop-ru-central1-b"
+      "zone" = "ru-central1-b"
+    }
+  }
+  "subnets" = {
+    "ru-central1-a" = {
+      "created_at" = "2026-07-17T07:49:49Z"
+      "description" = ""
+      "dhcp_options" = tolist([])
+      "folder_id" = "b1glhd6ohrcmkvkg7v7q"
+      "id" = "e9bj7j1ls5l13a0kcm5i"
+      "labels" = tomap({})
+      "name" = "develop-ru-central1-a"
+      "network_id" = "enpvm12fc7bqakaq4i68"
+      "route_table_id" = ""
+      "timeouts" = null /* object */
+      "v4_cidr_blocks" = tolist([
+        "10.10.1.0/24",
+      ])
+      "v6_cidr_blocks" = tolist([])
+      "zone" = "ru-central1-a"
+    }
+    "ru-central1-b" = {
+      "created_at" = "2026-07-17T07:49:49Z"
+      "description" = ""
+      "dhcp_options" = tolist([])
+      "folder_id" = "b1glhd6ohrcmkvkg7v7q"
+      "id" = "e2ld5rjrm0h1mmu5ab8e"
+      "labels" = tomap({})
+      "name" = "develop-ru-central1-b"
+      "network_id" = "enpvm12fc7bqakaq4i68"
+      "route_table_id" = ""
+      "timeouts" = null /* object */
+      "v4_cidr_blocks" = tolist([
+        "10.10.2.0/24",
+      ])
+      "v6_cidr_blocks" = tolist([])
+      "zone" = "ru-central1-b"
+    }
+  }
+}

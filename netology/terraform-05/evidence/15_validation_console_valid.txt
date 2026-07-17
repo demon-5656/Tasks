@@ -1,0 +1,15 @@
+$ terraform console valid single_ip
+"192.168.0.1"
+$ terraform console valid ip_list
+tolist([
+  "192.168.0.1",
+  "1.1.1.1",
+  "127.0.0.1",
+])
+$ terraform console valid lowercase_text
+"normal text only"
+$ terraform console valid MacLeod object
+{
+  "Connor" = false
+  "Dunkan" = true
+}

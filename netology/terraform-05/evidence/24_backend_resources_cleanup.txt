@@ -1,0 +1,44 @@
+$ yc storage s3api list-objects --bucket netology-tfstate-20260717-b1glhd6ohrcmkvkg7v7q
+contents:
+  - key: terraform-05/terraform.tfstate
+    last_modified: "2026-07-17T07:52:05.378Z"
+    etag: '"57787a0ecdba22198e2f5c6cc470c43b"'
+    size: "1013"
+    owner:
+      id: ajek81vptj52en4giqcr
+      display_name: ajek81vptj52en4giqcr
+    storage_class: STANDARD
+name: netology-tfstate-20260717-b1glhd6ohrcmkvkg7v7q
+max_keys: "1000"
+key_count: "1"
+request_id: 228a80a583cddd9b
+
+$ yc storage s3api delete-object --bucket netology-tfstate-20260717-b1glhd6ohrcmkvkg7v7q --key terraform-05/terraform.tfstate
+request_id: 92397bb9699b5505
+
+$ yc storage s3api delete-object --bucket netology-tfstate-20260717-b1glhd6ohrcmkvkg7v7q --key terraform-05/terraform.tfstate.tflock
+request_id: f43c765b7ffa3664
+
+$ yc storage bucket delete --name netology-tfstate-20260717-b1glhd6ohrcmkvkg7v7q
+$ yc iam access-key list --service-account-name netology-tfstate
++----------------------+----------------------+---------------------------+---------------------+---------------------+
+|          ID          |  SERVICE ACCOUNT ID  |          KEY ID           |     CREATED AT      |    LAST USED AT     |
++----------------------+----------------------+---------------------------+---------------------+---------------------+
+| ajerhp0s1bje7u489bbp | ajek81vptj52en4giqcr | <access-key-id-hidden> | 2026-07-17 07:46:03 | 2026-07-17 07:50:00 |
++----------------------+----------------------+---------------------------+---------------------+---------------------+
+
+$ yc iam access-key delete ajerhp0s1bje7u489bbp
+$ yc iam service-account delete netology-tfstate
+$ yc storage bucket list
++------+-----------+----------+-----------------------+------------+
+| NAME | FOLDER ID | MAX SIZE | DEFAULT STORAGE CLASS | CREATED AT |
++------+-----------+----------+-----------------------+------------+
++------+-----------+----------+-----------------------+------------+
+
+$ yc iam service-account list
++----------------------+--------------------+--------+---------------------+-----------------------+
+|          ID          |        NAME        | LABELS |     CREATED AT      | LAST AUTHENTICATED AT |
++----------------------+--------------------+--------+---------------------+-----------------------+
+| ajeiv79plg2mgloflnk7 | netology-terraform |        | 2026-07-15 08:59:57 | 2026-07-17 07:50:00   |
++----------------------+--------------------+--------+---------------------+-----------------------+
+

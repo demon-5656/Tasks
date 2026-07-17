@@ -1,0 +1,6 @@
+terraform scan results:
+
+Passed checks: 11, Failed checks: 0, Skipped checks: 0
+
+
+checkov exit code: 0
