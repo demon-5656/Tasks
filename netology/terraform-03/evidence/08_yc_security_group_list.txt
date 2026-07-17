@@ -1,0 +1,10 @@
++----------------------+---------------------------------+--------------------------------+----------------------+
+|          ID          |              NAME               |          DESCRIPTION           |      NETWORK-ID      |
++----------------------+---------------------------------+--------------------------------+----------------------+
+| enp9vf1k0j1os0oounj8 | default-sg-enpfegphcodbhoi2jk6c | Default security group for     | enpfegphcodbhoi2jk6c |
+|                      |                                 | network                        |                      |
+| enpdm97eaqa5gltt0akt | default-sg-enp1l5suf3d5vsps1ldk | Default security group for     | enp1l5suf3d5vsps1ldk |
+|                      |                                 | network                        |                      |
+| enps5tl2squ0v1s4f9fr | netology-terraform-03           |                                | enp1l5suf3d5vsps1ldk |
++----------------------+---------------------------------+--------------------------------+----------------------+
+

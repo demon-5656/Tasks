@@ -1,0 +1,20 @@
+web-1 | CHANGED | rc=0 >>
+web-1
+Shared connection to 111.88.253.236 closed.
+
+main | CHANGED | rc=0 >>
+main
+Shared connection to 111.88.153.23 closed.
+
+storage | CHANGED | rc=0 >>
+storage
+Shared connection to 51.250.76.7 closed.
+
+web-2 | CHANGED | rc=0 >>
+web-2
+Shared connection to 51.250.6.208 closed.
+
+replica | CHANGED | rc=0 >>
+replica
+Shared connection to 111.88.151.205 closed.
+

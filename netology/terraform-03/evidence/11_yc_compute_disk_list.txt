@@ -1,0 +1,14 @@
++----------------------+-------------------------------------+-------------+---------------+--------+----------------------+-----------------+-------------+
+|          ID          |                NAME                 |    SIZE     |     ZONE      | STATUS |     INSTANCE IDS     | PLACEMENT GROUP | DESCRIPTION |
++----------------------+-------------------------------------+-------------+---------------+--------+----------------------+-----------------+-------------+
+| epd6d5upuopfdiqjl23k |                                     | 12884901888 | ru-central1-b | READY  | epd2tcni2f9rdndr4vt7 |                 |             |
+| epd8vo9ai8iqgmlbgqos |                                     | 10737418240 | ru-central1-b | READY  | epdlb9parn91highso0t |                 |             |
+| epdqebkp4jpgefmdka20 | disk-ubuntu-24-04-lts-1781591731649 | 10737418240 | ru-central1-b | READY  | epdojdmq2stn1e2np12r |                 |             |
+| fhm679hrnpd93pqbue4l |                                     | 10737418240 | ru-central1-a | READY  | fhme0er16qoib2iv3ibn |                 |             |
+| fhm78f3srifdmgue14bk | storage-extra-3                     |  1073741824 | ru-central1-a | READY  | fhmvp6n5sb6nvtd2728t |                 |             |
+| fhmcju10riq4rfn12ma1 | storage-extra-1                     |  1073741824 | ru-central1-a | READY  | fhmvp6n5sb6nvtd2728t |                 |             |
+| fhmel5cec8bnave8q0u8 |                                     | 10737418240 | ru-central1-a | READY  | fhmvp6n5sb6nvtd2728t |                 |             |
+| fhmlirh4f5m3ks9itt3t | storage-extra-2                     |  1073741824 | ru-central1-a | READY  | fhmvp6n5sb6nvtd2728t |                 |             |
+| fhmt0rrvnkf5r8hb9c3p |                                     | 10737418240 | ru-central1-a | READY  | fhm8jh2736e18te2vkrh |                 |             |
++----------------------+-------------------------------------+-------------+---------------+--------+----------------------+-----------------+-------------+
+
