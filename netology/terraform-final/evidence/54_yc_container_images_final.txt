@@ -1,7 +1,15 @@
 +----------------------+---------------------+-------------------------------------------+--------+-----------------+
 |          ID          |       CREATED       |                   NAME                    |  TAGS  | COMPRESSED SIZE |
 +----------------------+---------------------+-------------------------------------------+--------+-----------------+
-| crp6dnko7sesga0cqlvu | 2026-07-21 07:16:23 | crp0il81r01irlk6s76q/legacy-100-years-api | latest | 61.4 MB         |
-| crp2rv9v42p2uqv8ub02 | 2026-07-21 07:16:15 | crp0il81r01irlk6s76q/legacy-100-years-web | latest | 20.2 MB         |
+| crpvq4adlgpea2oa59o2 | 2026-07-21 08:41:25 | crp0il81r01irlk6s76q/legacy-100-years-api | latest | 61.4 MB         |
+| crporsf54t2m589elo3e | 2026-07-21 08:26:20 | crp0il81r01irlk6s76q/legacy-100-years-api |        | 61.4 MB         |
+| crpbdfooe1bqrp6las9r | 2026-07-21 08:21:33 | crp0il81r01irlk6s76q/legacy-100-years-api |        | 61.4 MB         |
+| crpq43p2hj7a23qn125q | 2026-07-21 08:13:03 | crp0il81r01irlk6s76q/legacy-100-years-api |        | 61.4 MB         |
+| crp6dnko7sesga0cqlvu | 2026-07-21 07:16:23 | crp0il81r01irlk6s76q/legacy-100-years-api |        | 61.4 MB         |
+| crpve0q1m13535n7iepl | 2026-07-21 08:41:22 | crp0il81r01irlk6s76q/legacy-100-years-web | latest | 20.2 MB         |
+| crp21sdim4dskqs8i69i | 2026-07-21 08:26:18 | crp0il81r01irlk6s76q/legacy-100-years-web |        | 20.2 MB         |
+| crp582a3fnrserfrflr0 | 2026-07-21 08:21:33 | crp0il81r01irlk6s76q/legacy-100-years-web |        | 20.2 MB         |
+| crpude4qlkeciu9qpgcp | 2026-07-21 08:13:00 | crp0il81r01irlk6s76q/legacy-100-years-web |        | 20.2 MB         |
+| crp2rv9v42p2uqv8ub02 | 2026-07-21 07:16:15 | crp0il81r01irlk6s76q/legacy-100-years-web |        | 20.2 MB         |
 +----------------------+---------------------+-------------------------------------------+--------+-----------------+
 
