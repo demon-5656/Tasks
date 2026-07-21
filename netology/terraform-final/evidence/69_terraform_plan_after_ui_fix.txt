@@ -1,0 +1,21 @@
+[0m[1mdata.yandex_compute_image.ubuntu: Reading...[0m[0m
+[0m[1myandex_vpc_network.app: Refreshing state... [id=enpqn1dpn8nf370shpqr][0m
+[0m[1myandex_lockbox_secret.app: Refreshing state... [id=e6qtgvc4lc9lvkjr6anu][0m
+[0m[1myandex_container_registry.app: Refreshing state... [id=crp0il81r01irlk6s76q][0m
+[0m[1myandex_lockbox_secret_version.app: Refreshing state... [id=e6qqto4s22uiuvj908es][0m
+[0m[1mdata.yandex_compute_image.ubuntu: Read complete after 0s [id=fd8v76jjfrhmkq9p1t5f][0m
+[0m[1myandex_vpc_subnet.this["db-b"]: Refreshing state... [id=e2lbue1g3bsmshifue6l][0m
+[0m[1myandex_vpc_subnet.this["app-a"]: Refreshing state... [id=e9ba681u486bumoaarac][0m
+[0m[1myandex_vpc_security_group.app: Refreshing state... [id=enpptmfpgg6nplf04jks][0m
+[0m[1myandex_vpc_security_group.mysql: Refreshing state... [id=enpv6ifskvkvpiv5459s][0m
+[0m[1myandex_vpc_address.app: Refreshing state... [id=e9bsi737f7pq63n776u8][0m
+[0m[1myandex_mdb_mysql_cluster.app: Refreshing state... [id=c9qj62uprh1bcssl0fuc][0m
+[0m[1myandex_mdb_mysql_database.app: Refreshing state... [id=c9qj62uprh1bcssl0fuc:legacy_100_years][0m
+[0m[1myandex_compute_instance.app: Refreshing state... [id=fhm65jv9bevdk0l5n90d][0m
+[0m[1myandex_mdb_mysql_user.app: Refreshing state... [id=c9qj62uprh1bcssl0fuc:legacy_app][0m
+
+[0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+
+[0mTerraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+exit code: 0
