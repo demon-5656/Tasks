@@ -1,135 +1,0 @@
-Warning: Permanently added '93.77.190.156' (ED25519) to the list of known hosts.
-status: error
-extended_status: error - done
-boot_status_code: enabled-by-generator
-last_update: Thu, 01 Jan 1970 00:01:23 +0000
-detail: DataSourceEc2
-errors:
-	- ('scripts_user', RuntimeError('Runparts: 1 failures (runcmd) in 1 attempted commands'))
-recoverable_errors:
-WARNING:
-	- Failed to run module scripts_user (scripts in /var/lib/cloud/instance/scripts)
-	- Running module scripts_user (<module 'cloudinit.config.cc_scripts_user' from '/usr/lib/python3/dist-packages/cloudinit/config/cc_scripts_user.py'>) failed
-CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
-|        o..    . |
-|       o  +. .. o|
-|        S  +..ooo|
-|            =o+ X|
-|           BEX.@.|
-|         .=+B %oo|
-|       .oo=*ooo*o|
-+----[SHA256]-----+
-Cloud-init v. 26.1-0ubuntu1~22.04.1 running 'modules:config' at Tue, 21 Jul 2026 07:34:06 +0000. Up 19.10 seconds.
-Cloud-init v. 26.1-0ubuntu1~22.04.1 running 'modules:final' at Tue, 21 Jul 2026 07:34:07 +0000. Up 20.64 seconds.
-Hit:1 http://mirror.yandex.ru/ubuntu jammy InRelease
-Get:2 http://mirror.yandex.ru/ubuntu jammy-updates InRelease [128 kB]
-Get:3 http://mirror.yandex.ru/ubuntu jammy-backports InRelease [127 kB]
-Get:4 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
-Get:5 http://mirror.yandex.ru/ubuntu jammy-updates/main amd64 Packages [3656 kB]
-Get:6 http://mirror.yandex.ru/ubuntu jammy-updates/main Translation-en [547 kB]
-Get:7 http://mirror.yandex.ru/ubuntu jammy-updates/restricted amd64 Packages [6264 kB]
-Get:8 http://mirror.yandex.ru/ubuntu jammy-updates/restricted Translation-en [1201 kB]
-Get:9 http://mirror.yandex.ru/ubuntu jammy-updates/universe amd64 Packages [1279 kB]
-Get:10 http://mirror.yandex.ru/ubuntu jammy-updates/universe Translation-en [322 kB]
-Get:11 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3374 kB]
-Get:12 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [477 kB]
-Get:13 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [6012 kB]
-Get:14 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [1151 kB]
-Get:15 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1045 kB]
-Get:16 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [234 kB]
-Fetched 25.9 MB in 7s (3637 kB/s)
-Reading package lists...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-ca-certificates is already the newest version (20260601~22.04.1).
-ca-certificates set to manually installed.
-curl is already the newest version (7.81.0-1ubuntu1.25).
-curl set to manually installed.
-git is already the newest version (1:2.34.1-1ubuntu1.17).
-git set to manually installed.
-gnupg is already the newest version (2.2.27-3ubuntu2.5).
-gnupg set to manually installed.
-0 upgraded, 0 newly installed, 0 to remove and 2 not upgraded.
-Hit:1 http://mirror.yandex.ru/ubuntu jammy InRelease
-Hit:2 http://mirror.yandex.ru/ubuntu jammy-updates InRelease
-Hit:3 http://mirror.yandex.ru/ubuntu jammy-backports InRelease
-Get:4 https://download.docker.com/linux/ubuntu jammy InRelease [48.5 kB]
-Hit:5 http://security.ubuntu.com/ubuntu jammy-security InRelease
-Get:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 Packages [83.5 kB]
-Fetched 132 kB in 1s (125 kB/s)
-Reading package lists...
-Reading package lists...
-Building dependency tree...
-Reading state information...
-The following additional packages will be installed:
-  docker-ce-rootless-extras pigz
-Suggested packages:
-  cgroupfs-mount | cgroup-lite docker-model-plugin
-The following NEW packages will be installed:
-  containerd.io docker-buildx-plugin docker-ce docker-ce-cli
-  docker-ce-rootless-extras docker-compose-plugin pigz
-0 upgraded, 7 newly installed, 0 to remove and 2 not upgraded.
-Need to get 99.4 MB of archives.
-After this operation, 380 MB of additional disk space will be used.
-Get:1 http://mirror.yandex.ru/ubuntu jammy/universe amd64 pigz amd64 2.6-1 [63.6 kB]
-Get:2 https://download.docker.com/linux/ubuntu jammy/stable amd64 containerd.io amd64 2.2.6-1~ubuntu.22.04~jammy [23.6 MB]
-Get:3 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-cli amd64 5:29.6.2-1~ubuntu.22.04~jammy [16.9 MB]
-Get:4 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce amd64 5:29.6.2-1~ubuntu.22.04~jammy [23.3 MB]
-Get:5 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-buildx-plugin amd64 0.35.0-1~ubuntu.22.04~jammy [17.2 MB]
-Get:6 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-ce-rootless-extras amd64 5:29.6.2-1~ubuntu.22.04~jammy [10.2 MB]
-Get:7 https://download.docker.com/linux/ubuntu jammy/stable amd64 docker-compose-plugin amd64 5.3.1-1~ubuntu.22.04~jammy [8100 kB]
-dpkg-preconfigure: unable to re-open stdin: No such file or directory
-Fetched 99.4 MB in 2s (47.8 MB/s)
-Selecting previously unselected package containerd.io.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 94090 files and directories currently installed.)
-Preparing to unpack .../0-containerd.io_2.2.6-1~ubuntu.22.04~jammy_amd64.deb ...
-Unpacking containerd.io (2.2.6-1~ubuntu.22.04~jammy) ...
-Selecting previously unselected package docker-ce-cli.
-Preparing to unpack .../1-docker-ce-cli_5%3a29.6.2-1~ubuntu.22.04~jammy_amd64.deb ...
-Unpacking docker-ce-cli (5:29.6.2-1~ubuntu.22.04~jammy) ...
-Selecting previously unselected package docker-ce.
-Preparing to unpack .../2-docker-ce_5%3a29.6.2-1~ubuntu.22.04~jammy_amd64.deb ...
-Unpacking docker-ce (5:29.6.2-1~ubuntu.22.04~jammy) ...
-Selecting previously unselected package pigz.
-Preparing to unpack .../3-pigz_2.6-1_amd64.deb ...
-Unpacking pigz (2.6-1) ...
-Selecting previously unselected package docker-buildx-plugin.
-Preparing to unpack .../4-docker-buildx-plugin_0.35.0-1~ubuntu.22.04~jammy_amd64.deb ...
-Unpacking docker-buildx-plugin (0.35.0-1~ubuntu.22.04~jammy) ...
-Selecting previously unselected package docker-ce-rootless-extras.
-Preparing to unpack .../5-docker-ce-rootless-extras_5%3a29.6.2-1~ubuntu.22.04~jammy_amd64.deb ...
-Unpacking docker-ce-rootless-extras (5:29.6.2-1~ubuntu.22.04~jammy) ...
-Selecting previously unselected package docker-compose-plugin.
-Preparing to unpack .../6-docker-compose-plugin_5.3.1-1~ubuntu.22.04~jammy_amd64.deb ...
-Unpacking docker-compose-plugin (5.3.1-1~ubuntu.22.04~jammy) ...
-Setting up docker-buildx-plugin (0.35.0-1~ubuntu.22.04~jammy) ...
-Setting up containerd.io (2.2.6-1~ubuntu.22.04~jammy) ...
-Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containerd.service.
-Setting up docker-compose-plugin (5.3.1-1~ubuntu.22.04~jammy) ...
-Setting up docker-ce-cli (5:29.6.2-1~ubuntu.22.04~jammy) ...
-Setting up pigz (2.6-1) ...
-Setting up docker-ce-rootless-extras (5:29.6.2-1~ubuntu.22.04~jammy) ...
-Setting up docker-ce (5:29.6.2-1~ubuntu.22.04~jammy) ...
-Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
-Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/systemd/system/docker.socket.
-Processing triggers for man-db (2.10.2-1) ...
-
-Running kernel seems to be up-to-date.
-
-No services need to be restarted.
-
-No containers need to be restarted.
-
-No user sessions are running outdated binaries.
-
-No VM guests are running outdated hypervisor (qemu) binaries on this host.
-Synchronizing state of docker.service with SysV service script with /lib/systemd/systemd-sysv-install.
-Executing: /lib/systemd/systemd-sysv-install enable docker
-Cloning into '/opt/legacy-100-years/repo'...
-fatal: could not read Username for 'https://github.com': No such device or address
-2026-07-21 07:35:11,008 - cc_scripts_user.py[WARNING]: Failed to run module scripts_user (scripts in /var/lib/cloud/instance/scripts)
-2026-07-21 07:35:11,009 - log_util.py[WARNING]: Running module scripts_user (<module 'cloudinit.config.cc_scripts_user' from '/usr/lib/python3/dist-packages/cloudinit/config/cc_scripts_user.py'>) failed
-Cloud-init v. 26.1-0ubuntu1~22.04.1 finished at Tue, 21 Jul 2026 07:35:11 +0000. Datasource DataSourceEc2.  Up 83.87 seconds
-open /opt/legacy-100-years/docker-compose.cloud.yml: no such file or directory
-exit code: 1

@@ -1,6 +1,0 @@
-
-WARNING! Your credentials are stored unencrypted in '/home/pc243/.docker/config.json'.
-Configure a credential helper to remove this warning. See
-https://docs.docker.com/go/credential-store/
-
-Login Succeeded

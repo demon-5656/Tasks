@@ -45,7 +45,6 @@ resource "yandex_compute_instance" "app" {
     serial-port-enable = "1"
     user-data = templatefile("${path.module}/templates/cloud-init.yml", {
       ssh_public_key  = local.ssh_public_key
-      app_repo        = var.app_repo
       app_name        = var.app_name
       registry_url    = local.registry_url
       image_tag       = var.image_tag

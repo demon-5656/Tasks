@@ -38,12 +38,6 @@ variable "app_name" {
   default     = "legacy-100-years"
 }
 
-variable "app_repo" {
-  type        = string
-  description = "Git repository with application sources."
-  default     = "https://github.com/demon-5656/legacy-100-years.git"
-}
-
 variable "image_tag" {
   type        = string
   description = "Container image tag."

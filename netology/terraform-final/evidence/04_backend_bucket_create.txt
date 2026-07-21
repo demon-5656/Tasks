@@ -1,9 +1,0 @@
-name: netology-final-tfstate-20260721-b1glhd6ohrcmkvkg7v7q
-folder_id: b1glhd6ohrcmkvkg7v7q
-anonymous_access_flags: {}
-default_storage_class: STANDARD
-versioning: VERSIONING_DISABLED
-max_size: "1073741824"
-created_at: "2026-07-21T07:14:53.789006Z"
-resource_id: e3ecol1t1hf2f58v6muv
-

@@ -1,5 +1,0 @@
-NEXT                          LEFT LAST PASSED UNIT                                   ACTIVATES
-Tue 2026-07-28 10:00:00 MSK 6 days -         - netology-terraform-final-destroy.timer netology-terraform-final-destroy.service
-
-1 timers listed.
-Pass --all to see loaded but inactive timers, too.

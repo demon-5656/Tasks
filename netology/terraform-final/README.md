@@ -50,7 +50,7 @@ No changes. Your infrastructure matches the configuration.
 ```text
 Пользователь
     |
-    | HTTP/HTTPS
+    | HTTP
     v
 VM в Yandex Cloud
     |
@@ -133,9 +133,10 @@ Cloud-init выполняет:
 2. добавление SSH-ключа;
 3. установку Docker CE;
 4. установку docker compose plugin;
-5. клонирование репозитория приложения;
-6. создание runtime .env;
-7. запуск docker compose.
+5. создание runtime `.env`;
+6. запись `docker-compose.cloud.yml`;
+7. вход в Container Registry через IAM-токен;
+8. запуск контейнеров из опубликованных образов.
 ```
 
 Runtime `.env` создается на сервере и содержит настройки подключения к MySQL, SMTP и параметры приложения. В Git хранится только пример файла с переменными, реальные значения исключены из репозитория.

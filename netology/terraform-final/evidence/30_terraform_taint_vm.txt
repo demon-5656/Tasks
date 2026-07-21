@@ -1,2 +1,0 @@
-Resource instance yandex_compute_instance.app has been marked as tainted.
-exit code: 0
