@@ -1,0 +1,11 @@
+SMTP configured on running VM:
+  host: smtp.beget.com
+  port: 465
+  secure: true
+  user: test.admin@conso-group.ru
+
+Checks:
+  /api/health returned {"ok":true}
+  /api/auth/forgot-password returned reset_sent_if_user_exists
+  API logs after SMTP test contain no [mail:dev] and no SMTP error.
+  terraform plan after SMTP sync: No changes.
