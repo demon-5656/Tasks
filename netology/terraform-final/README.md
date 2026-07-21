@@ -1,33 +1,30 @@
 # Итоговый проект модуля «Облачная инфраструктура. Terraform»
 
-В качестве приложения я взял свой проект [`legacy-100-years`](https://github.com/demon-5656/legacy-100-years). Это браузерная игра, которую я доработал под итоговый проект: добавил backend, регистрацию пользователей, подтверждение почты, восстановление пароля и сохранение прогресса в MySQL.
+Для итогового проекта использовано приложение [`legacy-100-years`](https://github.com/demon-5656/legacy-100-years). Это web-приложение с frontend, backend, авторизацией пользователей, подтверждением почты, восстановлением пароля и сохранением игрового прогресса в MySQL.
 
-Получилось не просто поднять условный nginx, а развернуть приложение, которому реально нужны frontend, backend, база и переменные окружения.
+Такой вариант выбран, потому что для него нужна полноценная инфраструктура: VM, Docker, Container Registry, managed database, переменные окружения и хранение секретов.
 
-## Что сделано
+## Состав решения
 
-- описана VPC и две подсети;
-- добавлены security groups для VM и MySQL;
-- описана VM для приложения;
-- через `cloud-init` ставятся Docker и Docker Compose;
-- описан Yandex Managed MySQL;
-- описан Yandex Container Registry;
-- добавлен Lockbox для секретов приложения;
-- backend приложения подключается к MySQL;
-- Dockerfile приложения уже содержит multi-stage сборку;
-- Docker Compose для облака использует образы из Container Registry;
-- state рассчитан на хранение в S3 bucket с lock-файлом.
+- VPC и две подсети в Yandex Cloud;
+- security groups для приложения и MySQL;
+- VM для запуска приложения;
+- установка Docker и Docker Compose через `cloud-init`;
+- Yandex Managed MySQL;
+- Yandex Container Registry;
+- Lockbox для секретов приложения;
+- remote state в Object Storage с lock-файлом;
+- Docker Compose для запуска frontend/backend контейнеров;
+- подключение backend к Managed MySQL.
 
-Код Terraform лежит в [`src`](src).
+Terraform-код находится в каталоге [`src`](src).
 
-## Схема
-
-Общая логика такая:
+## Архитектура
 
 ```text
 Пользователь
     |
-    | 80/443
+    | HTTP/HTTPS
     v
 VM в Yandex Cloud
     |
@@ -35,18 +32,18 @@ VM в Yandex Cloud
     v
 nginx container -> api container
                     |
-                    | 3306
+                    | MySQL 3306
                     v
               Yandex Managed MySQL
 
-Container Registry хранит образы web/api.
+Container Registry хранит Docker-образы web/api.
 Lockbox хранит пароль БД, JWT secret и SMTP password.
-Remote state хранится в Object Storage.
+Terraform state хранится в Object Storage.
 ```
 
-## Задание 1. Инфраструктура
+## Задание 1. Инфраструктура в Yandex Cloud
 
-VPC создается ресурсом:
+VPC описана ресурсом `yandex_vpc_network`:
 
 ```hcl
 resource "yandex_vpc_network" "app" {
@@ -54,7 +51,7 @@ resource "yandex_vpc_network" "app" {
 }
 ```
 
-Подсети сделал через `for_each`, чтобы не копировать почти одинаковые блоки:
+Подсети создаются через `for_each`:
 
 ```hcl
 resource "yandex_vpc_subnet" "this" {
@@ -67,58 +64,75 @@ resource "yandex_vpc_subnet" "this" {
 }
 ```
 
-В переменных сейчас две подсети:
+В конфигурации используются две подсети:
 
-- `app-a` для VM;
-- `db-b` для MySQL.
+- `app-a` для VM с приложением;
+- `db-b` для Managed MySQL.
 
-Security groups:
+Для VM открыты порты:
 
-- для VM открыты `22`, `80`, `443`;
-- для MySQL открыт `3306` только от security group приложения.
+- `22` для SSH;
+- `80` для HTTP;
+- `443` для HTTPS.
 
-Это важный момент: базу не надо светить наружу, к ней должен ходить только backend.
+Для MySQL открыт порт `3306` только от security group приложения. База не доступна напрямую из интернета.
 
-## Задание 2. Docker через cloud-init
+Файлы:
 
-VM создается в [`src/compute.tf`](src/compute.tf). В `metadata.user-data` передается шаблон [`src/templates/cloud-init.yml`](src/templates/cloud-init.yml).
+- [`src/network.tf`](src/network.tf);
+- [`src/compute.tf`](src/compute.tf);
+- [`src/mysql.tf`](src/mysql.tf);
+- [`src/registry.tf`](src/registry.tf).
 
-В cloud-init делается следующее:
+## Задание 2. Установка Docker через cloud-init
+
+VM создается ресурсом `yandex_compute_instance`. В `metadata.user-data` передается шаблон [`src/templates/cloud-init.yml`](src/templates/cloud-init.yml).
+
+Cloud-init выполняет:
 
 ```text
-1. создается пользователь ubuntu;
-2. добавляется SSH-ключ;
-3. ставится Docker CE и docker compose plugin;
-4. клонируется репозиторий приложения;
-5. создается .env для compose;
-6. запускается docker compose.
+1. создание пользователя ubuntu;
+2. добавление SSH-ключа;
+3. установку Docker CE;
+4. установку docker compose plugin;
+5. клонирование репозитория приложения;
+6. создание runtime .env;
+7. запуск docker compose.
 ```
 
-Да, `.env` оказывается на сервере. Это нормально для runtime-конфига, но его нельзя коммитить. В репозитории лежит только пример.
+Runtime `.env` создается на сервере и содержит настройки подключения к MySQL, SMTP и параметры приложения. В Git хранится только пример файла с переменными, реальные значения исключены из репозитория.
 
 ## Задание 3. Dockerfile и Container Registry
 
-В приложении есть multi-stage [`Dockerfile`](https://github.com/demon-5656/legacy-100-years/blob/main/Dockerfile):
+В приложении используется multi-stage [`Dockerfile`](https://github.com/demon-5656/legacy-100-years/blob/main/Dockerfile):
 
-- `deps` ставит npm-зависимости;
+- `deps` устанавливает npm-зависимости;
 - `frontend-build` собирает React/Vite frontend;
-- `web` собирает nginx-образ со статикой;
-- `api` собирает Node.js backend.
+- `web` формирует nginx-образ со статикой;
+- `api` формирует Node.js backend-образ.
 
-Локально образы собираются так:
+Локальная сборка образов:
 
 ```bash
 docker build --target web -t legacy-100-years-web:local .
 docker build --target api -t legacy-100-years-api:local .
 ```
 
-После создания registry Terraform выводит адрес:
+Container Registry создается ресурсом:
 
-```bash
-terraform output registry_url
+```hcl
+resource "yandex_container_registry" "app" {
+  name = local.registry_name
+}
 ```
 
-Дальше образы можно затегать и отправить в Yandex Container Registry:
+После создания registry адрес доступен через output:
+
+```bash
+terraform -chdir=src output -raw registry_url
+```
+
+Пример публикации образов:
 
 ```bash
 export CR_REGISTRY="$(terraform -chdir=src output -raw registry_url)"
@@ -130,9 +144,16 @@ docker push "$CR_REGISTRY/legacy-100-years-web:latest"
 docker push "$CR_REGISTRY/legacy-100-years-api:latest"
 ```
 
-## Задание 4. Приложение и БД
+## Задание 4. Подключение приложения к БД
 
-Backend приложения использует env-переменные:
+Managed MySQL описан в [`src/mysql.tf`](src/mysql.tf). Создаются:
+
+- MySQL cluster;
+- база данных `legacy_100_years`;
+- пользователь приложения;
+- права пользователя на базу.
+
+Backend получает подключение через переменные окружения:
 
 ```text
 MYSQL_HOST
@@ -143,25 +164,18 @@ MYSQL_PASSWORD
 MYSQL_SSL
 ```
 
-В Terraform база описана в [`src/mysql.tf`](src/mysql.tf):
-
-- создается Managed MySQL cluster;
-- создается база `legacy_100_years`;
-- создается пользователь приложения;
-- пользователю выдаются права на эту базу.
-
-В приложении backend сам создает нужные таблицы при старте:
+При старте backend создает таблицы приложения:
 
 - `users`;
 - `email_verification_tokens`;
 - `password_reset_tokens`;
 - `game_saves`.
 
-Мне такой вариант тут кажется нормальным: Terraform отвечает за инфраструктуру и managed database, а приложение само ведет свою схему. Для маленького проекта это проще, чем отдельно тащить мигратор.
+Terraform в этом решении управляет инфраструктурой и managed database, а схема приложения создается самим backend. Для такого небольшого проекта это упрощает запуск и не требует отдельного миграционного сервиса.
 
 ## Задание 5*. Lockbox
 
-Добавил Lockbox:
+Для секретов добавлен Yandex Lockbox:
 
 ```hcl
 resource "yandex_lockbox_secret" "app" {
@@ -169,17 +183,19 @@ resource "yandex_lockbox_secret" "app" {
 }
 ```
 
-В secret version складываются:
+В Lockbox сохраняются:
 
 - `mysql_password`;
 - `jwt_secret`;
 - `smtp_password`.
 
-В текущем варианте Terraform получает значения из локального `personal.auto.tfvars`, создает ресурсы и кладет эти же значения в Lockbox. Для боевого варианта я бы сделал жестче: сначала создал секрет руками или отдельным bootstrap-кодом, а основной Terraform уже читал бы его через data source. Но для учебного проекта сама интеграция с Lockbox описана и есть в коде.
+Файл: [`src/lockbox.tf`](src/lockbox.tf).
+
+Значения секретов передаются в Terraform через локальный `personal.auto.tfvars`, который исключен из Git. В репозитории оставлен только пример [`src/personal.auto.tfvars.example`](src/personal.auto.tfvars.example).
 
 ## Remote state
 
-Backend описан в [`src/providers.tf`](src/providers.tf):
+Backend настроен на Object Storage:
 
 ```hcl
 backend "s3" {
@@ -194,23 +210,21 @@ backend "s3" {
 }
 ```
 
-Реальные ключи для backend не лежат в Git. Для них есть пример [`src/backend.hcl.example`](src/backend.hcl.example), а настоящий `backend.hcl` игнорируется.
+Файл: [`src/providers.tf`](src/providers.tf).
 
-Инициализация с remote state:
-
-```bash
-terraform -chdir=src init -backend-config=backend.hcl
-```
-
-Для локальной проверки синтаксиса я использовал:
-
-```bash
-terraform -chdir=src init -backend=false
-```
+Настоящий `backend.hcl` с ключами доступа исключен из Git. В репозитории есть только шаблон [`src/backend.hcl.example`](src/backend.hcl.example).
 
 ## Проверки
 
-Terraform:
+Выполнены базовые проверки Terraform:
+
+```bash
+terraform -chdir=src fmt -check -recursive
+terraform -chdir=src init -backend=false
+terraform -chdir=src validate
+```
+
+Результаты:
 
 - [`evidence/01_terraform_fmt.txt`](evidence/01_terraform_fmt.txt);
 - [`evidence/02_terraform_init_backend_false.txt`](evidence/02_terraform_init_backend_false.txt);
@@ -220,20 +234,3 @@ Terraform:
 
 - репозиторий: [`demon-5656/legacy-100-years`](https://github.com/demon-5656/legacy-100-years);
 - commit приложения: [`evidence/00_app_repo_commit.txt`](evidence/00_app_repo_commit.txt).
-
-## Что приложить скринами после apply
-
-Чтобы отчет был прям совсем закрыт для проверки, после реального запуска нужно добавить скрины:
-
-1. `terraform apply` с созданными ресурсами.
-2. `terraform output` с IP/registry.
-3. VM в Yandex Cloud.
-4. Managed MySQL cluster.
-5. Container Registry с двумя образами.
-6. Lockbox secret.
-7. Открытая страница приложения по IP или DNS.
-8. Регистрация пользователя.
-9. Письмо подтверждения или dev-лог SMTP, если почта еще не настроена.
-10. Проверка сохранения прогресса после повторного входа.
-
-Сейчас кодовая часть готова и проходит `terraform validate`. Финальный `apply` я бы запускал уже когда понятно, что можно спокойно создать платные ресурсы в Yandex Cloud.
