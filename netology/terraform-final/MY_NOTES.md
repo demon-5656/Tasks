@@ -65,3 +65,27 @@ terraform -chdir=src output
 ```
 
 Потом открыть приложение, создать пользователя, подтвердить почту, зайти заново и показать, что прогресс подтянулся.
+
+## Автоудаление стенда
+
+Чтобы не забыть удалить платные ресурсы после проверки, добавлены скрипты:
+
+- `scripts/destroy_stack.sh` - делает `terraform init` и `terraform destroy`;
+- `scripts/install_destroy_timer.sh` - ставит cron или systemd timer;
+- `scripts/remove_destroy_timer.sh` - снимает таймер.
+
+На моей машине `crontab` не установлен, поэтому поставлен systemd user timer.
+
+Проверить:
+
+```bash
+systemctl --user list-timers netology-terraform-final-destroy.timer
+```
+
+Запланировано на `2026-07-28 10:00 MSK`.
+
+Если проверка затянется, таймер можно снять:
+
+```bash
+netology/terraform-final/scripts/remove_destroy_timer.sh
+```
