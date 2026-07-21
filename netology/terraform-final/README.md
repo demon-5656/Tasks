@@ -1,162 +1,239 @@
 # Итоговый проект модуля «Облачная инфраструктура. Terraform»
 
-## Задание
+В качестве приложения я взял свой проект [`legacy-100-years`](https://github.com/demon-5656/legacy-100-years). Это браузерная игра, которую я доработал под итоговый проект: добавил backend, регистрацию пользователей, подтверждение почты, восстановление пароля и сохранение прогресса в MySQL.
 
-Преподаватели: Евгений Мисяков, Елисей Ильин.
+Получилось не просто поднять условный nginx, а развернуть приложение, которому реально нужны frontend, backend, база и переменные окружения.
 
-Добрый день, коллеги!
+## Что сделано
 
-Предлагаем вам выполнить итоговый проект, чтобы закрепить полученные знания и навыки.
+- описана VPC и две подсети;
+- добавлены security groups для VM и MySQL;
+- описана VM для приложения;
+- через `cloud-init` ставятся Docker и Docker Compose;
+- описан Yandex Managed MySQL;
+- описан Yandex Container Registry;
+- добавлен Lockbox для секретов приложения;
+- backend приложения подключается к MySQL;
+- Dockerfile приложения уже содержит multi-stage сборку;
+- Docker Compose для облака использует образы из Container Registry;
+- state рассчитан на хранение в S3 bucket с lock-файлом.
 
-## Обратите внимание
+Код Terraform лежит в [`src`](src).
 
-Перед выполнением итогового проекта рекомендуется выполнить все обязательные и дополнительные домашние задания модулей:
+## Схема
 
-- «Виртуализация и контейнеризация»;
-- «Облачная инфраструктура. Terraform».
+Общая логика такая:
 
-## Цель итогового проекта
+```text
+Пользователь
+    |
+    | 80/443
+    v
+VM в Yandex Cloud
+    |
+    | Docker Compose
+    v
+nginx container -> api container
+                    |
+                    | 3306
+                    v
+              Yandex Managed MySQL
 
-Развернуть web-приложение для работы в облачной инфраструктуре Yandex Cloud.
+Container Registry хранит образы web/api.
+Lockbox хранит пароль БД, JWT secret и SMTP password.
+Remote state хранится в Object Storage.
+```
 
-## В результате выполнения итогового проекта
+## Задание 1. Инфраструктура
 
-Нужно получить опыт:
+VPC создается ресурсом:
 
-- работы с облачной инфраструктурой Yandex Cloud;
-- применения принципов IaC при работе с виртуальными машинами;
-- развертывания и настройки web-приложений;
-- оркестрации контейнеров с Docker Compose и Docker Swarm;
-- работы с Terraform для управления инфраструктурой;
-- подготовки web-приложения для портфолио.
+```hcl
+resource "yandex_vpc_network" "app" {
+  name = "${var.app_name}-vpc"
+}
+```
 
-## Сроки выполнения
+Подсети сделал через `for_each`, чтобы не копировать почти одинаковые блоки:
 
-На выполнение проекта дается 7 дней. Есть 2 попытки на доработку итогового проекта.
+```hcl
+resource "yandex_vpc_subnet" "this" {
+  for_each = var.subnets
 
-## Чек-лист готовности к работе
+  name           = "${var.app_name}-${each.key}"
+  zone           = each.value.zone
+  network_id     = yandex_vpc_network.app.id
+  v4_cidr_blocks = [each.value.cidr]
+}
+```
 
-- изучен основной и дополнительный теоретический материал по модулям «Виртуализация и контейнеризация» и «Облачная инфраструктура. Terraform»;
-- выполнены все обязательные домашние задания модулей.
+В переменных сейчас две подсети:
 
-## Инструменты и материалы
+- `app-a` для VM;
+- `db-b` для MySQL.
 
-Понадобятся:
+Security groups:
 
-- Docker;
-- Docker Compose;
-- Terraform.
+- для VM открыты `22`, `80`, `443`;
+- для MySQL открыт `3306` только от security group приложения.
 
-## Описание итогового проекта
+Это важный момент: базу не надо светить наружу, к ней должен ходить только backend.
 
-Задания итогового проекта охватывают полный цикл создания и настройки инфраструктуры, установку необходимых инструментов, сборку и развертывание приложения, а также хранение образов в реестре контейнеров.
+## Задание 2. Docker через cloud-init
 
-В рамках итогового проекта нужно:
+VM создается в [`src/compute.tf`](src/compute.tf). В `metadata.user-data` передается шаблон [`src/templates/cloud-init.yml`](src/templates/cloud-init.yml).
 
-- собрать простое web-приложение на основании представленных данных;
-- описать `Dockerfile`;
-- описать `docker-compose.yml`;
-- настроить инфраструктуру в Yandex Cloud через Terraform;
-- развернуть приложение в облачной среде.
+В cloud-init делается следующее:
 
-## Инструкция по выполнению
+```text
+1. создается пользователь ubuntu;
+2. добавляется SSH-ключ;
+3. ставится Docker CE и docker compose plugin;
+4. клонируется репозиторий приложения;
+5. создается .env для compose;
+6. запускается docker compose.
+```
 
-Используя Docker, Docker Compose и Terraform, нужно выполнить следующие задания.
-
-## Задание 1. Развертывание инфраструктуры в Yandex Cloud
-
-Нужно:
-
-- создать Virtual Private Cloud;
-- создать подсети;
-- создать виртуальные машины;
-- настроить группы безопасности для портов `22`, `80`, `443`;
-- привязать группу безопасности к VM;
-- описать создание БД MySQL в Yandex Cloud;
-- описать создание Container Registry.
-
-## Задание 2. Установка Docker через cloud-init
-
-Используя `user-data` / `cloud-init`, нужно установить:
-
-- Docker;
-- Docker Compose.
-
-Ориентир: задание 5 модуля «Виртуализация и контейнеризация».
+Да, `.env` оказывается на сервере. Это нормально для runtime-конфига, но его нельзя коммитить. В репозитории лежит только пример.
 
 ## Задание 3. Dockerfile и Container Registry
 
-Нужно:
+В приложении есть multi-stage [`Dockerfile`](https://github.com/demon-5656/legacy-100-years/blob/main/Dockerfile):
 
-- описать `Dockerfile` с web-приложением;
-- собрать контейнер;
-- сохранить контейнер в Container Registry.
+- `deps` ставит npm-зависимости;
+- `frontend-build` собирает React/Vite frontend;
+- `web` собирает nginx-образ со статикой;
+- `api` собирает Node.js backend.
 
-Ориентир: задание 5 модуля «Виртуализация и контейнеризация».
+Локально образы собираются так:
 
-## Задание 4. Подключение приложения к БД
+```bash
+docker build --target web -t legacy-100-years-web:local .
+docker build --target api -t legacy-100-years-api:local .
+```
 
-Нужно связать работу приложения в контейнере с БД в Yandex Cloud.
+После создания registry Terraform выводит адрес:
 
-## Задание 5*. LockBox
+```bash
+terraform output registry_url
+```
 
-Усложненный вариант:
+Дальше образы можно затегать и отправить в Yandex Container Registry:
 
-- положить пароли от БД в LockBox;
-- настроить интеграцию с Terraform так, чтобы пароль для БД брался из LockBox.
+```bash
+export CR_REGISTRY="$(terraform -chdir=src output -raw registry_url)"
 
-## Чек-лист готовности итоговой работы
+docker tag legacy-100-years-web:local "$CR_REGISTRY/legacy-100-years-web:latest"
+docker tag legacy-100-years-api:local "$CR_REGISTRY/legacy-100-years-api:latest"
 
-Работа должна соответствовать следующим пунктам:
+docker push "$CR_REGISTRY/legacy-100-years-web:latest"
+docker push "$CR_REGISTRY/legacy-100-years-api:latest"
+```
 
-- инфраструктура в Yandex Cloud описана без хардкода;
-- state хранится удаленно;
-- подключен state locking;
-- Docker и Docker Compose установлены через `cloud-init`;
-- `Dockerfile` включает мультисборку;
-- образ сохранен в Container Registry;
-- приложение доступно по IP-адресу машины;
-- в усложненном варианте настроен DNS;
-- создан корректно оформленный MD-файл;
-- MD-файл содержит примеры, скриншоты и ссылки.
+## Задание 4. Приложение и БД
 
-## Формат сдачи проекта
+Backend приложения использует env-переменные:
 
-Нужно:
+```text
+MYSQL_HOST
+MYSQL_PORT
+MYSQL_DATABASE
+MYSQL_USER
+MYSQL_PASSWORD
+MYSQL_SSL
+```
 
-1. Описать проект в MD-файле.
-2. Сформировать ссылку.
-3. Загрузить работу в Git-репозиторий.
-4. Вставить ссылку на работу в поле «Ссылка на решение».
-5. Нажать «Отправить».
+В Terraform база описана в [`src/mysql.tf`](src/mysql.tf):
 
-## Критерии оценивания
+- создается Managed MySQL cluster;
+- создается база `legacy_100_years`;
+- создается пользователь приложения;
+- пользователю выдаются права на эту базу.
 
-### Зачет
+В приложении backend сам создает нужные таблицы при старте:
 
-Работа засчитывается, если выполнены все задания:
+- `users`;
+- `email_verification_tokens`;
+- `password_reset_tokens`;
+- `game_saves`.
 
-- инфраструктура в Yandex Cloud создана и настроена корректно;
-- web-приложение развернуто и доступно через указанные порты;
-- `Dockerfile` и Docker Compose написаны правильно и применены для сборки и развертывания приложения;
-- образы сохранены в Container Registry;
-- виртуальные машины правильно настроены и управляются с помощью Terraform;
-- создан и корректно оформлен MD-файл;
-- код хранится в Git.
+Мне такой вариант тут кажется нормальным: Terraform отвечает за инфраструктуру и managed database, а приложение само ведет свою схему. Для маленького проекта это проще, чем отдельно тащить мигратор.
 
-### На доработку
+## Задание 5*. Lockbox
 
-Работа отправляется на доработку, если инфраструктура нестабильная или приложение не работает:
+Добавил Lockbox:
 
-- есть проблемы с созданием инфраструктуры;
-- есть проблемы с установкой Docker;
-- есть проблемы с созданием `Dockerfile`;
-- есть проблемы с развертыванием приложения;
-- приложение не запускается или недоступно;
-- виртуальные машины не настроены или не управляются через Terraform;
-- код содержит хардкод.
+```hcl
+resource "yandex_lockbox_secret" "app" {
+  name = "${var.app_name}-secrets"
+}
+```
 
-### Незачет
+В secret version складываются:
 
-«Незачет» ставится в крайнем случае, если отправлено пустое или недоработанное задание во второй раз после отправки работы на доработку.
+- `mysql_password`;
+- `jwt_secret`;
+- `smtp_password`.
 
+В текущем варианте Terraform получает значения из локального `personal.auto.tfvars`, создает ресурсы и кладет эти же значения в Lockbox. Для боевого варианта я бы сделал жестче: сначала создал секрет руками или отдельным bootstrap-кодом, а основной Terraform уже читал бы его через data source. Но для учебного проекта сама интеграция с Lockbox описана и есть в коде.
+
+## Remote state
+
+Backend описан в [`src/providers.tf`](src/providers.tf):
+
+```hcl
+backend "s3" {
+  key    = "terraform-final/terraform.tfstate"
+  region = "ru-central1"
+
+  endpoints = {
+    s3 = "https://storage.yandexcloud.net"
+  }
+
+  use_lockfile = true
+}
+```
+
+Реальные ключи для backend не лежат в Git. Для них есть пример [`src/backend.hcl.example`](src/backend.hcl.example), а настоящий `backend.hcl` игнорируется.
+
+Инициализация с remote state:
+
+```bash
+terraform -chdir=src init -backend-config=backend.hcl
+```
+
+Для локальной проверки синтаксиса я использовал:
+
+```bash
+terraform -chdir=src init -backend=false
+```
+
+## Проверки
+
+Terraform:
+
+- [`evidence/01_terraform_fmt.txt`](evidence/01_terraform_fmt.txt);
+- [`evidence/02_terraform_init_backend_false.txt`](evidence/02_terraform_init_backend_false.txt);
+- [`evidence/03_terraform_validate.txt`](evidence/03_terraform_validate.txt).
+
+Приложение:
+
+- репозиторий: [`demon-5656/legacy-100-years`](https://github.com/demon-5656/legacy-100-years);
+- commit приложения: [`evidence/00_app_repo_commit.txt`](evidence/00_app_repo_commit.txt).
+
+## Что приложить скринами после apply
+
+Чтобы отчет был прям совсем закрыт для проверки, после реального запуска нужно добавить скрины:
+
+1. `terraform apply` с созданными ресурсами.
+2. `terraform output` с IP/registry.
+3. VM в Yandex Cloud.
+4. Managed MySQL cluster.
+5. Container Registry с двумя образами.
+6. Lockbox secret.
+7. Открытая страница приложения по IP или DNS.
+8. Регистрация пользователя.
+9. Письмо подтверждения или dev-лог SMTP, если почта еще не настроена.
+10. Проверка сохранения прогресса после повторного входа.
+
+Сейчас кодовая часть готова и проходит `terraform validate`. Финальный `apply` я бы запускал уже когда понятно, что можно спокойно создать платные ресурсы в Yandex Cloud.

@@ -1,0 +1,54 @@
+#cloud-config
+users:
+  - name: ubuntu
+    groups: sudo, docker
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh_authorized_keys:
+      - ${ssh_public_key}
+
+package_update: true
+package_upgrade: false
+packages:
+  - ca-certificates
+  - curl
+  - git
+  - gnupg
+
+write_files:
+  - path: /opt/${app_name}/.env
+    owner: root:root
+    permissions: "0600"
+    content: |
+      WEB_PORT=80
+      PUBLIC_BASE_URL=${public_base_url}
+      CR_REGISTRY=${registry_url}
+      IMAGE_TAG=${image_tag}
+
+      JWT_SECRET=${jwt_secret}
+
+      MYSQL_HOST=${mysql_host}
+      MYSQL_PORT=3306
+      MYSQL_DATABASE=${mysql_database}
+      MYSQL_USER=${mysql_user}
+      MYSQL_PASSWORD=${mysql_password}
+      MYSQL_SSL=true
+
+      SMTP_HOST=${smtp_host}
+      SMTP_PORT=${smtp_port}
+      SMTP_SECURE=${smtp_secure}
+      SMTP_USER=${smtp_user}
+      SMTP_PASSWORD=${smtp_password}
+      SMTP_FROM=${smtp_from}
+
+runcmd:
+  - install -m 0755 -d /etc/apt/keyrings
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  - chmod a+r /etc/apt/keyrings/docker.gpg
+  - echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo $VERSION_CODENAME) stable" > /etc/apt/sources.list.d/docker.list
+  - apt-get update
+  - apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  - systemctl enable --now docker
+  - git clone ${app_repo} /opt/${app_name}/repo
+  - cp /opt/${app_name}/repo/docker-compose.cloud.yml /opt/${app_name}/docker-compose.cloud.yml
+  - cd /opt/${app_name} && docker compose --env-file .env -f docker-compose.cloud.yml up -d
