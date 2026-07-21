@@ -4,7 +4,7 @@ output "app_url" {
 }
 
 output "app_public_ip" {
-  value       = yandex_compute_instance.app.network_interface[0].nat_ip_address
+  value       = yandex_vpc_address.app.external_ipv4_address[0].address
   description = "Application VM public IP."
 }
 

@@ -1,0 +1,7 @@
+Warning: Permanently added '93.77.190.156' (ED25519) to the list of known hosts.
+api-1  | Legacy 100 Years API listening on 3000
+api-1  | [mail:dev] {
+api-1  |   to: 'student-1784619617@example.local',
+api-1  |   subject: 'Подтверждение почты Legacy 100 Years',
+api-1  |   text: 'Подтвердите почту: http://93.77.190.156/?verify=<token>'
+api-1  | }

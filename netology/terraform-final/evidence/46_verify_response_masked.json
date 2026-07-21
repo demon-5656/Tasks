@@ -1,0 +1,8 @@
+{
+  "token": "<jwt>",
+  "user": {
+    "id": 1,
+    "email": "student-1784619617@example.local",
+    "emailVerified": true
+  }
+}

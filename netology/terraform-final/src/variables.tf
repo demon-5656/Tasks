@@ -26,6 +26,12 @@ variable "ssh_public_key_path" {
   default     = "~/.ssh/id_ed25519.pub"
 }
 
+variable "vm_service_account_id" {
+  type        = string
+  description = "Service account ID attached to VM for Container Registry pull."
+  default     = ""
+}
+
 variable "app_name" {
   type        = string
   description = "Application name prefix."

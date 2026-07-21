@@ -2,6 +2,7 @@ cloud_id                 = "b1gxxxxxxxxxxxxxxxxx"
 folder_id                = "b1gxxxxxxxxxxxxxxxxx"
 service_account_key_file = "/home/user/secure/yandex/key.json"
 ssh_public_key_path      = "~/.ssh/id_ed25519.pub"
+vm_service_account_id    = "ajeXXXXXXXXXXXXXXXXX"
 
 mysql_password = "change-this-password"
 jwt_secret     = "change-this-jwt-secret"

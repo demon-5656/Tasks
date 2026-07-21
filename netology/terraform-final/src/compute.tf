@@ -2,10 +2,19 @@ data "yandex_compute_image" "ubuntu" {
   family = "ubuntu-2204-lts"
 }
 
+resource "yandex_vpc_address" "app" {
+  name = "${var.app_name}-public-ip"
+
+  external_ipv4_address {
+    zone_id = local.app_subnet.zone
+  }
+}
+
 resource "yandex_compute_instance" "app" {
-  name        = "${var.app_name}-app"
-  platform_id = var.vm_platform_id
-  zone        = local.app_subnet.zone
+  name               = "${var.app_name}-app"
+  platform_id        = var.vm_platform_id
+  zone               = local.app_subnet.zone
+  service_account_id = var.vm_service_account_id != "" ? var.vm_service_account_id : null
 
   resources {
     cores         = var.vm_cores
@@ -24,6 +33,7 @@ resource "yandex_compute_instance" "app" {
   network_interface {
     subnet_id          = local.app_subnet.id
     nat                = true
+    nat_ip_address     = yandex_vpc_address.app.external_ipv4_address[0].address
     security_group_ids = [yandex_vpc_security_group.app.id]
   }
 
@@ -53,4 +63,5 @@ resource "yandex_compute_instance" "app" {
       smtp_from       = var.smtp_from
     })
   }
+
 }

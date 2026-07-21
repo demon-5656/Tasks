@@ -1,0 +1,378 @@
+[0m[1mdata.yandex_compute_image.ubuntu: Reading...[0m[0m
+[0m[1myandex_container_registry.app: Refreshing state... [id=crp0il81r01irlk6s76q][0m
+[0m[1mdata.yandex_compute_image.ubuntu: Read complete after 0s [id=fd8v76jjfrhmkq9p1t5f][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create[0m
+
+Terraform will perform the following actions:
+
+[1m  # yandex_compute_instance.app[0m will be created
+[0m  [32m+[0m[0m resource "yandex_compute_instance" "app" {
+      [32m+[0m[0m created_at                = (known after apply)
+      [32m+[0m[0m folder_id                 = (known after apply)
+      [32m+[0m[0m fqdn                      = (known after apply)
+      [32m+[0m[0m gpu_cluster_id            = (known after apply)
+      [32m+[0m[0m hardware_generation       = (known after apply)
+      [32m+[0m[0m hostname                  = (known after apply)
+      [32m+[0m[0m id                        = (known after apply)
+      [32m+[0m[0m maintenance_grace_period  = (known after apply)
+      [32m+[0m[0m maintenance_policy        = (known after apply)
+      [32m+[0m[0m metadata                  = (known after apply)
+      [32m+[0m[0m name                      = "legacy-100-years-app"
+      [32m+[0m[0m network_acceleration_type = "standard"
+      [32m+[0m[0m platform_id               = "standard-v1"
+      [32m+[0m[0m reserved_instance_pool_id = (known after apply)
+      [32m+[0m[0m service_account_id        = (known after apply)
+      [32m+[0m[0m status                    = (known after apply)
+      [32m+[0m[0m zone                      = "ru-central1-a"
+
+      [32m+[0m[0m boot_disk {
+          [32m+[0m[0m auto_delete = true
+          [32m+[0m[0m device_name = (known after apply)
+          [32m+[0m[0m disk_id     = (known after apply)
+          [32m+[0m[0m mode        = (known after apply)
+
+          [32m+[0m[0m initialize_params {
+              [32m+[0m[0m block_size  = (known after apply)
+              [32m+[0m[0m description = (known after apply)
+              [32m+[0m[0m image_id    = "fd8v76jjfrhmkq9p1t5f"
+              [32m+[0m[0m name        = (known after apply)
+              [32m+[0m[0m size        = 20
+              [32m+[0m[0m snapshot_id = (known after apply)
+              [32m+[0m[0m type        = "network-hdd"
+            }
+        }
+
+      [32m+[0m[0m metadata_options (known after apply)
+
+      [32m+[0m[0m network_interface {
+          [32m+[0m[0m index              = (known after apply)
+          [32m+[0m[0m ip_address         = (known after apply)
+          [32m+[0m[0m ipv4               = true
+          [32m+[0m[0m ipv6               = (known after apply)
+          [32m+[0m[0m ipv6_address       = (known after apply)
+          [32m+[0m[0m mac_address        = (known after apply)
+          [32m+[0m[0m nat                = true
+          [32m+[0m[0m nat_ip_address     = (known after apply)
+          [32m+[0m[0m nat_ip_version     = (known after apply)
+          [32m+[0m[0m security_group_ids = (known after apply)
+          [32m+[0m[0m subnet_id          = (known after apply)
+        }
+
+      [32m+[0m[0m placement_policy (known after apply)
+
+      [32m+[0m[0m resources {
+          [32m+[0m[0m core_fraction = 20
+          [32m+[0m[0m cores         = 2
+          [32m+[0m[0m memory        = 2
+        }
+
+      [32m+[0m[0m scheduling_policy {
+          [32m+[0m[0m preemptible = true
+        }
+    }
+
+[1m  # yandex_iam_service_account.app_vm[0m will be created
+[0m  [32m+[0m[0m resource "yandex_iam_service_account" "app_vm" {
+      [32m+[0m[0m created_at         = (known after apply)
+      [32m+[0m[0m description        = (known after apply)
+      [32m+[0m[0m folder_id          = (known after apply)
+      [32m+[0m[0m id                 = (known after apply)
+      [32m+[0m[0m labels             = (known after apply)
+      [32m+[0m[0m name               = "legacy-100-years-vm"
+      [32m+[0m[0m service_account_id = (known after apply)
+    }
+
+[1m  # yandex_lockbox_secret.app[0m will be created
+[0m  [32m+[0m[0m resource "yandex_lockbox_secret" "app" {
+      [32m+[0m[0m created_at = (known after apply)
+      [32m+[0m[0m folder_id  = (known after apply)
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m name       = "legacy-100-years-secrets"
+      [32m+[0m[0m status     = (known after apply)
+    }
+
+[1m  # yandex_lockbox_secret_version.app[0m will be created
+[0m  [32m+[0m[0m resource "yandex_lockbox_secret_version" "app" {
+      [32m+[0m[0m id        = (known after apply)
+      [32m+[0m[0m secret_id = (known after apply)
+
+      [32m+[0m[0m entries {
+          [32m+[0m[0m key        = "mysql_password"
+          [32m+[0m[0m text_value = (sensitive value)
+        }
+      [32m+[0m[0m entries {
+          [32m+[0m[0m key        = "jwt_secret"
+          [32m+[0m[0m text_value = (sensitive value)
+        }
+      [32m+[0m[0m entries {
+          [32m+[0m[0m key        = "smtp_password"
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+    }
+
+[1m  # yandex_mdb_mysql_cluster.app[0m will be created
+[0m  [32m+[0m[0m resource "yandex_mdb_mysql_cluster" "app" {
+      [32m+[0m[0m allow_regeneration_host   = false
+      [32m+[0m[0m backup_retain_period_days = (known after apply)
+      [32m+[0m[0m created_at                = (known after apply)
+      [32m+[0m[0m deletion_protection       = false
+      [32m+[0m[0m disk_encryption_key_id    = (known after apply)
+      [32m+[0m[0m environment               = "PRESTABLE"
+      [32m+[0m[0m folder_id                 = (known after apply)
+      [32m+[0m[0m health                    = (known after apply)
+      [32m+[0m[0m host_group_ids            = (known after apply)
+      [32m+[0m[0m id                        = (known after apply)
+      [32m+[0m[0m mysql_config              = (known after apply)
+      [32m+[0m[0m name                      = "legacy-100-years-mysql"
+      [32m+[0m[0m network_id                = (known after apply)
+      [32m+[0m[0m security_group_ids        = (known after apply)
+      [32m+[0m[0m status                    = (known after apply)
+      [32m+[0m[0m version                   = "8.0"
+
+      [32m+[0m[0m access (known after apply)
+
+      [32m+[0m[0m backup_window_start (known after apply)
+
+      [32m+[0m[0m disk_size_autoscaling (known after apply)
+
+      [32m+[0m[0m host {
+          [32m+[0m[0m assign_public_ip   = false
+          [32m+[0m[0m fqdn               = (known after apply)
+          [32m+[0m[0m replication_source = (known after apply)
+          [32m+[0m[0m subnet_id          = (known after apply)
+          [32m+[0m[0m zone               = "ru-central1-b"
+        }
+
+      [32m+[0m[0m maintenance_window (known after apply)
+
+      [32m+[0m[0m performance_diagnostics (known after apply)
+
+      [32m+[0m[0m resources {
+          [32m+[0m[0m disk_size          = 10
+          [32m+[0m[0m disk_type_id       = "network-hdd"
+          [32m+[0m[0m resource_preset_id = "s2.micro"
+        }
+    }
+
+[1m  # yandex_mdb_mysql_database.app[0m will be created
+[0m  [32m+[0m[0m resource "yandex_mdb_mysql_database" "app" {
+      [32m+[0m[0m cluster_id = (known after apply)
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m name       = "legacy_100_years"
+    }
+
+[1m  # yandex_mdb_mysql_user.app[0m will be created
+[0m  [32m+[0m[0m resource "yandex_mdb_mysql_user" "app" {
+      [32m+[0m[0m authentication_plugin = (known after apply)
+      [32m+[0m[0m cluster_id            = (known after apply)
+      [32m+[0m[0m connection_manager    = (known after apply)
+      [32m+[0m[0m generate_password     = false
+      [32m+[0m[0m id                    = (known after apply)
+      [32m+[0m[0m name                  = "legacy_app"
+      [32m+[0m[0m password              = (sensitive value)
+
+      [32m+[0m[0m connection_limits (known after apply)
+
+      [32m+[0m[0m permission {
+          [32m+[0m[0m database_name = "legacy_100_years"
+          [32m+[0m[0m roles         = [
+              [32m+[0m[0m "ALL",
+            ]
+        }
+    }
+
+[1m  # yandex_resourcemanager_folder_iam_member.app_vm_registry_puller[0m will be created
+[0m  [32m+[0m[0m resource "yandex_resourcemanager_folder_iam_member" "app_vm_registry_puller" {
+      [32m+[0m[0m folder_id = "b1glhd6ohrcmkvkg7v7q"
+      [32m+[0m[0m id        = (known after apply)
+      [32m+[0m[0m member    = (known after apply)
+      [32m+[0m[0m role      = "container-registry.images.puller"
+    }
+
+[1m  # yandex_vpc_address.app[0m will be created
+[0m  [32m+[0m[0m resource "yandex_vpc_address" "app" {
+      [32m+[0m[0m created_at          = (known after apply)
+      [32m+[0m[0m deletion_protection = (known after apply)
+      [32m+[0m[0m folder_id           = (known after apply)
+      [32m+[0m[0m id                  = (known after apply)
+      [32m+[0m[0m labels              = (known after apply)
+      [32m+[0m[0m name                = "legacy-100-years-public-ip"
+      [32m+[0m[0m reserved            = (known after apply)
+      [32m+[0m[0m used                = (known after apply)
+
+      [32m+[0m[0m external_ipv4_address {
+          [32m+[0m[0m address                  = (known after apply)
+          [32m+[0m[0m ddos_protection_provider = (known after apply)
+          [32m+[0m[0m outgoing_smtp_capability = (known after apply)
+          [32m+[0m[0m zone_id                  = "ru-central1-a"
+        }
+    }
+
+[1m  # yandex_vpc_network.app[0m will be created
+[0m  [32m+[0m[0m resource "yandex_vpc_network" "app" {
+      [32m+[0m[0m created_at                = (known after apply)
+      [32m+[0m[0m default_security_group_id = (known after apply)
+      [32m+[0m[0m folder_id                 = (known after apply)
+      [32m+[0m[0m id                        = (known after apply)
+      [32m+[0m[0m labels                    = (known after apply)
+      [32m+[0m[0m name                      = "legacy-100-years-vpc"
+      [32m+[0m[0m subnet_ids                = (known after apply)
+    }
+
+[1m  # yandex_vpc_security_group.app[0m will be created
+[0m  [32m+[0m[0m resource "yandex_vpc_security_group" "app" {
+      [32m+[0m[0m created_at = (known after apply)
+      [32m+[0m[0m folder_id  = (known after apply)
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m labels     = (known after apply)
+      [32m+[0m[0m name       = "legacy-100-years-app-sg"
+      [32m+[0m[0m network_id = (known after apply)
+      [32m+[0m[0m status     = (known after apply)
+
+      [32m+[0m[0m egress {
+          [32m+[0m[0m description       = "Outbound traffic"
+          [32m+[0m[0m from_port         = 0
+          [32m+[0m[0m id                = (known after apply)
+          [32m+[0m[0m labels            = (known after apply)
+          [32m+[0m[0m port              = -1
+          [32m+[0m[0m protocol          = "ANY"
+          [32m+[0m[0m to_port           = 65535
+          [32m+[0m[0m v4_cidr_blocks    = [
+              [32m+[0m[0m "0.0.0.0/0",
+            ]
+          [32m+[0m[0m v6_cidr_blocks    = []
+            [90m# (2 unchanged attributes hidden)[0m[0m
+        }
+
+      [32m+[0m[0m ingress {
+          [32m+[0m[0m description       = "HTTP"
+          [32m+[0m[0m from_port         = -1
+          [32m+[0m[0m id                = (known after apply)
+          [32m+[0m[0m labels            = (known after apply)
+          [32m+[0m[0m port              = 80
+          [32m+[0m[0m protocol          = "TCP"
+          [32m+[0m[0m to_port           = -1
+          [32m+[0m[0m v4_cidr_blocks    = [
+              [32m+[0m[0m "0.0.0.0/0",
+            ]
+          [32m+[0m[0m v6_cidr_blocks    = []
+            [90m# (2 unchanged attributes hidden)[0m[0m
+        }
+      [32m+[0m[0m ingress {
+          [32m+[0m[0m description       = "HTTPS"
+          [32m+[0m[0m from_port         = -1
+          [32m+[0m[0m id                = (known after apply)
+          [32m+[0m[0m labels            = (known after apply)
+          [32m+[0m[0m port              = 443
+          [32m+[0m[0m protocol          = "TCP"
+          [32m+[0m[0m to_port           = -1
+          [32m+[0m[0m v4_cidr_blocks    = [
+              [32m+[0m[0m "0.0.0.0/0",
+            ]
+          [32m+[0m[0m v6_cidr_blocks    = []
+            [90m# (2 unchanged attributes hidden)[0m[0m
+        }
+      [32m+[0m[0m ingress {
+          [32m+[0m[0m description       = "SSH"
+          [32m+[0m[0m from_port         = -1
+          [32m+[0m[0m id                = (known after apply)
+          [32m+[0m[0m labels            = (known after apply)
+          [32m+[0m[0m port              = 22
+          [32m+[0m[0m protocol          = "TCP"
+          [32m+[0m[0m to_port           = -1
+          [32m+[0m[0m v4_cidr_blocks    = [
+              [32m+[0m[0m "0.0.0.0/0",
+            ]
+          [32m+[0m[0m v6_cidr_blocks    = []
+            [90m# (2 unchanged attributes hidden)[0m[0m
+        }
+    }
+
+[1m  # yandex_vpc_security_group.mysql[0m will be created
+[0m  [32m+[0m[0m resource "yandex_vpc_security_group" "mysql" {
+      [32m+[0m[0m created_at = (known after apply)
+      [32m+[0m[0m folder_id  = (known after apply)
+      [32m+[0m[0m id         = (known after apply)
+      [32m+[0m[0m labels     = (known after apply)
+      [32m+[0m[0m name       = "legacy-100-years-mysql-sg"
+      [32m+[0m[0m network_id = (known after apply)
+      [32m+[0m[0m status     = (known after apply)
+
+      [32m+[0m[0m egress {
+          [32m+[0m[0m description       = "Outbound traffic"
+          [32m+[0m[0m from_port         = 0
+          [32m+[0m[0m id                = (known after apply)
+          [32m+[0m[0m labels            = (known after apply)
+          [32m+[0m[0m port              = -1
+          [32m+[0m[0m protocol          = "ANY"
+          [32m+[0m[0m to_port           = 65535
+          [32m+[0m[0m v4_cidr_blocks    = [
+              [32m+[0m[0m "0.0.0.0/0",
+            ]
+          [32m+[0m[0m v6_cidr_blocks    = []
+            [90m# (2 unchanged attributes hidden)[0m[0m
+        }
+
+      [32m+[0m[0m ingress {
+          [32m+[0m[0m description       = "MySQL from app VM"
+          [32m+[0m[0m from_port         = -1
+          [32m+[0m[0m id                = (known after apply)
+          [32m+[0m[0m labels            = (known after apply)
+          [32m+[0m[0m port              = 3306
+          [32m+[0m[0m protocol          = "TCP"
+          [32m+[0m[0m security_group_id = (known after apply)
+          [32m+[0m[0m to_port           = -1
+          [32m+[0m[0m v4_cidr_blocks    = []
+          [32m+[0m[0m v6_cidr_blocks    = []
+            [90m# (1 unchanged attribute hidden)[0m[0m
+        }
+    }
+
+[1m  # yandex_vpc_subnet.this["app-a"][0m will be created
+[0m  [32m+[0m[0m resource "yandex_vpc_subnet" "this" {
+      [32m+[0m[0m created_at     = (known after apply)
+      [32m+[0m[0m folder_id      = (known after apply)
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m labels         = (known after apply)
+      [32m+[0m[0m name           = "legacy-100-years-app-a"
+      [32m+[0m[0m network_id     = (known after apply)
+      [32m+[0m[0m v4_cidr_blocks = [
+          [32m+[0m[0m "10.30.1.0/24",
+        ]
+      [32m+[0m[0m v6_cidr_blocks = (known after apply)
+      [32m+[0m[0m zone           = "ru-central1-a"
+    }
+
+[1m  # yandex_vpc_subnet.this["db-b"][0m will be created
+[0m  [32m+[0m[0m resource "yandex_vpc_subnet" "this" {
+      [32m+[0m[0m created_at     = (known after apply)
+      [32m+[0m[0m folder_id      = (known after apply)
+      [32m+[0m[0m id             = (known after apply)
+      [32m+[0m[0m labels         = (known after apply)
+      [32m+[0m[0m name           = "legacy-100-years-db-b"
+      [32m+[0m[0m network_id     = (known after apply)
+      [32m+[0m[0m v4_cidr_blocks = [
+          [32m+[0m[0m "10.30.2.0/24",
+        ]
+      [32m+[0m[0m v6_cidr_blocks = (known after apply)
+      [32m+[0m[0m zone           = "ru-central1-b"
+    }
+
+[1mPlan:[0m 14 to add, 0 to change, 0 to destroy.
+[0m
+Changes to Outputs:
+  [32m+[0m[0m app_public_ip     = (known after apply)
+  [32m+[0m[0m app_url           = (known after apply)
+  [32m+[0m[0m lockbox_secret_id = (known after apply)
+  [32m+[0m[0m mysql_host        = (known after apply)
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Saved the plan to: tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "tfplan"
+exit code: 0

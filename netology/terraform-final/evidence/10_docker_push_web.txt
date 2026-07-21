@@ -1,0 +1,27 @@
+The push refers to repository [cr.yandex/crp0il81r01irlk6s76q/legacy-100-years-web]
+9dbdae090719: Preparing
+9a4bfdb1ffdb: Preparing
+0d853d50b128: Preparing
+947e805a4ac7: Preparing
+811a4dbbf4a5: Preparing
+b8d7d1d22634: Preparing
+e244aa659f61: Preparing
+c56f134d3805: Preparing
+d71eae0084c1: Preparing
+08000c18d16d: Preparing
+e244aa659f61: Waiting
+d71eae0084c1: Waiting
+c56f134d3805: Waiting
+08000c18d16d: Waiting
+b8d7d1d22634: Waiting
+9a4bfdb1ffdb: Pushed
+947e805a4ac7: Pushed
+811a4dbbf4a5: Pushed
+9dbdae090719: Pushed
+e244aa659f61: Pushed
+c56f134d3805: Pushed
+b8d7d1d22634: Pushed
+d71eae0084c1: Pushed
+0d853d50b128: Pushed
+08000c18d16d: Pushed
+latest: digest: sha256:373c83b0a1c70d0d2ba98df13b346354e4fed4a41c3769e3720292ca5cfbde26 size: 2406

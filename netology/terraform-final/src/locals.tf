@@ -10,5 +10,5 @@ locals {
   web_image    = "${local.registry_url}/${var.app_name}-web:${var.image_tag}"
   api_image    = "${local.registry_url}/${var.app_name}-api:${var.image_tag}"
 
-  public_base_url = var.public_base_url != "" ? var.public_base_url : "http://localhost"
+  public_base_url = var.public_base_url != "" ? var.public_base_url : "http://${yandex_vpc_address.app.external_ipv4_address[0].address}"
 }

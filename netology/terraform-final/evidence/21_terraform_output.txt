@@ -1,0 +1,7 @@
+api_image = "cr.yandex/crp0il81r01irlk6s76q/legacy-100-years-api:latest"
+app_public_ip = "93.77.190.156"
+app_url = "http://93.77.190.156"
+lockbox_secret_id = "e6qtgvc4lc9lvkjr6anu"
+mysql_host = "rc1b-881et6a4m3dbnncs.mdb.yandexcloud.net"
+registry_url = "cr.yandex/crp0il81r01irlk6s76q"
+web_image = "cr.yandex/crp0il81r01irlk6s76q/legacy-100-years-web:latest"
