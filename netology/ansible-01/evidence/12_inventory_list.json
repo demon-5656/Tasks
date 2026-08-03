@@ -1,0 +1,39 @@
+{
+    "_meta": {
+        "hostvars": {
+            "centos7": {
+                "ansible_connection": "docker"
+            },
+            "localhost": {
+                "ansible_connection": "ansible.builtin.local"
+            },
+            "ubuntu": {
+                "ansible_connection": "docker"
+            }
+        },
+        "profile": "inventory_legacy"
+    },
+    "all": {
+        "children": [
+            "ungrouped",
+            "el",
+            "deb",
+            "local"
+        ]
+    },
+    "deb": {
+        "hosts": [
+            "ubuntu"
+        ]
+    },
+    "el": {
+        "hosts": [
+            "centos7"
+        ]
+    },
+    "local": {
+        "hosts": [
+            "localhost"
+        ]
+    }
+}

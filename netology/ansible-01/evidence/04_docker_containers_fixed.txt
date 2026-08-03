@@ -1,0 +1,3 @@
+NAMES     IMAGE          STATUS
+ubuntu    ubuntu:22.04   Up 5 seconds
+centos7   rockylinux:9   Up 5 seconds

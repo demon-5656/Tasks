@@ -1,0 +1,58 @@
+> CONNECTION ansible.builtin.local (/usr/lib/python3.14/site-packages/ansible/plugins/connection/local.py)
+
+  This connection plugin allows ansible to execute tasks on the
+  Ansible 'controller' instead of on a remote host.
+
+OPTIONS (= indicates it is required):
+
+- become_strip_preamble  Strip internal become output preceding
+                          command execution. Disable for additional
+                          diagnostics.
+        set_via:
+          vars:
+          - name: ansible_local_become_strip_preamble
+        default: true
+        type: bool
+
+- become_success_timeout  Number of seconds to wait for become to
+                           succeed when enabled.
+                           The default will be used if the configured
+                           value is less than 1.
+        set_via:
+          vars:
+          - name: ansible_local_become_success_timeout
+        default: 10
+        type: int
+
+- pipelining  Pipelining reduces the number of connection operations
+               required to execute a module on the remote server, by
+               executing many Ansible modules without actual file
+               transfers.
+               This can result in a very significant performance
+               improvement when enabled.
+               However this can conflict with privilege escalation
+               (`become'). For example, when using sudo operations you
+               must first disable `requiretty' in the sudoers file for
+               the target hosts, which is why this feature is disabled
+               by default.
+        set_via:
+          env:
+          - name: ANSIBLE_PIPELINING
+          ini:
+          - key: pipelining
+            section: defaults
+          - key: pipelining
+            section: connection
+          vars:
+          - name: ansible_pipelining
+        default: false
+        type: boolean
+
+NOTES:
+      * The remote user is ignored, the user with which the
+        ansible CLI was executed is used instead.
+
+AUTHOR: ansible (@core)
+
+NAME: local
+
