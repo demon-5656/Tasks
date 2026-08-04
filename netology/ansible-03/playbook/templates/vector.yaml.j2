@@ -1,0 +1,15 @@
+data_dir: "{{ vector_data_dir }}"
+
+sources:
+  demo_logs:
+    type: demo_logs
+    format: json
+    interval: {{ vector_source_interval }}
+
+sinks:
+  console:
+    type: console
+    inputs:
+      - demo_logs
+    encoding:
+      codec: json

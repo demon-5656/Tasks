@@ -1,0 +1,12 @@
+---
+clickhouse_version: "22.3.3.44"
+clickhouse_arch: amd64
+clickhouse_install_dir: /opt/clickhouse
+clickhouse_config_dir: /etc/clickhouse-server
+clickhouse_data_dir: /var/lib/clickhouse
+clickhouse_log_dir: /var/log/clickhouse-server
+clickhouse_archive_path: "/tmp/clickhouse-common-static-{{ clickhouse_version }}.tgz"
+clickhouse_binary_path: "{{ clickhouse_install_dir }}/usr/bin/clickhouse"
+clickhouse_archive_url: >-
+  https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-{{ clickhouse_version }}-{{ clickhouse_arch }}.tgz
+clickhouse_manage_service: false

@@ -1,0 +1,95 @@
+
+PLAY [Install ClickHouse] ******************************************************
+
+TASK [Create ClickHouse directories] *******************************************
+ok: [clickhouse-01] => (item=/opt/clickhouse)
+ok: [clickhouse-01] => (item=/etc/clickhouse-server)
+ok: [clickhouse-01] => (item=/var/lib/clickhouse)
+ok: [clickhouse-01] => (item=/var/log/clickhouse-server)
+
+TASK [Download ClickHouse archive] *********************************************
+ok: [clickhouse-01]
+
+TASK [Unpack ClickHouse archive] ***********************************************
+skipping: [clickhouse-01]
+
+TASK [Create ClickHouse symlink] ***********************************************
+ok: [clickhouse-01]
+
+TASK [Check ClickHouse binary] *************************************************
+ok: [clickhouse-01]
+
+TASK [Print ClickHouse version] ************************************************
+ok: [clickhouse-01] => {
+    "msg": "ClickHouse local version 22.3.3.44 (official build)."
+}
+
+PLAY [Install Vector] **********************************************************
+
+TASK [Create Vector directories] ***********************************************
+ok: [vector-01] => (item=/opt/vector)
+ok: [vector-01] => (item=/etc/vector)
+ok: [vector-01] => (item=/var/lib/vector)
+
+TASK [Download Vector archive] *************************************************
+ok: [vector-01]
+
+TASK [Unpack Vector archive] ***************************************************
+skipping: [vector-01]
+
+TASK [Create Vector symlink] ***************************************************
+ok: [vector-01]
+
+TASK [Deploy Vector config] ****************************************************
+ok: [vector-01]
+
+TASK [Validate Vector config] **************************************************
+ok: [vector-01]
+
+TASK [Print Vector config check] ***********************************************
+ok: [vector-01] => {
+    "msg": "√ Loaded [\"/etc/vector/vector.yaml\"]\n√ Component configuration\n√ Health check \"console\"\n------------------------------------\n                           Validated"
+}
+
+PLAY [Install LightHouse] ******************************************************
+
+TASK [Install nginx dependencies] **********************************************
+ok: [lighthouse-01]
+
+TASK [Create LightHouse directory] *********************************************
+ok: [lighthouse-01]
+
+TASK [Download LightHouse archive] *********************************************
+ok: [lighthouse-01]
+
+TASK [Unpack LightHouse archive] ***********************************************
+skipping: [lighthouse-01]
+
+TASK [Deploy nginx config for LightHouse] **************************************
+ok: [lighthouse-01]
+
+TASK [Enable LightHouse nginx config] ******************************************
+ok: [lighthouse-01]
+
+TASK [Disable default nginx site] **********************************************
+ok: [lighthouse-01]
+
+TASK [Validate nginx config] ***************************************************
+ok: [lighthouse-01]
+
+TASK [Print nginx config check] ************************************************
+ok: [lighthouse-01] => {
+    "msg": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful"
+}
+
+TASK [Check nginx process] *****************************************************
+ok: [lighthouse-01]
+
+TASK [Start nginx in docker stand] *********************************************
+skipping: [lighthouse-01]
+
+PLAY RECAP *********************************************************************
+clickhouse-01              : ok=5    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+lighthouse-01              : ok=9    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+vector-01                  : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
