@@ -1,0 +1,163 @@
+
+PLAY [Install ClickHouse] ******************************************************
+
+TASK [Create ClickHouse directories] *******************************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/opt/clickhouse",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [clickhouse-01] => (item=/opt/clickhouse)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/etc/clickhouse-server",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [clickhouse-01] => (item=/etc/clickhouse-server)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/var/lib/clickhouse",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [clickhouse-01] => (item=/var/lib/clickhouse)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/var/log/clickhouse-server",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [clickhouse-01] => (item=/var/log/clickhouse-server)
+
+TASK [Download ClickHouse archive] *********************************************
+changed: [clickhouse-01]
+
+TASK [Unpack ClickHouse archive] ***********************************************
+changed: [clickhouse-01]
+
+TASK [Create ClickHouse symlink] ***********************************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/usr/local/bin/clickhouse",
+-    "state": "absent"
++    "state": "link"
+ }
+
+changed: [clickhouse-01]
+
+TASK [Check ClickHouse binary] *************************************************
+ok: [clickhouse-01]
+
+TASK [Print ClickHouse version] ************************************************
+ok: [clickhouse-01] => {
+    "msg": "ClickHouse local version 22.3.3.44 (official build)."
+}
+
+RUNNING HANDLER [Restart clickhouse service] ***********************************
+skipping: [clickhouse-01]
+
+PLAY [Install Vector] **********************************************************
+
+TASK [Create Vector directories] ***********************************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/opt/vector",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [vector-01] => (item=/opt/vector)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/etc/vector",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [vector-01] => (item=/etc/vector)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/var/lib/vector",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [vector-01] => (item=/var/lib/vector)
+
+TASK [Download Vector archive] *************************************************
+changed: [vector-01]
+
+TASK [Unpack Vector archive] ***************************************************
+changed: [vector-01]
+
+TASK [Create Vector symlink] ***************************************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/usr/local/bin/vector",
+-    "state": "absent"
++    "state": "link"
+ }
+
+changed: [vector-01]
+
+TASK [Deploy Vector config] ****************************************************
+--- before
++++ after: /home/pc243/.ansible/tmp/ansible-local-3632225t1ffui/tmptdrtp5ha/vector.yaml.j2
+@@ -0,0 +1,15 @@
++data_dir: "/var/lib/vector"
++
++sources:
++  demo_logs:
++    type: demo_logs
++    format: json
++    interval: 10
++
++sinks:
++  console:
++    type: console
++    inputs:
++      - demo_logs
++    encoding:
++      codec: json
+
+changed: [vector-01]
+
+TASK [Validate Vector config] **************************************************
+ok: [vector-01]
+
+TASK [Print Vector config check] ***********************************************
+ok: [vector-01] => {
+    "msg": "√ Loaded [\"/etc/vector/vector.yaml\"]\n√ Component configuration\n√ Health check \"console\"\n------------------------------------\n                           Validated"
+}
+
+RUNNING HANDLER [Restart vector service] ***************************************
+skipping: [vector-01]
+
+PLAY RECAP *********************************************************************
+clickhouse-01              : ok=6    changed=4    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+vector-01                  : ok=7    changed=5    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

@@ -1,0 +1,12 @@
+---
+vector_version: "0.38.0"
+vector_arch: x86_64-unknown-linux-gnu
+vector_install_dir: /opt/vector
+vector_config_dir: /etc/vector
+vector_data_dir: /var/lib/vector
+vector_archive_path: "/tmp/vector-{{ vector_version }}.tar.gz"
+vector_binary_path: "{{ vector_install_dir }}/vector-{{ vector_arch }}/bin/vector"
+vector_archive_url: >-
+  https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-{{ vector_arch }}.tar.gz
+vector_manage_service: false
+vector_source_interval: 10

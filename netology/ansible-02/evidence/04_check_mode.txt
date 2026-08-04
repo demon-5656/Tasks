@@ -1,0 +1,53 @@
+
+PLAY [Install ClickHouse] ******************************************************
+
+TASK [Create ClickHouse directories] *******************************************
+changed: [clickhouse-01] => (item=/opt/clickhouse)
+changed: [clickhouse-01] => (item=/etc/clickhouse-server)
+changed: [clickhouse-01] => (item=/var/lib/clickhouse)
+changed: [clickhouse-01] => (item=/var/log/clickhouse-server)
+
+TASK [Download ClickHouse archive] *********************************************
+changed: [clickhouse-01]
+
+TASK [Unpack ClickHouse archive] ***********************************************
+skipping: [clickhouse-01]
+
+TASK [Create ClickHouse symlink] ***********************************************
+skipping: [clickhouse-01]
+
+TASK [Check ClickHouse binary] *************************************************
+skipping: [clickhouse-01]
+
+TASK [Print ClickHouse version] ************************************************
+skipping: [clickhouse-01]
+
+PLAY [Install Vector] **********************************************************
+
+TASK [Create Vector directories] ***********************************************
+changed: [vector-01] => (item=/opt/vector)
+changed: [vector-01] => (item=/etc/vector)
+changed: [vector-01] => (item=/var/lib/vector)
+
+TASK [Download Vector archive] *************************************************
+changed: [vector-01]
+
+TASK [Unpack Vector archive] ***************************************************
+skipping: [vector-01]
+
+TASK [Create Vector symlink] ***************************************************
+skipping: [vector-01]
+
+TASK [Deploy Vector config] ****************************************************
+skipping: [vector-01]
+
+TASK [Validate Vector config] **************************************************
+skipping: [vector-01]
+
+TASK [Print Vector config check] ***********************************************
+skipping: [vector-01]
+
+PLAY RECAP *********************************************************************
+clickhouse-01              : ok=2    changed=2    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+vector-01                  : ok=2    changed=2    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0   
+

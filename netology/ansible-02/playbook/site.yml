@@ -1,0 +1,148 @@
+---
+- name: Install ClickHouse
+  hosts: clickhouse
+  gather_facts: false
+  handlers:
+    - name: Restart clickhouse service
+      ansible.builtin.service:
+        name: clickhouse-server
+        state: restarted
+      when: clickhouse_manage_service | bool
+
+  tasks:
+    - name: Create ClickHouse directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: "0755"
+      loop:
+        - "{{ clickhouse_install_dir }}"
+        - "{{ clickhouse_config_dir }}"
+        - "{{ clickhouse_data_dir }}"
+        - "{{ clickhouse_log_dir }}"
+      tags:
+        - clickhouse
+
+    - name: Download ClickHouse archive
+      ansible.builtin.get_url:
+        url: "{{ clickhouse_archive_url }}"
+        dest: "{{ clickhouse_archive_path }}"
+        mode: "0644"
+      tags:
+        - clickhouse
+
+    - name: Unpack ClickHouse archive
+      ansible.builtin.unarchive:
+        src: "{{ clickhouse_archive_path }}"
+        dest: "{{ clickhouse_install_dir }}"
+        remote_src: true
+        creates: "{{ clickhouse_binary_path }}"
+        extra_opts:
+          - --strip-components=1
+      when: not ansible_check_mode
+      notify: Restart clickhouse service
+      tags:
+        - clickhouse
+
+    - name: Create ClickHouse symlink
+      ansible.builtin.file:
+        src: "{{ clickhouse_binary_path }}"
+        dest: /usr/local/bin/clickhouse
+        state: link
+        force: true
+      when: not ansible_check_mode
+      tags:
+        - clickhouse
+
+    - name: Check ClickHouse binary
+      ansible.builtin.command: /usr/local/bin/clickhouse local --version
+      register: clickhouse_version_check
+      changed_when: false
+      when: not ansible_check_mode
+      tags:
+        - clickhouse
+
+    - name: Print ClickHouse version
+      ansible.builtin.debug:
+        msg: "{{ clickhouse_version_check.stdout }}"
+      when: not ansible_check_mode
+      tags:
+        - clickhouse
+
+- name: Install Vector
+  hosts: vector
+  gather_facts: false
+  handlers:
+    - name: Restart vector service
+      ansible.builtin.service:
+        name: vector
+        state: restarted
+      when: vector_manage_service | bool
+
+  tasks:
+    - name: Create Vector directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: "0755"
+      loop:
+        - "{{ vector_install_dir }}"
+        - "{{ vector_config_dir }}"
+        - "{{ vector_data_dir }}"
+      tags:
+        - vector
+
+    - name: Download Vector archive
+      ansible.builtin.get_url:
+        url: "{{ vector_archive_url }}"
+        dest: "{{ vector_archive_path }}"
+        mode: "0644"
+      tags:
+        - vector
+
+    - name: Unpack Vector archive
+      ansible.builtin.unarchive:
+        src: "{{ vector_archive_path }}"
+        dest: "{{ vector_install_dir }}"
+        remote_src: true
+        creates: "{{ vector_binary_path }}"
+      when: not ansible_check_mode
+      notify: Restart vector service
+      tags:
+        - vector
+
+    - name: Create Vector symlink
+      ansible.builtin.file:
+        src: "{{ vector_binary_path }}"
+        dest: /usr/local/bin/vector
+        state: link
+        force: true
+      when: not ansible_check_mode
+      tags:
+        - vector
+
+    - name: Deploy Vector config
+      ansible.builtin.template:
+        src: vector.yaml.j2
+        dest: "{{ vector_config_dir }}/vector.yaml"
+        mode: "0644"
+      when: not ansible_check_mode
+      notify: Restart vector service
+      tags:
+        - vector
+
+    - name: Validate Vector config
+      ansible.builtin.command:
+        cmd: /usr/local/bin/vector validate "{{ vector_config_dir }}/vector.yaml"
+      register: vector_config_check
+      changed_when: false
+      when: not ansible_check_mode
+      tags:
+        - vector
+
+    - name: Print Vector config check
+      ansible.builtin.debug:
+        msg: "{{ vector_config_check.stdout }}"
+      when: not ansible_check_mode
+      tags:
+        - vector
