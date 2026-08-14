@@ -1,0 +1,24 @@
+---
+namespace: demon5656
+name: yandex_cloud_elk
+version: 1.0.0
+readme: README.md
+authors:
+  - demon-5656
+description: Training collection with a custom text-file module and demo role
+license:
+  - MIT
+tags:
+  - netology
+  - ansible
+  - module
+  - collection
+dependencies: {}
+repository: https://github.com/demon-5656/Tasks
+documentation: https://github.com/demon-5656/Tasks/tree/main/netology/ansible-06
+homepage: https://github.com/demon-5656/Tasks
+issues: https://github.com/demon-5656/Tasks/issues
+build_ignore:
+  - "*.tar.gz"
+  - ".ansible"
+  - ".pytest_cache"

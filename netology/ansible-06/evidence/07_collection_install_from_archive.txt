@@ -1,0 +1,5 @@
+Starting galaxy collection install process
+Process install dependency map
+Starting collection install process
+Installing 'demon5656.yandex_cloud_elk:1.0.0' to '/home/pc243/GIT/Tasks/netology/ansible-06/install-check/collections/ansible_collections/demon5656/yandex_cloud_elk'
+demon5656.yandex_cloud_elk:1.0.0 was installed successfully

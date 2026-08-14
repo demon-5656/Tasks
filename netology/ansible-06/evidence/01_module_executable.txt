@@ -1,0 +1,5 @@
+
+{"changed": true, "path": "/tmp/netology_module_local.txt", "content": "Module executable check", "message": "file created", "uid": 1000, "gid": 1000, "owner": "pc243", "group": "pc243", "mode": "0644", "state": "file", "size": 23}
+
+--- file content ---
+Module executable check

@@ -1,0 +1,6 @@
+---
+- name: Create text file with custom module
+  demon5656.yandex_cloud_elk.my_own_module:
+    path: "{{ text_file_path }}"
+    content: "{{ text_file_content }}"
+    mode: "{{ text_file_mode }}"

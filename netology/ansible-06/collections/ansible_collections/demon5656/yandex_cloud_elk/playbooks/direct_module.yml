@@ -1,0 +1,10 @@
+---
+- name: Test custom module directly
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create file from custom module
+      demon5656.yandex_cloud_elk.my_own_module:
+        path: /tmp/netology_direct_module.txt
+        content: "Direct module call works"
+        mode: "0644"

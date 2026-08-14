@@ -1,0 +1,2 @@
+Created collection for demon5656.yandex_cloud_elk at /home/pc243/GIT/Tasks/netology/ansible-06/install-check/demon5656-yandex_cloud_elk-1.0.0.tar.gz
+-rw-r--r-- 1 pc243 pc243 4.1K Aug 14 11:41 /home/pc243/GIT/Tasks/netology/ansible-06/install-check/demon5656-yandex_cloud_elk-1.0.0.tar.gz

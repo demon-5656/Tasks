@@ -1,0 +1,48 @@
+> MODULE demon5656.yandex_cloud_elk.my_own_module (/home/pc243/GIT/Tasks/netology/ansible-06/collections/ansible_collections/demon5656/yandex_cloud_elk/plugins/modules/my_own_module.py)
+
+  Creates or updates a text file on a managed host.
+  The module is idempotent and reports changed only when file content
+  changes.
+
+OPTIONS (= indicates it is required):
+
+= content  Text content for the target file.
+        type: str
+
+- mode    File mode to apply after create or update.
+        default: '0644'
+        type: str
+
+= path    Path to the target text file.
+        type: path
+
+AUTHOR: demon-5656
+
+EXAMPLES:
+- name: Create demo file
+  demon5656.yandex_cloud_elk.my_own_module:
+    path: /tmp/netology_module.txt
+    content: "hello from my module"
+
+RETURN VALUES:
+
+- content  Content that should be stored in the file.
+        returned: always
+        sample: hello from my module
+        type: str
+
+- message  Human readable module result.
+        returned: always
+        sample: file updated
+        type: str
+
+- path    File path managed by module.
+        returned: always
+        sample: /tmp/netology_module.txt
+        type: str
+
+- previous_content  Previous file content, if the file existed.
+        returned: when file existed
+        sample: old text
+        type: str
+

@@ -1,0 +1,10 @@
+---
+- name: Test custom module through role
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - role: demon5656.yandex_cloud_elk.write_text_file
+      vars:
+        text_file_path: /tmp/netology_role_module.txt
+        text_file_content: "Role call works too"
+        text_file_mode: "0644"

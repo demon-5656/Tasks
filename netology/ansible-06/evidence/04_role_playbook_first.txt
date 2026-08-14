@@ -1,0 +1,9 @@
+
+PLAY [Test custom module through role] *****************************************
+
+TASK [demon5656.yandex_cloud_elk.write_text_file : Create text file with custom module] ***
+changed: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

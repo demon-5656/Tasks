@@ -1,0 +1,4 @@
+---
+text_file_path: /tmp/netology_my_own_module.txt
+text_file_content: "Hello from my own Ansible module"
+text_file_mode: "0644"
