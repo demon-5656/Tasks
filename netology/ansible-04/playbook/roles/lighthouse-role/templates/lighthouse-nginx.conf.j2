@@ -1,0 +1,11 @@
+server {
+    listen {{ lighthouse_listen_port }};
+    server_name {{ lighthouse_server_name }};
+
+    root {{ lighthouse_install_dir }};
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}

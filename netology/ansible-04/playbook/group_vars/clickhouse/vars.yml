@@ -1,0 +1,8 @@
+---
+clickhouse_version: "22.3.3.44"
+clickhouse_service_ensure: stopped
+clickhouse_service_enable: false
+clickhouse_listen_host_custom:
+  - "0.0.0.0"
+clickhouse_dbs_custom:
+  - name: logs

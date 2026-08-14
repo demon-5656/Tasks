@@ -1,0 +1,4 @@
+Starting galaxy role install process
+- changing role clickhouse from 1.13 to 1.13
+- extracting clickhouse to /home/pc243/GIT/Tasks/netology/ansible-04/playbook/roles/clickhouse
+- clickhouse (1.13) was installed successfully

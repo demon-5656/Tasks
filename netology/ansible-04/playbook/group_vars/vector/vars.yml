@@ -1,0 +1,4 @@
+---
+vector_version: "0.38.0"
+vector_source_interval: 10
+vector_manage_service: false

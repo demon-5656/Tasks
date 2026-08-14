@@ -1,0 +1,6 @@
+vector 0.38.0 (x86_64-unknown-linux-gnu ea0ec6f 2024-05-07 14:34:39.794027186)
+√ Loaded ["/etc/vector/vector.yaml"]
+√ Component configuration
+√ Health check "console"
+------------------------------------
+                           Validated

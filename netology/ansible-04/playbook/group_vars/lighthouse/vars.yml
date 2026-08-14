@@ -1,0 +1,4 @@
+---
+lighthouse_listen_port: 80
+lighthouse_server_name: localhost
+lighthouse_manage_service: false

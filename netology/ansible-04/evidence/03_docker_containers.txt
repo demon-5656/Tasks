@@ -1,0 +1,4 @@
+NAMES               IMAGE                           STATUS
+lighthouse-01       ubuntu:22.04                    Up 9 seconds
+vector-01           ubuntu:22.04                    Up 19 seconds
+clickhouse-01       ubuntu:22.04                    Up 27 seconds

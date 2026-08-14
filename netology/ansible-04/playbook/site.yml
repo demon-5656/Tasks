@@ -1,0 +1,36 @@
+---
+- name: Install ClickHouse
+  hosts: clickhouse
+  gather_facts: true
+  roles:
+    - role: clickhouse
+      tags:
+        - clickhouse
+
+- name: Install Vector
+  hosts: vector
+  gather_facts: false
+  roles:
+    - role: vector-role
+      tags:
+        - vector
+
+- name: Install LightHouse
+  hosts: lighthouse
+  gather_facts: false
+  pre_tasks:
+    - name: Install LightHouse runtime packages
+      ansible.builtin.apt:
+        name:
+          - nginx
+          - tar
+          - gzip
+          - ca-certificates
+        state: present
+        update_cache: true
+      tags:
+        - lighthouse
+  roles:
+    - role: lighthouse-role
+      tags:
+        - lighthouse

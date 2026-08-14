@@ -1,0 +1,74 @@
+---
+- name: Create LightHouse directory
+  ansible.builtin.file:
+    path: "{{ lighthouse_install_dir }}"
+    state: directory
+    mode: "0755"
+
+- name: Download LightHouse archive
+  ansible.builtin.get_url:
+    url: "{{ lighthouse_archive_url }}"
+    dest: "{{ lighthouse_archive_path }}"
+    mode: "0644"
+
+- name: Unpack LightHouse archive
+  ansible.builtin.unarchive:
+    src: "{{ lighthouse_archive_path }}"
+    dest: "{{ lighthouse_install_dir }}"
+    remote_src: true
+    creates: "{{ lighthouse_index_path }}"
+    extra_opts:
+      - --strip-components=1
+  when: not ansible_check_mode
+
+- name: Deploy nginx config for LightHouse
+  ansible.builtin.template:
+    src: lighthouse-nginx.conf.j2
+    dest: /etc/nginx/sites-available/lighthouse.conf
+    mode: "0644"
+  when: not ansible_check_mode
+  notify: Reload nginx
+
+- name: Enable LightHouse nginx config
+  ansible.builtin.file:
+    src: /etc/nginx/sites-available/lighthouse.conf
+    dest: /etc/nginx/sites-enabled/lighthouse.conf
+    state: link
+    force: true
+  when: not ansible_check_mode
+  notify: Reload nginx
+
+- name: Disable default nginx site
+  ansible.builtin.file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  when: not ansible_check_mode
+  notify: Reload nginx
+
+- name: Validate nginx config
+  ansible.builtin.command: nginx -t
+  register: nginx_config_check
+  changed_when: false
+  when: not ansible_check_mode
+
+- name: Print nginx config check
+  ansible.builtin.debug:
+    msg: "{{ nginx_config_check.stderr }}"
+  when: not ansible_check_mode
+
+- name: Check nginx process
+  ansible.builtin.command: pgrep nginx
+  register: nginx_process_check
+  failed_when: false
+  changed_when: false
+  when:
+    - not ansible_check_mode
+    - not lighthouse_manage_service | bool
+
+- name: Start nginx in docker stand
+  ansible.builtin.command: nginx
+  changed_when: true
+  when:
+    - not ansible_check_mode
+    - not lighthouse_manage_service | bool
+    - nginx_process_check.rc != 0

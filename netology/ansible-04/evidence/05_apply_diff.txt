@@ -1,0 +1,211 @@
+
+PLAY [Install ClickHouse] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Include OS Family Specific Variables] ***********************
+ok: [clickhouse-01]
+
+TASK [clickhouse : include_tasks] **********************************************
+included: /home/pc243/GIT/Tasks/netology/ansible-04/playbook/roles/clickhouse/tasks/precheck.yml for clickhouse-01
+
+TASK [clickhouse : include_tasks] **********************************************
+included: /home/pc243/GIT/Tasks/netology/ansible-04/playbook/roles/clickhouse/tasks/params.yml for clickhouse-01
+
+TASK [clickhouse : include_tasks] **********************************************
+included: /home/pc243/GIT/Tasks/netology/ansible-04/playbook/roles/clickhouse/tasks/service.yml for clickhouse-01
+
+PLAY [Install Vector] **********************************************************
+
+TASK [vector-role : Create Vector directories] *********************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/opt/vector",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [vector-01] => (item=/opt/vector)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/etc/vector",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [vector-01] => (item=/etc/vector)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/var/lib/vector",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [vector-01] => (item=/var/lib/vector)
+
+TASK [vector-role : Download Vector archive] ***********************************
+changed: [vector-01]
+
+TASK [vector-role : Unpack Vector archive] *************************************
+changed: [vector-01]
+
+TASK [vector-role : Create Vector symlink] *************************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/usr/local/bin/vector",
+-    "state": "absent"
++    "state": "link"
+ }
+
+changed: [vector-01]
+
+TASK [vector-role : Deploy Vector config] **************************************
+--- before
++++ after: /home/pc243/.ansible/tmp/ansible-local-3754882nhl4r3_1/tmp63n1jr2g/vector.yaml.j2
+@@ -0,0 +1,15 @@
++data_dir: "/var/lib/vector"
++
++sources:
++  demo_logs:
++    type: demo_logs
++    format: json
++    interval: 10
++
++sinks:
++  console:
++    type: console
++    inputs:
++      - demo_logs
++    encoding:
++      codec: json
+
+changed: [vector-01]
+
+TASK [vector-role : Validate Vector config] ************************************
+ok: [vector-01]
+
+TASK [vector-role : Print Vector config check] *********************************
+ok: [vector-01] => {
+    "msg": "√ Loaded [\"/etc/vector/vector.yaml\"]\n√ Component configuration\n√ Health check \"console\"\n------------------------------------\n                           Validated"
+}
+
+RUNNING HANDLER [vector-role : Restart vector service] *************************
+skipping: [vector-01]
+
+PLAY [Install LightHouse] ******************************************************
+
+TASK [Install LightHouse runtime packages] *************************************
+The following additional packages will be installed:
+  fontconfig-config fonts-dejavu-core iproute2 libatm1 libbpf0 libbsd0
+  libcap2-bin libdeflate0 libelf1 libfontconfig1 libfreetype6 libgd3 libicu70
+  libjbig0 libjpeg-turbo8 libjpeg8 libmaxminddb0 libmd0 libmnl0
+  libnginx-mod-http-geoip2 libnginx-mod-http-image-filter
+  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream
+  libnginx-mod-stream-geoip2 libpam-cap libpng16-16 libtiff5 libwebp7 libx11-6
+  libx11-data libxau6 libxcb1 libxdmcp6 libxml2 libxpm4 libxslt1.1
+  libxtables12 nginx-common nginx-core ucf
+Suggested packages:
+  iproute2-doc libgd-tools mmdb-bin fcgiwrap nginx-doc ssl-cert
+The following NEW packages will be installed:
+  fontconfig-config fonts-dejavu-core iproute2 libatm1 libbpf0 libbsd0
+  libcap2-bin libdeflate0 libelf1 libfontconfig1 libfreetype6 libgd3 libicu70
+  libjbig0 libjpeg-turbo8 libjpeg8 libmaxminddb0 libmd0 libmnl0
+  libnginx-mod-http-geoip2 libnginx-mod-http-image-filter
+  libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream
+  libnginx-mod-stream-geoip2 libpam-cap libpng16-16 libtiff5 libwebp7 libx11-6
+  libx11-data libxau6 libxcb1 libxdmcp6 libxml2 libxpm4 libxslt1.1
+  libxtables12 nginx nginx-common nginx-core ucf
+0 upgraded, 42 newly installed, 0 to remove and 18 not upgraded.
+changed: [lighthouse-01]
+
+TASK [lighthouse-role : Create LightHouse directory] ***************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/var/www/lighthouse",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [lighthouse-01]
+
+TASK [lighthouse-role : Download LightHouse archive] ***************************
+changed: [lighthouse-01]
+
+TASK [lighthouse-role : Unpack LightHouse archive] *****************************
+changed: [lighthouse-01]
+
+TASK [lighthouse-role : Deploy nginx config for LightHouse] ********************
+--- before
++++ after: /home/pc243/.ansible/tmp/ansible-local-3754882nhl4r3_1/tmpi_2j22e2/lighthouse-nginx.conf.j2
+@@ -0,0 +1,11 @@
++server {
++    listen 80;
++    server_name localhost;
++
++    root /var/www/lighthouse;
++    index index.html;
++
++    location / {
++        try_files $uri $uri/ /index.html;
++    }
++}
+
+changed: [lighthouse-01]
+
+TASK [lighthouse-role : Enable LightHouse nginx config] ************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/etc/nginx/sites-enabled/lighthouse.conf",
+-    "state": "absent"
++    "state": "link"
+ }
+
+changed: [lighthouse-01]
+
+TASK [lighthouse-role : Disable default nginx site] ****************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/etc/nginx/sites-enabled/default",
+-    "state": "link"
++    "state": "absent"
+ }
+
+changed: [lighthouse-01]
+
+TASK [lighthouse-role : Validate nginx config] *********************************
+ok: [lighthouse-01]
+
+TASK [lighthouse-role : Print nginx config check] ******************************
+ok: [lighthouse-01] => {
+    "msg": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful"
+}
+
+TASK [lighthouse-role : Check nginx process] ***********************************
+ok: [lighthouse-01]
+
+TASK [lighthouse-role : Start nginx in docker stand] ***************************
+changed: [lighthouse-01]
+
+RUNNING HANDLER [lighthouse-role : Reload nginx] *******************************
+skipping: [lighthouse-01]
+
+PLAY RECAP *********************************************************************
+clickhouse-01              : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+lighthouse-01              : ok=11   changed=8    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+vector-01                  : ok=7    changed=5    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+

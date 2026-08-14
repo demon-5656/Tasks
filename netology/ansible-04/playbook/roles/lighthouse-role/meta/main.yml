@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: demon-5656
+  description: Install LightHouse and serve it with nginx
+  license: MIT
+  min_ansible_version: "2.14"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - jammy
+dependencies: []

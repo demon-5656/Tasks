@@ -1,0 +1,87 @@
+
+PLAY [Install ClickHouse] ******************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [clickhouse-01]
+
+TASK [clickhouse : Include OS Family Specific Variables] ***********************
+ok: [clickhouse-01]
+
+TASK [clickhouse : include_tasks] **********************************************
+included: /home/pc243/GIT/Tasks/netology/ansible-04/playbook/roles/clickhouse/tasks/precheck.yml for clickhouse-01
+
+TASK [clickhouse : include_tasks] **********************************************
+included: /home/pc243/GIT/Tasks/netology/ansible-04/playbook/roles/clickhouse/tasks/params.yml for clickhouse-01
+
+TASK [clickhouse : include_tasks] **********************************************
+included: /home/pc243/GIT/Tasks/netology/ansible-04/playbook/roles/clickhouse/tasks/service.yml for clickhouse-01
+
+PLAY [Install Vector] **********************************************************
+
+TASK [vector-role : Create Vector directories] *********************************
+ok: [vector-01] => (item=/opt/vector)
+ok: [vector-01] => (item=/etc/vector)
+ok: [vector-01] => (item=/var/lib/vector)
+
+TASK [vector-role : Download Vector archive] ***********************************
+ok: [vector-01]
+
+TASK [vector-role : Unpack Vector archive] *************************************
+skipping: [vector-01]
+
+TASK [vector-role : Create Vector symlink] *************************************
+ok: [vector-01]
+
+TASK [vector-role : Deploy Vector config] **************************************
+ok: [vector-01]
+
+TASK [vector-role : Validate Vector config] ************************************
+ok: [vector-01]
+
+TASK [vector-role : Print Vector config check] *********************************
+ok: [vector-01] => {
+    "msg": "√ Loaded [\"/etc/vector/vector.yaml\"]\n√ Component configuration\n√ Health check \"console\"\n------------------------------------\n                           Validated"
+}
+
+PLAY [Install LightHouse] ******************************************************
+
+TASK [Install LightHouse runtime packages] *************************************
+ok: [lighthouse-01]
+
+TASK [lighthouse-role : Create LightHouse directory] ***************************
+ok: [lighthouse-01]
+
+TASK [lighthouse-role : Download LightHouse archive] ***************************
+ok: [lighthouse-01]
+
+TASK [lighthouse-role : Unpack LightHouse archive] *****************************
+skipping: [lighthouse-01]
+
+TASK [lighthouse-role : Deploy nginx config for LightHouse] ********************
+ok: [lighthouse-01]
+
+TASK [lighthouse-role : Enable LightHouse nginx config] ************************
+ok: [lighthouse-01]
+
+TASK [lighthouse-role : Disable default nginx site] ****************************
+ok: [lighthouse-01]
+
+TASK [lighthouse-role : Validate nginx config] *********************************
+ok: [lighthouse-01]
+
+TASK [lighthouse-role : Print nginx config check] ******************************
+ok: [lighthouse-01] => {
+    "msg": "nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful"
+}
+
+TASK [lighthouse-role : Check nginx process] ***********************************
+ok: [lighthouse-01]
+
+TASK [lighthouse-role : Start nginx in docker stand] ***************************
+skipping: [lighthouse-01]
+
+PLAY RECAP *********************************************************************
+clickhouse-01              : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+lighthouse-01              : ok=9    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+vector-01                  : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+
