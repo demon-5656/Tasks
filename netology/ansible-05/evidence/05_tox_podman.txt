@@ -1,0 +1,248 @@
+py39 installed: ansible-compat==24.10.0,ansible-core==2.15.13,attrs==26.1.0,bracex==2.6,cffi==2.0.0,click==8.1.8,click-help-colors==0.9.4,cryptography==50.0.0,enrich==1.2.7,importlib-resources==5.0.7,Jinja2==3.1.6,jsonschema==4.25.1,jsonschema-specifications==2025.9.1,markdown-it-py==3.0.0,MarkupSafe==3.0.3,mdurl==0.1.2,molecule==6.0.3,molecule-plugins==23.5.0,packaging==26.3,pluggy==1.6.0,pycparser==2.23,Pygments==2.20.0,PyYAML==6.0.3,referencing==0.36.2,resolvelib==1.0.1,rich==15.0.0,rpds-py==0.27.1,subprocess-tee==0.4.2,typing_extensions==4.16.0,wcmatch==10.1
+py39 run-test-pre: PYTHONHASHSEED='3034974044'
+py39 run-test: commands[0] | molecule test -s podman
+WARNING  Driver podman does not provide a schema.
+INFO     podman scenario test matrix: dependency, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun with role_name_check=0...
+INFO     Running podman > dependency
+WARNING  Skipping, missing the requirements file.
+WARNING  Skipping, missing the requirements file.
+INFO     Running podman > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running podman > destroy
+INFO     Sanity checks: 'podman'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Get passwd entries for USER env] *****************************************
+ok: [localhost]
+
+TASK [Get shell async_dir] *****************************************************
+ok: [localhost]
+
+TASK [Set async_dir for HOME env] **********************************************
+skipping: [localhost]
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item={'command': 'sleep infinity', 'image': 'docker.io/geerlingguy/docker-ubuntu2204-ansible:latest', 'name': 'vector-podman-ubuntu', 'pre_build_image': True})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j78815967275.81', 'results_file': '/root/.ansible_async/j78815967275.81', 'changed': True, 'item': {'command': 'sleep infinity', 'image': 'docker.io/geerlingguy/docker-ubuntu2204-ansible:latest', 'name': 'vector-podman-ubuntu', 'pre_build_image': True}, 'ansible_loop_var': 'item'})
+
+TASK [Delete podman network dedicated to this scenario] ************************
+skipping: [localhost] => (item=vector-podman-ubuntu: None specified)
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+
+INFO     Running podman > syntax
+
+playbook: /opt/vector-role/molecule/default/converge.yml
+INFO     Running podman > create
+
+PLAY [Create] ******************************************************************
+
+TASK [Get podman executable path] **********************************************
+ok: [localhost]
+
+TASK [Register podman executable path] *****************************************
+ok: [localhost]
+
+TASK [Get passwd entries for USER env] *****************************************
+ok: [localhost]
+
+TASK [Get shell async_dir] *****************************************************
+ok: [localhost]
+
+TASK [Set async_dir for HOME env] **********************************************
+skipping: [localhost]
+
+TASK [Log into a container registry] *******************************************
+skipping: [localhost] => (item="vector-podman-ubuntu registry username: None specified")
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item=Dockerfile: None specified)
+
+TASK [Create Dockerfiles from image names] *************************************
+skipping: [localhost] => (item="Dockerfile: None specified; Image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest")
+skipping: [localhost]
+
+TASK [Discover local Podman images] ********************************************
+ok: [localhost] => (item=vector-podman-ubuntu)
+
+TASK [Build an Ansible compatible image] ***************************************
+skipping: [localhost] => (item=docker.io/geerlingguy/docker-ubuntu2204-ansible:latest)
+skipping: [localhost]
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item="vector-podman-ubuntu command: sleep infinity")
+
+TASK [Remove possible pre-existing containers] *********************************
+changed: [localhost]
+
+TASK [Discover local podman networks] ******************************************
+skipping: [localhost] => (item=vector-podman-ubuntu: None specified)
+skipping: [localhost]
+
+TASK [Create podman network dedicated to this scenario] ************************
+skipping: [localhost]
+
+TASK [Create molecule instance(s)] *********************************************
+changed: [localhost] => (item=vector-podman-ubuntu)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (300 retries left).
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (299 retries left).
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (298 retries left).
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (297 retries left).
+changed: [localhost] => (item=vector-podman-ubuntu)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=10   changed=3    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0
+
+INFO     Running podman > prepare
+WARNING  Skipping, prepare playbook not configured.
+INFO     Running podman > converge
+
+PLAY [Converge Vector role] ****************************************************
+
+TASK [vector-role : Create Vector directories] *********************************
+changed: [vector-podman-ubuntu] => (item=/opt/vector)
+changed: [vector-podman-ubuntu] => (item=/etc/vector)
+changed: [vector-podman-ubuntu] => (item=/var/lib/vector)
+
+TASK [vector-role : Download Vector archive] ***********************************
+changed: [vector-podman-ubuntu]
+
+TASK [vector-role : Unpack Vector archive] *************************************
+changed: [vector-podman-ubuntu]
+
+TASK [vector-role : Create Vector symlink] *************************************
+changed: [vector-podman-ubuntu]
+
+TASK [vector-role : Deploy Vector config] **************************************
+changed: [vector-podman-ubuntu]
+
+TASK [vector-role : Validate Vector config] ************************************
+ok: [vector-podman-ubuntu]
+
+TASK [vector-role : Print Vector config check] *********************************
+ok: [vector-podman-ubuntu] => {
+    "msg": "√ Loaded [\"/etc/vector/vector.yaml\"]\n√ Component configuration\n√ Health check \"console\"\n------------------------------------\n                           Validated"
+}
+
+RUNNING HANDLER [vector-role : Restart vector service] *************************
+skipping: [vector-podman-ubuntu]
+
+PLAY RECAP *********************************************************************
+vector-podman-ubuntu       : ok=7    changed=5    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Running podman > idempotence
+
+PLAY [Converge Vector role] ****************************************************
+
+TASK [vector-role : Create Vector directories] *********************************
+ok: [vector-podman-ubuntu] => (item=/opt/vector)
+ok: [vector-podman-ubuntu] => (item=/etc/vector)
+ok: [vector-podman-ubuntu] => (item=/var/lib/vector)
+
+TASK [vector-role : Download Vector archive] ***********************************
+ok: [vector-podman-ubuntu]
+
+TASK [vector-role : Unpack Vector archive] *************************************
+skipping: [vector-podman-ubuntu]
+
+TASK [vector-role : Create Vector symlink] *************************************
+ok: [vector-podman-ubuntu]
+
+TASK [vector-role : Deploy Vector config] **************************************
+ok: [vector-podman-ubuntu]
+
+TASK [vector-role : Validate Vector config] ************************************
+ok: [vector-podman-ubuntu]
+
+TASK [vector-role : Print Vector config check] *********************************
+ok: [vector-podman-ubuntu] => {
+    "msg": "√ Loaded [\"/etc/vector/vector.yaml\"]\n√ Component configuration\n√ Health check \"console\"\n------------------------------------\n                           Validated"
+}
+
+PLAY RECAP *********************************************************************
+vector-podman-ubuntu       : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Idempotence completed successfully.
+INFO     Running podman > side_effect
+WARNING  Skipping, side effect playbook not configured.
+INFO     Running podman > verify
+INFO     Running Ansible Verifier
+
+PLAY [Verify Vector role] ******************************************************
+
+TASK [Check Vector binary symlink] *********************************************
+ok: [vector-podman-ubuntu]
+
+TASK [Check Vector config file] ************************************************
+ok: [vector-podman-ubuntu]
+
+TASK [Assert Vector files exist] ***********************************************
+ok: [vector-podman-ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check Vector version] ****************************************************
+ok: [vector-podman-ubuntu]
+
+TASK [Validate Vector config] **************************************************
+ok: [vector-podman-ubuntu]
+
+TASK [Try to start Vector with generated config] *******************************
+ok: [vector-podman-ubuntu]
+
+TASK [Assert Vector checks are good] *******************************************
+ok: [vector-podman-ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+vector-podman-ubuntu       : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Verifier completed successfully.
+INFO     Running podman > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running podman > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Get passwd entries for USER env] *****************************************
+ok: [localhost]
+
+TASK [Get shell async_dir] *****************************************************
+ok: [localhost]
+
+TASK [Set async_dir for HOME env] **********************************************
+skipping: [localhost]
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item={'command': 'sleep infinity', 'image': 'docker.io/geerlingguy/docker-ubuntu2204-ansible:latest', 'name': 'vector-podman-ubuntu', 'pre_build_image': True})
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (300 retries left).
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (299 retries left).
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (298 retries left).
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j480177818014.7418', 'results_file': '/root/.ansible_async/j480177818014.7418', 'changed': True, 'item': {'command': 'sleep infinity', 'image': 'docker.io/geerlingguy/docker-ubuntu2204-ansible:latest', 'name': 'vector-podman-ubuntu', 'pre_build_image': True}, 'ansible_loop_var': 'item'})
+
+TASK [Delete podman network dedicated to this scenario] ************************
+skipping: [localhost] => (item=vector-podman-ubuntu: None specified)
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=4    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+___________________________________ summary ____________________________________
+  py39: commands succeeded
+  congratulations :)

@@ -1,0 +1,79 @@
+latest: Pulling from aragast/netology
+f70d60810c69: Pulling fs layer
+545277d80005: Pulling fs layer
+3787740a304b: Pulling fs layer
+8099be4bd6d4: Pulling fs layer
+78316366859b: Pulling fs layer
+a887350ff6d8: Pulling fs layer
+8ab90b51dc15: Pulling fs layer
+14617a4d32c2: Pulling fs layer
+b868affa868e: Pulling fs layer
+1e0b58337306: Pulling fs layer
+9167ab0cbb7e: Pulling fs layer
+907e71e165dd: Pulling fs layer
+6025d523ea47: Pulling fs layer
+6084c8fa3ce3: Pulling fs layer
+cffe842942c7: Pulling fs layer
+d984a1f47d62: Pulling fs layer
+6025d523ea47: Waiting
+6084c8fa3ce3: Waiting
+b868affa868e: Waiting
+cffe842942c7: Waiting
+d984a1f47d62: Waiting
+907e71e165dd: Waiting
+1e0b58337306: Waiting
+8099be4bd6d4: Waiting
+9167ab0cbb7e: Waiting
+78316366859b: Waiting
+a887350ff6d8: Waiting
+8ab90b51dc15: Waiting
+14617a4d32c2: Waiting
+545277d80005: Verifying Checksum
+545277d80005: Download complete
+8099be4bd6d4: Verifying Checksum
+8099be4bd6d4: Download complete
+f70d60810c69: Verifying Checksum
+f70d60810c69: Download complete
+3787740a304b: Verifying Checksum
+3787740a304b: Download complete
+f70d60810c69: Pull complete
+a887350ff6d8: Verifying Checksum
+a887350ff6d8: Download complete
+545277d80005: Pull complete
+3787740a304b: Pull complete
+8099be4bd6d4: Pull complete
+78316366859b: Verifying Checksum
+78316366859b: Download complete
+14617a4d32c2: Verifying Checksum
+14617a4d32c2: Download complete
+78316366859b: Pull complete
+a887350ff6d8: Pull complete
+1e0b58337306: Verifying Checksum
+1e0b58337306: Download complete
+8ab90b51dc15: Verifying Checksum
+8ab90b51dc15: Download complete
+907e71e165dd: Verifying Checksum
+907e71e165dd: Download complete
+8ab90b51dc15: Pull complete
+14617a4d32c2: Pull complete
+b868affa868e: Verifying Checksum
+b868affa868e: Download complete
+6084c8fa3ce3: Verifying Checksum
+6084c8fa3ce3: Download complete
+cffe842942c7: Verifying Checksum
+cffe842942c7: Download complete
+b868affa868e: Pull complete
+1e0b58337306: Pull complete
+d984a1f47d62: Download complete
+9167ab0cbb7e: Download complete
+6025d523ea47: Verifying Checksum
+6025d523ea47: Download complete
+9167ab0cbb7e: Pull complete
+907e71e165dd: Pull complete
+6025d523ea47: Pull complete
+6084c8fa3ce3: Pull complete
+cffe842942c7: Pull complete
+d984a1f47d62: Pull complete
+Digest: sha256:e44f93d3d9880123ac8170d01bd38ea1cd6c5174832b1782ce8f97f13e695ad5
+Status: Downloaded newer image for aragast/netology:latest
+docker.io/aragast/netology:latest

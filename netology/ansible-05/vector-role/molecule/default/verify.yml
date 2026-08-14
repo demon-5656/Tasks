@@ -1,0 +1,45 @@
+---
+- name: Verify Vector role
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check Vector binary symlink
+      ansible.builtin.stat:
+        path: /usr/local/bin/vector
+      register: vector_binary
+
+    - name: Check Vector config file
+      ansible.builtin.stat:
+        path: /etc/vector/vector.yaml
+      register: vector_config
+
+    - name: Assert Vector files exist
+      ansible.builtin.assert:
+        that:
+          - vector_binary.stat.exists
+          - vector_binary.stat.islnk
+          - vector_config.stat.exists
+          - vector_config.stat.size > 0
+
+    - name: Check Vector version
+      ansible.builtin.command: /usr/local/bin/vector --version
+      register: vector_version_check
+      changed_when: false
+
+    - name: Validate Vector config
+      ansible.builtin.command: /usr/local/bin/vector validate /etc/vector/vector.yaml
+      register: vector_validate_check
+      changed_when: false
+
+    - name: Try to start Vector with generated config
+      ansible.builtin.command: timeout 5 /usr/local/bin/vector --config /etc/vector/vector.yaml
+      register: vector_start_check
+      changed_when: false
+      failed_when: vector_start_check.rc not in [0, 124]
+
+    - name: Assert Vector checks are good
+      ansible.builtin.assert:
+        that:
+          - "'vector 0.38.0' in vector_version_check.stdout"
+          - "'Validated' in vector_validate_check.stdout"
+          - vector_start_check.rc in [0, 124]

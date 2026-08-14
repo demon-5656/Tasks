@@ -1,0 +1,22 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: podman
+platforms:
+  - name: vector-podman-ubuntu
+    image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest
+    command: sleep infinity
+    pre_build_image: true
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ${MOLECULE_PROJECT_DIRECTORY}/..
+  config_options:
+    defaults:
+      interpreter_python: auto_silent
+  playbooks:
+    converge: ../default/converge.yml
+    verify: ../default/verify.yml
+verifier:
+  name: ansible

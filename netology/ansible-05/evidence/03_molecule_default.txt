@@ -1,0 +1,248 @@
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item=vector-ubuntu)
+changed: [localhost] => (item=vector-oraclelinux)
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+ok: [localhost] => (item=vector-ubuntu)
+ok: [localhost] => (item=vector-oraclelinux)
+
+TASK [Delete docker networks(s)] ***********************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+
+playbook: /home/pc243/GIT/Tasks/netology/ansible-05/vector-role/molecule/default/converge.yml
+
+PLAY [Create] ******************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Log into a Docker registry] **********************************************
+skipping: [localhost] => (item=(censored due to no_log))
+skipping: [localhost] => (item=(censored due to no_log))
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item=vector-ubuntu)
+ok: [localhost] => (item=vector-oraclelinux)
+
+TASK [Create Dockerfiles from image names] *************************************
+skipping: [localhost] => (item=None)
+skipping: [localhost] => (item=None)
+skipping: [localhost]
+
+TASK [Synchronization the context] *********************************************
+skipping: [localhost] => (item=None)
+skipping: [localhost] => (item=None)
+skipping: [localhost]
+
+TASK [Discover local Docker images] ********************************************
+ok: [localhost] => (item=unix://var/run/docker.sock)
+ok: [localhost] => (item=unix://var/run/docker.sock)
+
+TASK [Create docker network(s)] ************************************************
+skipping: [localhost]
+
+TASK [Build an Ansible compatible image (new)] *********************************
+skipping: [localhost] => (item=molecule_local/ubuntu:latest)
+skipping: [localhost] => (item=molecule_local/oraclelinux:8)
+skipping: [localhost]
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item=vector-ubuntu)
+ok: [localhost] => (item=vector-oraclelinux)
+
+TASK [Create molecule instance(s)] *********************************************
+changed: [localhost] => (item=vector-ubuntu)
+changed: [localhost] => (item=vector-oraclelinux)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (299 retries left).
+changed: [localhost] => (item=vector-ubuntu)
+changed: [localhost] => (item=vector-oraclelinux)
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=6    changed=2    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+
+
+PLAY [Prepare containers] ******************************************************
+
+TASK [Install base packages in Debian family containers] ***********************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [Install base packages in RHEL family containers] *************************
+ok: [vector-ubuntu]
+ok: [vector-oraclelinux]
+
+PLAY RECAP *********************************************************************
+vector-oraclelinux         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+vector-ubuntu              : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+
+PLAY [Converge Vector role] ****************************************************
+
+TASK [vector-role : Create Vector directories] *********************************
+changed: [vector-oraclelinux] => (item=/opt/vector)
+changed: [vector-ubuntu] => (item=/opt/vector)
+changed: [vector-oraclelinux] => (item=/etc/vector)
+changed: [vector-ubuntu] => (item=/etc/vector)
+changed: [vector-oraclelinux] => (item=/var/lib/vector)
+changed: [vector-ubuntu] => (item=/var/lib/vector)
+
+TASK [vector-role : Download Vector archive] ***********************************
+changed: [vector-ubuntu]
+changed: [vector-oraclelinux]
+
+TASK [vector-role : Unpack Vector archive] *************************************
+changed: [vector-ubuntu]
+changed: [vector-oraclelinux]
+
+TASK [vector-role : Create Vector symlink] *************************************
+changed: [vector-oraclelinux]
+changed: [vector-ubuntu]
+
+TASK [vector-role : Deploy Vector config] **************************************
+changed: [vector-oraclelinux]
+changed: [vector-ubuntu]
+
+TASK [vector-role : Validate Vector config] ************************************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [vector-role : Print Vector config check] *********************************
+ok: [vector-oraclelinux] => {
+    "msg": "√ Loaded [\"/etc/vector/vector.yaml\"]\n√ Component configuration\n√ Health check \"console\"\n------------------------------------\n                           Validated"
+}
+ok: [vector-ubuntu] => {
+    "msg": "√ Loaded [\"/etc/vector/vector.yaml\"]\n√ Component configuration\n√ Health check \"console\"\n------------------------------------\n                           Validated"
+}
+
+RUNNING HANDLER [vector-role : Restart vector service] *************************
+skipping: [vector-oraclelinux]
+skipping: [vector-ubuntu]
+
+PLAY RECAP *********************************************************************
+vector-oraclelinux         : ok=7    changed=5    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+vector-ubuntu              : ok=7    changed=5    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+
+PLAY [Converge Vector role] ****************************************************
+
+TASK [vector-role : Create Vector directories] *********************************
+ok: [vector-oraclelinux] => (item=/opt/vector)
+ok: [vector-ubuntu] => (item=/opt/vector)
+ok: [vector-oraclelinux] => (item=/etc/vector)
+ok: [vector-ubuntu] => (item=/etc/vector)
+ok: [vector-oraclelinux] => (item=/var/lib/vector)
+ok: [vector-ubuntu] => (item=/var/lib/vector)
+
+TASK [vector-role : Download Vector archive] ***********************************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [vector-role : Unpack Vector archive] *************************************
+skipping: [vector-oraclelinux]
+skipping: [vector-ubuntu]
+
+TASK [vector-role : Create Vector symlink] *************************************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [vector-role : Deploy Vector config] **************************************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [vector-role : Validate Vector config] ************************************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [vector-role : Print Vector config check] *********************************
+ok: [vector-oraclelinux] => {
+    "msg": "√ Loaded [\"/etc/vector/vector.yaml\"]\n√ Component configuration\n√ Health check \"console\"\n------------------------------------\n                           Validated"
+}
+ok: [vector-ubuntu] => {
+    "msg": "√ Loaded [\"/etc/vector/vector.yaml\"]\n√ Component configuration\n√ Health check \"console\"\n------------------------------------\n                           Validated"
+}
+
+PLAY RECAP *********************************************************************
+vector-oraclelinux         : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+vector-ubuntu              : ok=6    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+
+PLAY [Verify Vector role] ******************************************************
+
+TASK [Check Vector binary symlink] *********************************************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [Check Vector config file] ************************************************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [Assert Vector files exist] ***********************************************
+ok: [vector-oraclelinux] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [vector-ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check Vector version] ****************************************************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [Validate Vector config] **************************************************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [Try to start Vector with generated config] *******************************
+ok: [vector-oraclelinux]
+ok: [vector-ubuntu]
+
+TASK [Assert Vector checks are good] *******************************************
+ok: [vector-oraclelinux] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+ok: [vector-ubuntu] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+PLAY RECAP *********************************************************************
+vector-oraclelinux         : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+vector-ubuntu              : ok=7    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Destroy molecule instance(s)] ********************************************
+changed: [localhost] => (item=vector-ubuntu)
+changed: [localhost] => (item=vector-oraclelinux)
+
+TASK [Wait for instance(s) deletion to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) deletion to complete (299 retries left).
+changed: [localhost] => (item=vector-ubuntu)
+changed: [localhost] => (item=vector-oraclelinux)
+
+TASK [Delete docker networks(s)] ***********************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+

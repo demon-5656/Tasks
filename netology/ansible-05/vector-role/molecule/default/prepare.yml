@@ -1,0 +1,21 @@
+---
+- name: Prepare containers
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Install base packages in Debian family containers
+      ansible.builtin.raw: |
+        if command -v apt-get >/dev/null 2>&1; then
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y python3 tar gzip ca-certificates curl coreutils
+        fi
+      changed_when: false
+
+    - name: Install base packages in RHEL family containers
+      ansible.builtin.raw: |
+        if command -v dnf >/dev/null 2>&1; then
+          dnf install -y python39 tar gzip ca-certificates curl coreutils
+        elif command -v yum >/dev/null 2>&1; then
+          yum install -y python39 tar gzip ca-certificates curl coreutils
+        fi
+      changed_when: false

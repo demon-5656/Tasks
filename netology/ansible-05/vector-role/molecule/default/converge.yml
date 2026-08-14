@@ -1,0 +1,8 @@
+---
+- name: Converge Vector role
+  hosts: all
+  gather_facts: false
+  vars:
+    vector_manage_service: false
+  roles:
+    - role: vector-role
