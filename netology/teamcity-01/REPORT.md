@@ -4,13 +4,17 @@
 
 ## Ссылки
 
-Fork с проектом:
+Папки с работой:
+
+- [`example-teamcity`](example-teamcity) — fork проекта, исходники, тесты и Kotlin DSL;
+- [`example-teamcity/.teamcity`](example-teamcity/.teamcity) — versioned configuration TeamCity;
+- [`example-teamcity/teamcity`](example-teamcity/teamcity) — шаблон Maven settings;
+- [`evidence`](evidence) — результаты локальных проверок;
+- [`screenshots`](screenshots) — скриншоты стенда.
+
+Fork на GitHub:
 
 - <https://github.com/demon-5656/example-teamcity>
-
-Конфигурация TeamCity:
-
-- [`.teamcity/settings.kts`](https://github.com/demon-5656/example-teamcity/blob/master/.teamcity/settings.kts)
 
 Для отправки в ЛК:
 
@@ -41,7 +45,7 @@ public void welcomerReplyContainsHunter() {
 
 ## Конфигурация TeamCity
 
-В [`.teamcity/settings.kts`](https://github.com/demon-5656/example-teamcity/blob/master/.teamcity/settings.kts) сохранена versioned configuration:
+В [`example-teamcity/.teamcity/settings.kts`](example-teamcity/.teamcity/settings.kts) сохранена versioned configuration:
 
 - VCS trigger запускает сборку после push;
 - для веток, отличных от `master`, выполняется `mvn clean test`;
@@ -49,7 +53,7 @@ public void welcomerReplyContainsHunter() {
 - deploy использует Maven settings с именем `settings.xml`;
 - артефакты сборки: `target/*.jar => target`.
 
-Шаблон Maven settings находится в [`teamcity/settings.xml.template`](https://github.com/demon-5656/example-teamcity/blob/master/teamcity/settings.xml.template). Для Nexus используются переменные окружения `NEXUS_USERNAME` и `NEXUS_PASSWORD`, поэтому логин и пароль не хранятся в Git.
+Шаблон Maven settings находится в [`example-teamcity/teamcity/settings.xml.template`](example-teamcity/teamcity/settings.xml.template). Для Nexus используются переменные окружения `NEXUS_USERNAME` и `NEXUS_PASSWORD`, поэтому логин и пароль не хранятся в Git.
 
 Конфигурация добавлена коммитом [`4615a78`](https://github.com/demon-5656/example-teamcity/commit/4615a78cb6a6554f14409bdb73a0e6747ae8b95d).
 
@@ -68,6 +72,8 @@ java -cp 'target/classes;target/test-classes' TeamcityHomeworkCheck
 All Welcomer checks passed
 ```
 
+Полный вывод: [`evidence/01_local_build.txt`](evidence/01_local_build.txt).
+
 После этого собран и запущен `target/plaindoll-0.0.2.jar`:
 
 ```text
@@ -82,6 +88,8 @@ Farewell, good hunter. May you find your worth in waking world.
 ```text
 XML validation passed
 ```
+
+Файл: [`evidence/02_xml_validation.txt`](evidence/02_xml_validation.txt).
 
 ## Стенд TeamCity
 
