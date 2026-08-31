@@ -1,23 +1,28 @@
 # Домашнее задание к занятию «TeamCity»
 
-Под это задание поднял отдельный стенд в Yandex Cloud. В нём три машины: TeamCity Server, TeamCity Build Agent и отдельная VM для запуска playbook.
+Репозиторий с fork и результатом: <https://github.com/demon-5656/example-teamcity>.
 
-Сервер и агент находятся в одной сети. Агент подключается к TeamCity по внутреннему адресу сервера. Так ему не нужен внешний IP, и после перезапуска VM связь между ними не ломается.
+## Выполнено в репозитории fork
 
-TeamCity Server запущен и доступен по порту `8111`. На сервере открылась первичная настройка TeamCity — на скриншоте видно, что сервис стартовал и выбрана внутренняя база для учебного стенда.
+- В `master` добавлен `Welcomer.sayReply()` с репликой, содержащей `hunter`; тест `welcomerReplyContainsHunter` проверяет это условие.
+- Изменения из `feature/add_reply` влиты в `master` merge-коммитом `90c548c`.
+- В `.teamcity/settings.kts` сохранена versioned configuration TeamCity:
+  - VCS trigger;
+  - для не-`master` — `mvn clean test`;
+  - для `master` — `mvn clean deploy` с Maven settings `settings.xml`;
+  - артефакты — `target/*.jar => target`.
+- Шаблон Maven settings расположен в `teamcity/settings.xml.template`. Учётные данные берутся из `NEXUS_USERNAME` и `NEXUS_PASSWORD`, поэтому секреты не попадают в Git.
+
+Последний коммит конфигурации: [`4615a78`](https://github.com/demon-5656/example-teamcity/commit/4615a78cb6a6554f14409bdb73a0e6747ae8b95d).
+
+## Локальная проверка
+
+Исходники скомпилированы JDK 26. Проверка методов `Welcomer`, включая `sayReply()`, прошла успешно; собран и запущен `target/plaindoll-0.0.2.jar`. XML-файлы `pom.xml` и шаблон Maven settings успешно разобраны XML-парсером.
+
+## Стенд TeamCity
+
+Стенд ранее был поднят в Yandex Cloud: TeamCity Server, Build Agent и отдельная VM для playbook. Скриншот первого запуска:
 
 ![Первый запуск TeamCity](screenshots/teamcity-first-start.png)
 
-Build Agent тоже запущен. Он уже пытается подключиться к серверу и появится в списке агентов сразу после завершения первоначальной настройки TeamCity.
-
-## Проверка
-
-Проверил, что все три VM находятся в состоянии `RUNNING`.
-
-Проверил TeamCity Server:
-
-```text
-teamcity-server  Up  ...  0.0.0.0:8111->8111/tcp
-```
-
-Порт `8111` доступен, интерфейс TeamCity открывается в браузере. Агент запущен отдельно и использует адрес сервера внутри сети.
+На момент обновления отчёта ранее использовавшийся адрес TeamCity не отвечает, а Nexus доступен только из внутренней сети. Поэтому повторный live-запуск TeamCity, авторизацию агента и появление артефакта в Nexus в этой сессии подтвердить невозможно.
