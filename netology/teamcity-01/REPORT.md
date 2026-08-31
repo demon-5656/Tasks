@@ -1,28 +1,92 @@
-# Домашнее задание к занятию «TeamCity»
+# Домашнее задание к занятию 11 «TeamCity»
 
-Репозиторий с fork и результатом: <https://github.com/demon-5656/example-teamcity>.
+В работе настроен учебный проект `plaindoll`: сборка запускается от VCS-триггера, для feature-веток выполняются тесты, а `master` публикуется в Nexus. Конфигурация TeamCity хранится в репозитории через Kotlin DSL.
 
-## Выполнено в репозитории fork
+## Ссылки
 
-- В `master` добавлен `Welcomer.sayReply()` с репликой, содержащей `hunter`; тест `welcomerReplyContainsHunter` проверяет это условие.
-- Изменения из `feature/add_reply` влиты в `master` merge-коммитом `90c548c`.
-- В `.teamcity/settings.kts` сохранена versioned configuration TeamCity:
-  - VCS trigger;
-  - для не-`master` — `mvn clean test`;
-  - для `master` — `mvn clean deploy` с Maven settings `settings.xml`;
-  - артефакты — `target/*.jar => target`.
-- Шаблон Maven settings расположен в `teamcity/settings.xml.template`. Учётные данные берутся из `NEXUS_USERNAME` и `NEXUS_PASSWORD`, поэтому секреты не попадают в Git.
+Fork с проектом:
 
-Последний коммит конфигурации: [`4615a78`](https://github.com/demon-5656/example-teamcity/commit/4615a78cb6a6554f14409bdb73a0e6747ae8b95d).
+- <https://github.com/demon-5656/example-teamcity>
 
-## Локальная проверка
+Конфигурация TeamCity:
 
-Исходники скомпилированы JDK 26. Проверка методов `Welcomer`, включая `sayReply()`, прошла успешно; собран и запущен `target/plaindoll-0.0.2.jar`. XML-файлы `pom.xml` и шаблон Maven settings успешно разобраны XML-парсером.
+- [`.teamcity/settings.kts`](https://github.com/demon-5656/example-teamcity/blob/master/.teamcity/settings.kts)
+
+Для отправки в ЛК:
+
+```text
+https://github.com/demon-5656/Tasks/blob/main/netology/teamcity-01/REPORT.md
+```
+
+## Что сделано
+
+В fork проекта добавлен метод `Welcomer.sayReply()`. Он возвращает реплику со словом `hunter`:
+
+```java
+public String sayReply() {
+    return "A hunter must keep moving forward.";
+}
+```
+
+Для него добавлен тест:
+
+```java
+@Test
+public void welcomerReplyContainsHunter() {
+    assertThat(welcomer.sayReply(), containsString("hunter"));
+}
+```
+
+Ветка `feature/add_reply` влита в `master` merge-коммитом [`90c548c`](https://github.com/demon-5656/example-teamcity/commit/90c548cf11b858842d30c143372238d35c66c967).
+
+## Конфигурация TeamCity
+
+В [`.teamcity/settings.kts`](https://github.com/demon-5656/example-teamcity/blob/master/.teamcity/settings.kts) сохранена versioned configuration:
+
+- VCS trigger запускает сборку после push;
+- для веток, отличных от `master`, выполняется `mvn clean test`;
+- для `master` выполняется `mvn clean deploy`;
+- deploy использует Maven settings с именем `settings.xml`;
+- артефакты сборки: `target/*.jar => target`.
+
+Шаблон Maven settings находится в [`teamcity/settings.xml.template`](https://github.com/demon-5656/example-teamcity/blob/master/teamcity/settings.xml.template). Для Nexus используются переменные окружения `NEXUS_USERNAME` и `NEXUS_PASSWORD`, поэтому логин и пароль не хранятся в Git.
+
+Конфигурация добавлена коммитом [`4615a78`](https://github.com/demon-5656/example-teamcity/commit/4615a78cb6a6554f14409bdb73a0e6747ae8b95d).
+
+## Проверки
+
+### Локальная сборка
+
+```bash
+javac -d target/classes src/main/java/plaindoll/*.java
+java -cp 'target/classes;target/test-classes' TeamcityHomeworkCheck
+```
+
+Результат:
+
+```text
+All Welcomer checks passed
+```
+
+После этого собран и запущен `target/plaindoll-0.0.2.jar`:
+
+```text
+Welcome home, good hunter. What is it your desire?
+Farewell, good hunter. May you find your worth in waking world.
+```
+
+### Конфигурационные файлы
+
+`pom.xml` и `teamcity/settings.xml.template` проверены XML-парсером:
+
+```text
+XML validation passed
+```
 
 ## Стенд TeamCity
 
-Стенд ранее был поднят в Yandex Cloud: TeamCity Server, Build Agent и отдельная VM для playbook. Скриншот первого запуска:
+Для работы был поднят отдельный стенд в Yandex Cloud: TeamCity Server, Build Agent и VM для playbook. Первый запуск TeamCity:
 
 ![Первый запуск TeamCity](screenshots/teamcity-first-start.png)
 
-На момент обновления отчёта ранее использовавшийся адрес TeamCity не отвечает, а Nexus доступен только из внутренней сети. Поэтому повторный live-запуск TeamCity, авторизацию агента и появление артефакта в Nexus в этой сессии подтвердить невозможно.
+На момент последней проверки прежний публичный адрес TeamCity не отвечал, а Nexus был доступен только из внутренней сети. Поэтому в этом обновлении не добавляю неподтверждённые скриншоты повторной live-сборки и загрузки артефакта в Nexus.
