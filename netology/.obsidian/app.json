@@ -1,0 +1,15 @@
+{
+  "newFileLocation": "folder",
+  "newFileFolderPath": "",
+  "attachmentFolderPath": "attachments",
+  "useMarkdownLinks": true,
+  "showFrontmatter": true,
+  "alwaysUpdateLinks": true,
+  "showLineNumber": true,
+  "readableLineLength": true,
+  "strictLineBreaks": false,
+  "livePreview": true,
+  "defaultViewMode": "preview",
+  "spellcheck": true,
+  "spellcheckLanguages": ["ru", "en"]
+}
