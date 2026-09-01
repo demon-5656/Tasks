@@ -1,0 +1,3 @@
+[INFO] Running plaindoll.WelcomerTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS

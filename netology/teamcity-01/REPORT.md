@@ -53,33 +53,35 @@ public void welcomerReplyContainsHunter() {
 - deploy использует Maven settings с именем `settings.xml`;
 - артефакты сборки: `target/*.jar => target`.
 
-Шаблон Maven settings находится в [`example-teamcity/teamcity/settings.xml.template`](example-teamcity/teamcity/settings.xml.template). Для Nexus используются переменные окружения `NEXUS_USERNAME` и `NEXUS_PASSWORD`, поэтому логин и пароль не хранятся в Git.
+Шаблон Maven settings находится в [`example-teamcity/teamcity/settings.xml.template`](example-teamcity/teamcity/settings.xml.template). В сам TeamCity был загружен рабочий `settings.xml` с доступом к Nexus, но в Git я его не кладу. Иначе пароль уедет в историю репозитория, а это потом неприятно чистить.
 
-Конфигурация добавлена коммитом [`4615a78`](https://github.com/demon-5656/example-teamcity/commit/4615a78cb6a6554f14409bdb73a0e6747ae8b95d).
+Конфигурация добавлена в репозиторий коммитом [`4615a78`](https://github.com/demon-5656/example-teamcity/commit/4615a78cb6a6554f14409bdb73a0e6747ae8b95d). Позже убрал лишний локальный `.teamcity/pom.xml`, потому что для этой сдачи он не нужен, а без живого TeamCity-сервера только путает проверку.
 
 ## Проверки
 
 ### Локальная сборка
 
 ```bash
-javac -d target/classes src/main/java/plaindoll/*.java
-java -cp 'target/classes;target/test-classes' TeamcityHomeworkCheck
+mvn clean test
 ```
 
 Результат:
+
+```text
+[INFO] Running plaindoll.WelcomerTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+```
+
+Короткий вывод: [`evidence/maven-test-summary.txt`](evidence/maven-test-summary.txt).
+
+До этого ещё проверял проект обычной Java-сборкой, чтобы не упираться в окружение Maven:
 
 ```text
 All Welcomer checks passed
 ```
 
 Полный вывод: [`evidence/01_local_build.txt`](evidence/01_local_build.txt).
-
-После этого собран и запущен `target/plaindoll-0.0.2.jar`:
-
-```text
-Welcome home, good hunter. What is it your desire?
-Farewell, good hunter. May you find your worth in waking world.
-```
 
 ### Конфигурационные файлы
 
