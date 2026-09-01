@@ -1,0 +1,162 @@
+{
+  "items" : [ {
+    "id" : "bWF2ZW4tcmVsZWFzZXM6ZGZiZWYwOWVmZTE2NDRlYTYzNTAwMWQ3MjVhYzgxMTY",
+    "repository" : "maven-releases",
+    "format" : "maven2",
+    "group" : "org.netology",
+    "name" : "plaindoll",
+    "version" : "0.0.3",
+    "assets" : [ {
+      "downloadUrl" : "http://111.88.240.135:8081/repository/maven-releases/org/netology/plaindoll/0.0.3/plaindoll-0.0.3.jar",
+      "path" : "org/netology/plaindoll/0.0.3/plaindoll-0.0.3.jar",
+      "id" : "bWF2ZW4tcmVsZWFzZXM6NzZkN2Q3ZTQxODZhMzkwZjZjY2JiNzI2NjBmNWVkODk",
+      "repository" : "maven-releases",
+      "format" : "maven2",
+      "checksum" : {
+        "sha1" : "a1529c6dbb00456794ff2e4bb4acfabfd8530b6c",
+        "sha256" : "8d1ef1161b3a67160d3b2baeea2fefa49edac1a1427c39684d9e89f87769a707",
+        "sha512" : "866a1bdfde6cc31cbe1bb33d5d4cff19464479f1be43cf5f3f9bbc96ffbb2413d407816ceeead96aeedc8d4bdbc4c3662ba6105a43f5f075924d8bc49c7471ca",
+        "md5" : "3ac6d7a6f259f1d6d5fa46b7b8dbcfe1"
+      },
+      "contentType" : "application/java-archive",
+      "lastModified" : "2026-09-01T08:24:51.472+00:00",
+      "lastDownloaded" : null,
+      "uploader" : "admin",
+      "uploaderIp" : "10.10.0.11",
+      "fileSize" : 3218,
+      "blobCreated" : null,
+      "maven2" : {
+        "extension" : "jar",
+        "groupId" : "org.netology",
+        "artifactId" : "plaindoll",
+        "version" : "0.0.3"
+      }
+    }, {
+      "downloadUrl" : "http://111.88.240.135:8081/repository/maven-releases/org/netology/plaindoll/0.0.3/plaindoll-0.0.3.jar.md5",
+      "path" : "org/netology/plaindoll/0.0.3/plaindoll-0.0.3.jar.md5",
+      "id" : "bWF2ZW4tcmVsZWFzZXM6NzZkN2Q3ZTQxODZhMzkwZjQ5OWQ4OTc3ZTNmMjRjYWY",
+      "repository" : "maven-releases",
+      "format" : "maven2",
+      "checksum" : {
+        "sha1" : "1f93ae77ed580c2d0e3f9371cc3012d81def8368",
+        "sha256" : "56fbc8529036a292323a332663f7de545c6156a81e77d50bd938115a6bf3f3e5",
+        "sha512" : "2838dc46241ad013a0c1e4df7b60d6b2127011eeef88f6b7f0b44650290a5c4f2ce6a4db1ee23f70833cd39162991959f8515aaa48fb3659d8bb448a777b0e67",
+        "md5" : "e2d9d890c28f80cca60e60cb73e3ea3b"
+      },
+      "contentType" : "text/plain",
+      "lastModified" : "2026-09-01T08:24:51.532+00:00",
+      "lastDownloaded" : null,
+      "uploader" : "admin",
+      "uploaderIp" : "10.10.0.11",
+      "fileSize" : 32,
+      "blobCreated" : null,
+      "maven2" : {
+        "extension" : "jar.md5",
+        "groupId" : "org.netology",
+        "artifactId" : "plaindoll",
+        "version" : "0.0.3"
+      }
+    }, {
+      "downloadUrl" : "http://111.88.240.135:8081/repository/maven-releases/org/netology/plaindoll/0.0.3/plaindoll-0.0.3.jar.sha1",
+      "path" : "org/netology/plaindoll/0.0.3/plaindoll-0.0.3.jar.sha1",
+      "id" : "bWF2ZW4tcmVsZWFzZXM6Y2Y2MDZmODI1NjBlYTkwNjgxMjRjMTQyMWU2ZTRkZmQ",
+      "repository" : "maven-releases",
+      "format" : "maven2",
+      "checksum" : {
+        "sha1" : "26be8b85d9959ea491de815f39564057b4d9c722",
+        "sha256" : "45b84598403f25b51991c880805af15345d25a446596f38fb79c633575e0966d",
+        "sha512" : "fbaf479b79f183f42a7a49607a2c70195cecd15ab6f54eff47d1e0b759dd8c0028b4c496d23395e3d9382accfaf2edf86ef24fa87b5b0f540e8bd6c5a90e0b37",
+        "md5" : "1dcc2fb66ba182515d8501a971e340fb"
+      },
+      "contentType" : "text/plain",
+      "lastModified" : "2026-09-01T08:24:51.511+00:00",
+      "lastDownloaded" : null,
+      "uploader" : "admin",
+      "uploaderIp" : "10.10.0.11",
+      "fileSize" : 40,
+      "blobCreated" : null,
+      "maven2" : {
+        "extension" : "jar.sha1",
+        "groupId" : "org.netology",
+        "artifactId" : "plaindoll",
+        "version" : "0.0.3"
+      }
+    }, {
+      "downloadUrl" : "http://111.88.240.135:8081/repository/maven-releases/org/netology/plaindoll/0.0.3/plaindoll-0.0.3.pom",
+      "path" : "org/netology/plaindoll/0.0.3/plaindoll-0.0.3.pom",
+      "id" : "bWF2ZW4tcmVsZWFzZXM6Y2Y2MDZmODI1NjBlYTkwNjBjNTRiNjMxMzJkY2ViNmU",
+      "repository" : "maven-releases",
+      "format" : "maven2",
+      "checksum" : {
+        "sha1" : "ae789486e2ca4b02f3f958f07fd5419d1045e347",
+        "sha256" : "08acd668f828207fd1ba59686991c1c1859dfb4d0ffcc46be2d8837876e5c45e",
+        "sha512" : "b5bf9081d8d5a94a5dab6cd7e31e723c3006b1c2e132c45e59e487300e325d677dbcb17a20160cb6e444bbda5e18a36a6478971b211dd179213c0c6ba962dd5d",
+        "md5" : "8ff4bc09aecf2659be2b83d9e5faf544"
+      },
+      "contentType" : "application/xml",
+      "lastModified" : "2026-09-01T08:24:51.565+00:00",
+      "lastDownloaded" : null,
+      "uploader" : "admin",
+      "uploaderIp" : "10.10.0.11",
+      "fileSize" : 1521,
+      "blobCreated" : null,
+      "maven2" : {
+        "extension" : "pom",
+        "groupId" : "org.netology",
+        "artifactId" : "plaindoll",
+        "version" : "0.0.3"
+      }
+    }, {
+      "downloadUrl" : "http://111.88.240.135:8081/repository/maven-releases/org/netology/plaindoll/0.0.3/plaindoll-0.0.3.pom.md5",
+      "path" : "org/netology/plaindoll/0.0.3/plaindoll-0.0.3.pom.md5",
+      "id" : "bWF2ZW4tcmVsZWFzZXM6Y2Y2MDZmODI1NjBlYTkwNjBjNWZlOWYxNDNhNTJlYTA",
+      "repository" : "maven-releases",
+      "format" : "maven2",
+      "checksum" : {
+        "sha1" : "e2db564080f59084c2e51a5de3f32b56e6243ee9",
+        "sha256" : "6107733bf6254aa7d885e37fa77c7d9dd33dbb242e16f7efe4a77adb2e20126c",
+        "sha512" : "23ff1bc5d03515baf044b00792a94309e887fef66828ec593c355e5d25738f4bb880e260504859e1444df7214c80d0385b7ea31c8fa96c3d9b11913f1fbeddb6",
+        "md5" : "c034cfaad838bf1c1e8528c7fe0733b5"
+      },
+      "contentType" : "text/plain",
+      "lastModified" : "2026-09-01T08:24:51.633+00:00",
+      "lastDownloaded" : null,
+      "uploader" : "admin",
+      "uploaderIp" : "10.10.0.11",
+      "fileSize" : 32,
+      "blobCreated" : null,
+      "maven2" : {
+        "extension" : "pom.md5",
+        "groupId" : "org.netology",
+        "artifactId" : "plaindoll",
+        "version" : "0.0.3"
+      }
+    }, {
+      "downloadUrl" : "http://111.88.240.135:8081/repository/maven-releases/org/netology/plaindoll/0.0.3/plaindoll-0.0.3.pom.sha1",
+      "path" : "org/netology/plaindoll/0.0.3/plaindoll-0.0.3.pom.sha1",
+      "id" : "bWF2ZW4tcmVsZWFzZXM6NzZkN2Q3ZTQxODZhMzkwZmI5MzhmMDA2NzA2YWY2ZTU",
+      "repository" : "maven-releases",
+      "format" : "maven2",
+      "checksum" : {
+        "sha1" : "e56d8d812881908a6f5996e54b2f29648a629370",
+        "sha256" : "2bab4c62b36058d08ded65d92234ca1f8401891c65130373c9908beb99be5fe2",
+        "sha512" : "8f2d2a75aff3265a973355949bfa0e9fde234db504f8a9607bd47367c4e418ff5f544ef3453670aa69153f5ec2a4783bf65e98b13db2139756c9419901146ea5",
+        "md5" : "f1bd8789b2dbff78ce9c42acd6fc958e"
+      },
+      "contentType" : "text/plain",
+      "lastModified" : "2026-09-01T08:24:51.593+00:00",
+      "lastDownloaded" : null,
+      "uploader" : "admin",
+      "uploaderIp" : "10.10.0.11",
+      "fileSize" : 40,
+      "blobCreated" : null,
+      "maven2" : {
+        "extension" : "pom.sha1",
+        "groupId" : "org.netology",
+        "artifactId" : "plaindoll",
+        "version" : "0.0.3"
+      }
+    } ]
+  } ],
+  "continuationToken" : null
+}

@@ -1,0 +1,27 @@
+[08:24:46]i:	 [Step 1/1] Content of /opt/buildagent/temp/agentTmp/custom_script2009528330484904982 file: 
+if [ "master" = "master" ]; then /opt/buildagent/tools/maven3_6/bin/mvn -s /opt/buildagent/conf/settings.xml clean deploy; else /opt/buildagent/tools/maven3_6/bin/mvn clean test; fi
+
+[08:24:46] :	 [Step 1/1] Starting: /opt/buildagent/temp/agentTmp/custom_script2009528330484904982 
+[08:24:46] :	 [Step 1/1] in directory: /opt/buildagent/work/948f74219a4174d3
+[08:24:47] :	 [Step 1/1] [INFO] Scanning for projects...
+[08:24:50] :	 [Step 1/1] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 sec
+[08:24:50] :	 [Step 1/1] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[08:24:51] :	 [Step 1/1] Uploading to nexus: http://10.10.0.12:8081/repository/maven-releases/org/netology/plaindoll/0.0.3/plaindoll-0.0.3.jar
+[08:24:51] :	 [Step 1/1] Uploading to nexus: http://10.10.0.12:8081/repository/maven-releases/org/netology/plaindoll/0.0.3/plaindoll-0.0.3.pom
+[08:24:51] :	 [Step 1/1] Uploading to nexus: http://10.10.0.12:8081/repository/maven-releases/org/netology/plaindoll/maven-metadata.xml
+[08:24:51] :	 [Step 1/1] [INFO] BUILD SUCCESS
+[08:24:54] : Publishing artifacts
+[08:24:54] :	 [Publishing artifacts] Collecting files to publish: [/opt/buildagent/system/perfmon/temp/14/perfmon.csv=>.teamcity/perfmon/, /opt/buildagent/temp/agentTmp/build_stages.txt=>.teamcity/perfmon/]
+[08:24:54] :	 [Publishing artifacts] Publishing 2 files using [WebPublisher]: /opt/buildagent/system/perfmon/temp/14/perfmon.csv, /opt/buildagent/temp/agentTmp/build_stages.txt => .teamcity/perfmon
+[08:24:54] :	 [Publishing artifacts] Publishing 2 files using [ArtifactsCachePublisherImpl]: /opt/buildagent/system/perfmon/temp/14/perfmon.csv, /opt/buildagent/temp/agentTmp/build_stages.txt => .teamcity/perfmon
+[08:24:54]i:	 [Publishing artifacts] Will publish 2 artifact(s) to TeamCity node with id MAIN_SERVER
+[08:24:54] : Publishing internal artifacts
+[08:24:54] :	 [Publishing internal artifacts] Publishing 1 file using [WebPublisher]
+[08:24:54] :	 [Publishing internal artifacts] Publishing 1 file using [ArtifactsCachePublisherImpl]
+[08:24:54]i:	 [Publishing internal artifacts] Will publish 1 artifact(s) to TeamCity node with id MAIN_SERVER
+[08:24:54] : Publishing artifacts
+[08:24:54] :	 [Publishing artifacts] Collecting files to publish: [target/*.jar => jars]
+[08:24:55] :	 [Publishing artifacts] Publishing 2 files using [WebPublisher]: target/*.jar => jars
+[08:24:55] :	 [Publishing artifacts] Publishing 2 files using [ArtifactsCachePublisherImpl]: target/*.jar => jars
+[08:24:55]i:	 [Publishing artifacts] Will publish 2 artifact(s) to TeamCity node with id MAIN_SERVER
+[08:24:55] : Build finished

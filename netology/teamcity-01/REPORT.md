@@ -48,14 +48,19 @@ public void welcomerReplyContainsHunter() {
 В [`example-teamcity/.teamcity/settings.kts`](example-teamcity/.teamcity/settings.kts) сохранена versioned configuration:
 
 - VCS trigger запускает сборку после push;
-- для веток, отличных от `master`, выполняется `mvn clean test`;
+- в шаге сборки стоит простая проверка ветки;
 - для `master` выполняется `mvn clean deploy`;
-- deploy использует Maven settings с именем `settings.xml`;
-- артефакты сборки: `target/*.jar => target`.
+- для остальных веток выполняется `mvn clean test`;
+- deploy использует Maven settings с доступом к Nexus;
+- артефакты сборки: `target/*.jar => jars`.
 
 Шаблон Maven settings находится в [`example-teamcity/teamcity/settings.xml.template`](example-teamcity/teamcity/settings.xml.template). В сам TeamCity был загружен рабочий `settings.xml` с доступом к Nexus, но в Git я его не кладу. Иначе пароль уедет в историю репозитория, а это потом неприятно чистить.
 
-Конфигурация добавлена в репозиторий коммитом [`4615a78`](https://github.com/demon-5656/example-teamcity/commit/4615a78cb6a6554f14409bdb73a0e6747ae8b95d). Позже убрал лишний локальный `.teamcity/pom.xml`, потому что для этой сдачи он не нужен, а без живого TeamCity-сервера только путает проверку.
+Конфигурация добавлена в репозиторий коммитом [`4615a78`](https://github.com/demon-5656/example-teamcity/commit/4615a78cb6a6554f14409bdb73a0e6747ae8b95d). После проверки на стенде поправил правило артефактов и сам branch-aware шаг коммитом [`6b33025`](https://github.com/demon-5656/example-teamcity/commit/6b33025).
+
+Настройки build configuration на площадке:
+
+![Настройки сборки](screenshots/platform/teamcity-build-settings.png)
 
 ## Проверки
 
@@ -95,8 +100,48 @@ XML validation passed
 
 ## Стенд TeamCity
 
-Для работы был поднят отдельный стенд в Yandex Cloud: TeamCity Server, Build Agent и VM для playbook. Первый запуск TeamCity:
+Для работы был поднят отдельный стенд в Yandex Cloud: TeamCity Server, Build Agent и VM с Nexus. Первый запуск TeamCity:
 
 ![Первый запуск TeamCity](screenshots/teamcity-first-start.png)
 
-TeamCity открывался в браузере, агент был подключен к серверу, сборка проекта запускалась после изменений в Git. После добавления правила артефактов jar-файл появился в результатах сборки, а публикация для `master` выполнялась через Nexus.
+TeamCity открывается в браузере, агент подключен к серверу:
+
+![Проект в TeamCity](screenshots/platform/teamcity-project.png)
+
+![Агент TeamCity](screenshots/platform/teamcity-agent.png)
+
+После push в `master` поднял версию проекта до `0.0.3`. На `0.0.2` Nexus закономерно ругался на повторную публикацию в `maven-releases`, потому что release-репозиторий не разрешает перезаписывать уже загруженные файлы.
+
+Сборка `#14` прошла успешно:
+
+![Успешная сборка master](screenshots/platform/teamcity-build-success.png)
+
+В TeamCity появились артефакты сборки:
+
+![Артефакты TeamCity](screenshots/platform/teamcity-build-artifacts.png)
+
+Файлы артефактов проверил через REST:
+
+```text
+original-plaindoll-0.0.3.jar
+plaindoll-0.0.3.jar
+```
+
+Файл: [`evidence/04_teamcity_artifacts_14.xml`](evidence/04_teamcity_artifacts_14.xml).
+
+Публикация в Nexus тоже прошла. В репозитории `maven-releases` есть `org.netology:plaindoll:0.0.3`:
+
+![Артефакт в Nexus](screenshots/platform/nexus-artifact-003.png)
+
+Файл с ответом Nexus: [`evidence/05_nexus_plaindoll_003.json`](evidence/05_nexus_plaindoll_003.json).
+
+В логе TeamCity видно, что для `master` выполнился именно `clean deploy`, прошли тесты и была публикация артефактов:
+
+```text
+if [ "master" = "master" ]; then ... mvn -s /opt/buildagent/conf/settings.xml clean deploy
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+Uploading to nexus: .../plaindoll/0.0.3/plaindoll-0.0.3.jar
+Publishing artifacts
+```
+
+Файл: [`evidence/06_teamcity_build_14_log.txt`](evidence/06_teamcity_build_14_log.txt).
