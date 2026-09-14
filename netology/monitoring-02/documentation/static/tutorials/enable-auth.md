@@ -22,12 +22,12 @@ Then change the [`[http] auth-enabled` variable](https://docs.influxdata.com/inf
 # ./kapacitor/config/kapacitor.conf
 [[influxdb]]
   username = 'stanley'
-  password = 'stellllAAAA'
+  password = '<your-password>'
 
 # ./telegraf/telegraf.conf
 [[outputs.influxdb]]
   username = 'stanley'
-  password = 'stellllAAAA'
+  password = '<your-password>'
 ```
 
 Also make sure to add the credentials in the Chronograf instance:
