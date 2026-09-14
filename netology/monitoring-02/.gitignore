@@ -2,3 +2,12 @@ chronograf/data/
 influxdb/data/
 kapacitor/data/
 .git.source-backup/
+documentation/
+sandbox
+sandbox.bat
+.env-latest
+.env-nightlies
+images/*/nightly/
+evidence/summary.txt
+screenshots/chronograf-cpu-query.png
+screenshots/chronograf-data.png

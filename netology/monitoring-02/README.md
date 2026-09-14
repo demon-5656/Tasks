@@ -117,10 +117,11 @@ chronograf       Up
 influxdb         Up
 kapacitor        Up
 telegraf         Up
-documentation    Up
 ```
 
-Сокращённый вывод сохранён в [`evidence/docker-compose-ps.txt`](evidence/docker-compose-ps.txt).
+В исходном sandbox также работал вспомогательный сервис документации; в конфигурацию для сдачи он не включён.
+
+Исходный вывод проверки сохранён в [`evidence/docker-compose-ps.txt`](evidence/docker-compose-ps.txt).
 
 Chronograf доступен на `http://localhost:8888`.
 
