@@ -1,0 +1,30 @@
+telegraf-1  | id: cannot find name for group ID 960
+telegraf-1  | 2026-09-14T07:37:18Z W! Strict environment variable handling is the new default starting with v1.38.0! If your configuration does not work with strict handling please explicitly add the --non-strict-env-handling flag to switch to the previous behavior!
+telegraf-1  | 2026-09-14T07:37:18Z I! Loading config: /etc/telegraf/telegraf.conf
+telegraf-1  | 2026-09-14T07:37:18Z I! Starting Telegraf 1.40.0 brought to you by InfluxData the makers of InfluxDB
+telegraf-1  | 2026-09-14T07:37:18Z I! Available plugins: 244 inputs, 9 aggregators, 35 processors, 26 parsers, 68 outputs, 8 secret stores
+telegraf-1  | 2026-09-14T07:37:18Z I! Loaded inputs: cpu docker influxdb syslog system
+telegraf-1  | 2026-09-14T07:37:18Z I! Loaded aggregators:
+telegraf-1  | 2026-09-14T07:37:18Z I! Loaded processors:
+telegraf-1  | 2026-09-14T07:37:18Z I! Loaded secretstores:
+telegraf-1  | 2026-09-14T07:37:18Z I! Loaded outputs: influxdb
+telegraf-1  | 2026-09-14T07:37:18Z I! Tags enabled: host=telegraf-getting-started
+telegraf-1  | 2026-09-14T07:37:18Z I! [agent] Config: Interval:5s, Quiet:false, Hostname:"telegraf-getting-started", Flush Interval:5s
+telegraf-1  | 2026-09-14T07:37:18Z W! [agent] The default value of 'skip_processors_after_aggregators' will change to 'true' with Telegraf v1.40.0! If you need the current default behavior, please explicitly set the option to 'false'!
+telegraf-1  | 2026-09-14T07:37:18Z I! [inputs.syslog] Listening on tcp://127.0.0.1:6514
+telegraf-1  | 2026-09-14T07:39:02Z I! [agent] Hang on, flushing any cached metrics before shutdown
+telegraf-1  | 2026-09-14T07:39:02Z I! [agent] Stopping running outputs
+telegraf-1  | id: cannot find name for group ID 960
+telegraf-1  | 2026-09-14T07:39:02Z W! Strict environment variable handling is the new default starting with v1.38.0! If your configuration does not work with strict handling please explicitly add the --non-strict-env-handling flag to switch to the previous behavior!
+telegraf-1  | 2026-09-14T07:39:02Z I! Loading config: /etc/telegraf/telegraf.conf
+telegraf-1  | 2026-09-14T07:39:02Z I! Starting Telegraf 1.40.0 brought to you by InfluxData the makers of InfluxDB
+telegraf-1  | 2026-09-14T07:39:02Z I! Available plugins: 244 inputs, 9 aggregators, 35 processors, 26 parsers, 68 outputs, 8 secret stores
+telegraf-1  | 2026-09-14T07:39:02Z I! Loaded inputs: cpu docker influxdb syslog system
+telegraf-1  | 2026-09-14T07:39:02Z I! Loaded aggregators:
+telegraf-1  | 2026-09-14T07:39:02Z I! Loaded processors:
+telegraf-1  | 2026-09-14T07:39:02Z I! Loaded secretstores:
+telegraf-1  | 2026-09-14T07:39:02Z I! Loaded outputs: influxdb
+telegraf-1  | 2026-09-14T07:39:02Z I! Tags enabled: host=telegraf-getting-started
+telegraf-1  | 2026-09-14T07:39:02Z I! [agent] Config: Interval:5s, Quiet:false, Hostname:"telegraf-getting-started", Flush Interval:5s
+telegraf-1  | 2026-09-14T07:39:02Z W! [agent] The default value of 'skip_processors_after_aggregators' will change to 'true' with Telegraf v1.40.0! If you need the current default behavior, please explicitly set the option to 'false'!
+telegraf-1  | 2026-09-14T07:39:02Z I! [inputs.syslog] Listening on tcp://127.0.0.1:6514

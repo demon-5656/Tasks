@@ -1,0 +1,25 @@
+Проверка задания 10-monitoring-02-systems
+
+Stack: Docker Compose TICK
+Chronograf: http://localhost:8888 -> HTTP 200
+InfluxDB: 1.8.10 -> HTTP /ping 204
+Telegraf: Up
+Kapacitor: Up
+InfluxDB database: telegraf
+Retention policy: autogen
+
+CPU query:
+SELECT mean("usage_system") AS usage_system FROM "cpu"
+WHERE "host" = 'telegraf-getting-started' AND time > now() - 10m
+GROUP BY time(1m)
+
+Результат: значения usage_system получены, в том числе 0.2752, 0.5256, 0.4306, 0.5027, 0.6719, 0.6122.
+
+Docker measurements:
+docker
+docker_container_blkio
+docker_container_cpu
+docker_container_health
+docker_container_mem
+docker_container_net
+docker_container_status

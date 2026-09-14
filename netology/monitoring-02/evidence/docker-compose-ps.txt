@@ -1,0 +1,6 @@
+NAME                            IMAGE                         COMMAND                  SERVICE         CREATED          STATUS          PORTS
+monitoring-02-chronograf-1      chrono_config                 "/entrypoint.sh chro…"   chronograf      10 minutes ago   Up 10 minutes   0.0.0.0:8888->8888/tcp, [::]:8888->8888/tcp
+monitoring-02-documentation-1   monitoring-02-documentation   "/documentation/docu…"   documentation   10 minutes ago   Up 10 minutes   0.0.0.0:3010->3000/tcp, [::]:3010->3000/tcp
+monitoring-02-influxdb-1        influxdb:1.8                  "/entrypoint.sh infl…"   influxdb        10 minutes ago   Up 10 minutes   0.0.0.0:8082->8082/tcp, [::]:8082->8082/tcp, 0.0.0.0:8086->8086/tcp, [::]:8086->8086/tcp, 0.0.0.0:8089->8089/udp, [::]:8089->8089/udp
+monitoring-02-kapacitor-1       kapacitor                     "/entrypoint.sh kapa…"   kapacitor       10 minutes ago   Up 10 minutes   0.0.0.0:9092->9092/tcp, [::]:9092->9092/tcp
+monitoring-02-telegraf-1        telegraf                      "/usr/bin/tini -- /e…"   telegraf        7 minutes ago    Up 5 minutes    8092/udp, 8125/udp, 8094/tcp
