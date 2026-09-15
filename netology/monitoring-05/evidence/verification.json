@@ -1,0 +1,44 @@
+{
+  "checked_at": "2026-09-15T14:54:41.273168+00:00",
+  "project": {
+    "slug": "netology-sentry",
+    "platform": "python"
+  },
+  "issues": [
+    {
+      "shortId": "NETOLOGY-SENTRY-2",
+      "title": "RuntimeError: Netology: проверка доставки уведомления Sentry",
+      "status": "unresolved",
+      "count": "1",
+      "permalink": "https://4141db247294.sentry.io/issues/147210984/"
+    },
+    {
+      "shortId": "NETOLOGY-SENTRY-1",
+      "title": "Exception: This is an example Python exception",
+      "status": "resolved",
+      "count": "2",
+      "permalink": "https://4141db247294.sentry.io/issues/147209203/"
+    }
+  ],
+  "alert": {
+    "name": "Notify Suggested Assignees",
+    "enabled": true,
+    "environment": null,
+    "lastTriggered": "2026-09-15T14:44:15.827792Z",
+    "frequency": 0,
+    "triggers": [
+      "first_seen_event",
+      "issue_resolved_trigger",
+      "reappeared_event",
+      "regression_event"
+    ],
+    "filters": [],
+    "action": "email",
+    "recipient_fallback": "ActiveMembers"
+  },
+  "sdk_event_id": "8f1f1a6b5f514610ad028507bce92a07",
+  "email_evidence": {
+    "sample": "screenshots/email-sample.png",
+    "rule_notification": "screenshots/email-alert.png"
+  }
+}
