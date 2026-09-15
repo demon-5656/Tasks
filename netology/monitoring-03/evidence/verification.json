@@ -1,0 +1,25 @@
+{
+  "targets": "up",
+  "alerts": [
+    {
+      "panel": "CPU utilization, %",
+      "normal": "ok",
+      "test_threshold_firing": true
+    },
+    {
+      "panel": "Load average — 1 / 5 / 15 min",
+      "normal": "ok",
+      "test_threshold_firing": true
+    },
+    {
+      "panel": "Free RAM",
+      "normal": "ok",
+      "test_threshold_firing": true
+    },
+    {
+      "panel": "Filesystem — free space",
+      "normal": "ok",
+      "test_threshold_firing": true
+    }
+  ]
+}
