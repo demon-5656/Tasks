@@ -1,0 +1,55 @@
+{
+  "cluster": {
+    "cluster_name": "netology-elk",
+    "status": "green",
+    "number_of_nodes": 2,
+    "number_of_data_nodes": 2,
+    "unassigned_shards": 0
+  },
+  "nodes": [
+    {
+      "name": "es-hot",
+      "roles": [
+        "data_content",
+        "data_hot",
+        "master"
+      ]
+    },
+    {
+      "name": "es-warm",
+      "roles": [
+        "data_warm",
+        "master"
+      ]
+    }
+  ],
+  "indices": [
+    {
+      "health": "green",
+      "index": "tcp-json-2026.09.15",
+      "docs.count": "1"
+    },
+    {
+      "health": "green",
+      "index": "logstash-2026.09.15",
+      "docs.count": "527"
+    }
+  ],
+  "docker_log_sample": {
+    "app": {
+      "level": "ERROR",
+      "event_id": "dummy-1789479350003081719",
+      "message": "Demo request failed",
+      "timestamp": "2026-09-15T13:35:50.003054+00:00",
+      "service": "netology-dummy"
+    },
+    "container": {
+      "name": "monitoring-04-dummy-1"
+    },
+    "@timestamp": "2026-09-15T13:35:50.003Z",
+    "agent": {
+      "type": "filebeat"
+    }
+  },
+  "tcp_json_count": 1
+}

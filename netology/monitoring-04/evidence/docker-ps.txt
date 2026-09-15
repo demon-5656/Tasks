@@ -1,0 +1,6 @@
+NAMES                      IMAGE                    STATUS
+monitoring-04-filebeat-1   elastic/filebeat:8.7.0   Up 6 minutes
+monitoring-04-kibana-1     kibana:8.7.0             Up 6 minutes
+monitoring-04-logstash-1   logstash:8.7.0           Up 5 minutes
+monitoring-04-es-warm-1    elasticsearch:8.7.0      Up 6 minutes
+monitoring-04-es-hot-1     elasticsearch:8.7.0      Up 6 minutes

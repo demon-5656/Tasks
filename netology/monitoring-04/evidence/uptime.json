@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-09-15T13:37:48.355609+00:00",
+  "containers": [
+    {
+      "name": "monitoring-04-es-hot-1",
+      "uptime_seconds": 362,
+      "restarts": 0
+    },
+    {
+      "name": "monitoring-04-es-warm-1",
+      "uptime_seconds": 362,
+      "restarts": 0
+    },
+    {
+      "name": "monitoring-04-logstash-1",
+      "uptime_seconds": 305,
+      "restarts": 0
+    },
+    {
+      "name": "monitoring-04-kibana-1",
+      "uptime_seconds": 362,
+      "restarts": 0
+    },
+    {
+      "name": "monitoring-04-filebeat-1",
+      "uptime_seconds": 362,
+      "restarts": 0
+    }
+  ]
+}
