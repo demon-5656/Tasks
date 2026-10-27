@@ -1,0 +1,22 @@
+{{- range $component := list "frontend" "backend" }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $.Release.Name }}-{{ $component }}
+data:
+  default.conf: |
+    server {
+      listen 80;
+      server_name _;
+      location / {
+        default_type text/plain;
+        return 200 "{{ $component }} release={{ $.Release.Name }} namespace={{ $.Release.Namespace }} version={{ $.Values.image.tag }}\n";
+      }
+{{- if eq $component "frontend" }}
+      location /api/ {
+        proxy_pass http://{{ $.Release.Name }}-backend:{{ $.Values.service.port }}/;
+      }
+{{- end }}
+    }
+{{- end }}
