@@ -1,0 +1,27 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - https://raw.githubusercontent.com/projectcalico/calico/v3.30.4/manifests/calico.yaml
+patches:
+  - target:
+      group: apps
+      version: v1
+      kind: DaemonSet
+      name: calico-node
+      namespace: kube-system
+    patch: |-
+      apiVersion: apps/v1
+      kind: DaemonSet
+      metadata:
+        name: calico-node
+        namespace: kube-system
+      spec:
+        template:
+          spec:
+            containers:
+              - name: calico-node
+                env:
+                  - name: CALICO_IPV4POOL_CIDR
+                    value: 10.244.0.0/16
+                  - name: IP_AUTODETECTION_METHOD
+                    value: kubernetes-internal-ip
