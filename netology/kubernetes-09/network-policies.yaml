@@ -1,0 +1,93 @@
+# Calico/Kubernetes NetworkPolicy: default deny app traffic, with DNS as a technical exception.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: app
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-egress
+  namespace: app
+spec:
+  podSelector: {}
+  policyTypes: [Egress]
+---
+# DNS is a technical exception to the inter-application allowlist.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-dns-egress
+  namespace: app
+spec:
+  podSelector: {}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: kube-system
+          podSelector:
+            matchLabels:
+              k8s-app: kube-dns
+      ports:
+        - {protocol: UDP, port: 53}
+        - {protocol: TCP, port: 53}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: frontend-to-backend
+  namespace: app
+spec:
+  podSelector:
+    matchLabels: {app: frontend}
+  policyTypes: [Egress]
+  egress:
+    - to:
+        - podSelector:
+            matchLabels: {app: backend}
+      ports:
+        - {protocol: TCP, port: 80}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-from-frontend-to-cache
+  namespace: app
+spec:
+  podSelector:
+    matchLabels: {app: backend}
+  policyTypes: [Ingress, Egress]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels: {app: frontend}
+      ports:
+        - {protocol: TCP, port: 80}
+  egress:
+    - to:
+        - podSelector:
+            matchLabels: {app: cache}
+      ports:
+        - {protocol: TCP, port: 80}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: cache-from-backend
+  namespace: app
+spec:
+  podSelector:
+    matchLabels: {app: cache}
+  policyTypes: [Ingress]
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels: {app: backend}
+      ports:
+        - {protocol: TCP, port: 80}

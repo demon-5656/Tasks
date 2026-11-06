@@ -1,0 +1,67 @@
+{
+  "mode": "restricted",
+  "timestamp": "2026-11-06T07:32:05.285934+00:00",
+  "passed": true,
+  "results": [
+    {
+      "source": "frontend",
+      "target": "backend",
+      "exit_code": 0,
+      "http_status": "200",
+      "state": "connected",
+      "detail": "HTTP 200",
+      "expected": "connected",
+      "match": true
+    },
+    {
+      "source": "frontend",
+      "target": "cache",
+      "exit_code": 28,
+      "http_status": "000",
+      "state": "timeout",
+      "detail": "curl exit 28 (connection timed out)",
+      "expected": "blocked (timeout)",
+      "match": true
+    },
+    {
+      "source": "backend",
+      "target": "frontend",
+      "exit_code": 28,
+      "http_status": "000",
+      "state": "timeout",
+      "detail": "curl exit 28 (connection timed out)",
+      "expected": "blocked (timeout)",
+      "match": true
+    },
+    {
+      "source": "backend",
+      "target": "cache",
+      "exit_code": 0,
+      "http_status": "200",
+      "state": "connected",
+      "detail": "HTTP 200",
+      "expected": "connected",
+      "match": true
+    },
+    {
+      "source": "cache",
+      "target": "frontend",
+      "exit_code": 28,
+      "http_status": "000",
+      "state": "timeout",
+      "detail": "curl exit 28 (connection timed out)",
+      "expected": "blocked (timeout)",
+      "match": true
+    },
+    {
+      "source": "cache",
+      "target": "backend",
+      "exit_code": 28,
+      "http_status": "000",
+      "state": "timeout",
+      "detail": "curl exit 28 (connection timed out)",
+      "expected": "blocked (timeout)",
+      "match": true
+    }
+  ]
+}

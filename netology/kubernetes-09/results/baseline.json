@@ -1,0 +1,67 @@
+{
+  "mode": "baseline",
+  "timestamp": "2026-11-06T07:30:06.097457+00:00",
+  "passed": true,
+  "results": [
+    {
+      "source": "frontend",
+      "target": "backend",
+      "exit_code": 0,
+      "http_status": "200",
+      "state": "connected",
+      "detail": "HTTP 200",
+      "expected": "connected",
+      "match": true
+    },
+    {
+      "source": "frontend",
+      "target": "cache",
+      "exit_code": 0,
+      "http_status": "200",
+      "state": "connected",
+      "detail": "HTTP 200",
+      "expected": "connected",
+      "match": true
+    },
+    {
+      "source": "backend",
+      "target": "frontend",
+      "exit_code": 0,
+      "http_status": "200",
+      "state": "connected",
+      "detail": "HTTP 200",
+      "expected": "connected",
+      "match": true
+    },
+    {
+      "source": "backend",
+      "target": "cache",
+      "exit_code": 0,
+      "http_status": "200",
+      "state": "connected",
+      "detail": "HTTP 200",
+      "expected": "connected",
+      "match": true
+    },
+    {
+      "source": "cache",
+      "target": "frontend",
+      "exit_code": 0,
+      "http_status": "200",
+      "state": "connected",
+      "detail": "HTTP 200",
+      "expected": "connected",
+      "match": true
+    },
+    {
+      "source": "cache",
+      "target": "backend",
+      "exit_code": 0,
+      "http_status": "200",
+      "state": "connected",
+      "detail": "HTTP 200",
+      "expected": "connected",
+      "match": true
+    }
+  ]
+}
