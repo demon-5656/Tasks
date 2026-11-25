@@ -1,0 +1,9 @@
+#cloud-config
+ssh_pwauth: false
+disable_root: true
+users:
+  - name: ${jsonencode(ssh_user)}
+    shell: /bin/bash
+    lock_passwd: true
+    ssh_authorized_keys:
+      - ${jsonencode(ssh_public_key)}

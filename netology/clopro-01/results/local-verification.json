@@ -1,0 +1,126 @@
+{
+  "environment": "local QEMU/KVM, not Yandex Cloud",
+  "timestamp": "2026-11-25T07:44:55.000622+00:00",
+  "public_baseline": {
+    "exit_code": 0,
+    "response": "200 172.66.147.243",
+    "stderr": ""
+  },
+  "private_baseline": {
+    "exit_code": 0,
+    "response": "200 172.66.147.243",
+    "stderr": ""
+  },
+  "private_interfaces": [
+    {
+      "ifindex": 1,
+      "ifname": "lo",
+      "flags": [
+        "LOOPBACK",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 65536,
+      "qdisc": "noqueue",
+      "operstate": "UNKNOWN",
+      "group": "default",
+      "txqlen": 1000,
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "127.0.0.1",
+          "prefixlen": 8,
+          "scope": "host",
+          "label": "lo",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    },
+    {
+      "ifindex": 2,
+      "ifname": "private0",
+      "flags": [
+        "BROADCAST",
+        "MULTICAST",
+        "UP",
+        "LOWER_UP"
+      ],
+      "mtu": 1500,
+      "qdisc": "fq_codel",
+      "operstate": "UP",
+      "group": "default",
+      "txqlen": 1000,
+      "addr_info": [
+        {
+          "family": "inet",
+          "local": "192.168.20.10",
+          "prefixlen": 24,
+          "broadcast": "192.168.20.255",
+          "scope": "global",
+          "label": "private0",
+          "valid_life_time": 4294967295,
+          "preferred_life_time": 4294967295
+        }
+      ]
+    }
+  ],
+  "private_routes": [
+    {
+      "dst": "default",
+      "gateway": "192.168.20.1",
+      "dev": "private0",
+      "protocol": "static",
+      "flags": []
+    },
+    {
+      "dst": "192.168.20.0/24",
+      "dev": "private0",
+      "protocol": "kernel",
+      "scope": "link",
+      "prefsrc": "192.168.20.10",
+      "flags": []
+    }
+  ],
+  "vpc_route_table": [
+    {
+      "dst": "default",
+      "gateway": "192.168.10.254",
+      "dev": "public0",
+      "protocol": "static",
+      "flags": []
+    },
+    {
+      "dst": "192.168.10.0/24",
+      "dev": "public0",
+      "protocol": "static",
+      "scope": "link",
+      "flags": []
+    },
+    {
+      "dst": "192.168.20.0/24",
+      "dev": "private0",
+      "protocol": "static",
+      "scope": "link",
+      "flags": []
+    }
+  ],
+  "ssh_proxyjump": "public",
+  "private_nat_off": {
+    "exit_code": 28,
+    "response": "000",
+    "stderr": "curl: (28) Connection timed out after 3000 milliseconds"
+  },
+  "public_nat_off": {
+    "exit_code": 0,
+    "response": "200 172.66.147.243",
+    "stderr": ""
+  },
+  "private_restored": {
+    "exit_code": 0,
+    "response": "200 172.66.147.243",
+    "stderr": ""
+  },
+  "nat_rule_counters": "Chain POSTROUTING (policy ACCEPT 10 packets, 785 bytes)\n pkts bytes target     prot opt in     out     source               destination         \n   27  1822 MASQUERADE  all  --  *      wan0    192.168.20.0/24      0.0.0.0/0           \n",
+  "passed": true
+}

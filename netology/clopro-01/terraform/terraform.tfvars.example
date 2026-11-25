@@ -1,0 +1,10 @@
+cloud_id  = "REPLACE_WITH_YC_CLOUD_ID"
+folder_id = "REPLACE_WITH_YC_FOLDER_ID"
+zone      = "ru-central1-a"
+
+# Пример из документационного диапазона; замените на свой IPv4 CIDR.
+admin_cidr = "203.0.113.10/32"
+ssh_user   = "labadmin"
+
+# Замените всю строку содержимым своего файла .pub.
+ssh_public_key = "REPLACE_WITH_PUBLIC_OPENSSH_KEY"
