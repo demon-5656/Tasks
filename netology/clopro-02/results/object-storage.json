@@ -1,0 +1,9 @@
+{
+  "anonymous_get": 200,
+  "content_type": "image/png",
+  "bytes": 25464,
+  "sha256": "722fb53f369fcb2b98f958b7127be6e9eee0e86235928d3ab3ace641442ed471",
+  "anonymous_put": 403,
+  "passed": true,
+  "timestamp": "2026-11-25T09:34:36.993756+00:00"
+}

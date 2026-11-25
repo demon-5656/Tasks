@@ -1,0 +1,39 @@
+#cloud-config
+users:
+  - default
+  - name: webadmin
+    shell: /bin/bash
+    lock_passwd: true
+    sudo: "ALL=(ALL) NOPASSWD:ALL"
+    ssh_authorized_keys:
+      - ${jsonencode(ssh_public_key)}
+ssh_pwauth: false
+
+write_files:
+  - path: /var/www/html/index.php
+    owner: root:root
+    permissions: '0644'
+    encoding: b64
+    content: ${index_php}
+  - path: /var/www/html/health.php
+    owner: root:root
+    permissions: '0644'
+    encoding: b64
+    content: ${health_php}
+
+runcmd:
+  - |
+    set -eu
+    php -l /var/www/html/index.php
+    php -l /var/www/html/health.php
+    rm -f /var/www/html/index.html
+    if systemctl cat apache2.service >/dev/null 2>&1; then
+      apache=apache2.service
+    elif systemctl cat httpd.service >/dev/null 2>&1; then
+      apache=httpd.service
+    else
+      echo 'Apache not found in the LAMP image' >&2
+      exit 1
+    fi
+    systemctl enable --now "$apache"
+    systemctl is-active --quiet "$apache"

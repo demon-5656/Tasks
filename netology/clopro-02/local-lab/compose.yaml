@@ -1,0 +1,65 @@
+services:
+  storage:
+    image: chrislusf/seaweedfs:3.85@sha256:49312939c00c01e5ee6afbd7d728b18027821d3764c35a797a72acd4fdf3296a
+    command: [server, -ip=storage, -ip.bind=0.0.0.0, -dir=/data, -s3, -s3.port=8333, -s3.config=/etc/seaweedfs/s3.json, -master.volumeSizeLimitMB=32, -volume.max=8]
+    ports:
+      - 127.0.0.1:18820:8333
+    volumes:
+      - storage_data:/data
+      - ${S3_CONFIG:?Provide a private generated S3 config}:/etc/seaweedfs/s3.json:ro
+    mem_limit: 384m
+
+  db:
+    image: mariadb:11.4@sha256:a8992b5e5404d11e03c54a31d0c1bdea3fd116d283aa6d1a627551f29045309b
+    environment:
+      MARIADB_DATABASE: webapp
+      MARIADB_USER: webapp
+      MARIADB_PASSWORD: ${DB_PASSWORD:?Set a generated database password}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?Set a different root password}
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: [CMD, healthcheck.sh, --connect, --innodb_initialized]
+      interval: 2s
+      timeout: 2s
+      retries: 30
+    mem_limit: 384m
+
+  web:
+    image: netology-clopro15-2-web:local
+    build:
+      context: ..
+      dockerfile: local-lab/Dockerfile
+    environment:
+      IMAGE_URL: http://127.0.0.1:18820/clopro15-picture/picture.png
+      DB_HOST: db
+      DB_NAME: webapp
+      DB_USER: webapp
+      DB_PASSWORD: ${DB_PASSWORD:?Set a generated database password}
+    deploy:
+      replicas: 3
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, php, -r, "exit(@file_get_contents('http://127.0.0.1/health.php') === false ? 1 : 0);"]
+      interval: 2s
+      timeout: 2s
+      retries: 15
+    mem_limit: 128m
+
+  balancer:
+    image: haproxy:3.0@sha256:611d93bd5888f044fdceb334a11c5db6f555058f8775b90ef575b5e3a0cc9514
+    ports:
+      - 127.0.0.1:18880:8080
+      - 127.0.0.1:18881:9000
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      web:
+        condition: service_healthy
+    mem_limit: 64m
+
+volumes:
+  storage_data:
+  db_data:

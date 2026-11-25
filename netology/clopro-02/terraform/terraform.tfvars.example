@@ -1,0 +1,8 @@
+# Replace every example value before use. Authenticate separately via YC_TOKEN
+# or YC_SERVICE_ACCOUNT_KEY_FILE. Do not put credentials in Terraform files.
+folder_id        = "b1g-replace-with-folder-id"
+public_subnet_id = "e9b-replace-with-public-subnet-id"
+bucket_name      = "clopro-15-2-replace-with-unique-name"
+admin_cidr       = "203.0.113.10/32"
+ssh_public_key   = "ssh-ed25519 REPLACE_WITH_YOUR_OPENSSH_PUBLIC_KEY"
+# lamp_image_id  = "fd827b91d99psvq5fjit" # Default from the assignment.

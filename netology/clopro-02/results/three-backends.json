@@ -1,0 +1,49 @@
+{
+  "http_requests": 30,
+  "http_200": 30,
+  "backends": {
+    "e0794bdb7476": 10,
+    "0641fbf72a94": 10,
+    "c77f2fe5d035": 10
+  },
+  "healthy_backends": 3,
+  "sql_health": {
+    "e0794bdb7476": {
+      "database": true,
+      "php": "8.3.37"
+    },
+    "0641fbf72a94": {
+      "database": true,
+      "php": "8.3.37"
+    },
+    "c77f2fe5d035": {
+      "database": true,
+      "php": "8.3.37"
+    }
+  },
+  "balancer_servers": [
+    {
+      "svname": "web1",
+      "status": "UP",
+      "check_status": "L7OK",
+      "check_code": "200",
+      "addr": ""
+    },
+    {
+      "svname": "web2",
+      "status": "UP",
+      "check_status": "L7OK",
+      "check_code": "200",
+      "addr": ""
+    },
+    {
+      "svname": "web3",
+      "status": "UP",
+      "check_status": "L7OK",
+      "check_code": "200",
+      "addr": ""
+    }
+  ],
+  "passed": true,
+  "timestamp": "2026-11-25T09:34:37.135297+00:00"
+}
